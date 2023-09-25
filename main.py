@@ -1,6 +1,6 @@
 import random
 import time
-inventory = []
+inventory = dict(sun_suit = False)
 speler_data = dict(name = "")
 stories = dict(
     intro = "You have arrived at the launchpad and you need to check in. There is a security guard. ",
@@ -28,3 +28,20 @@ for i in range(10):
     time.sleep(0.5)
     print(".",end=(i==9 and "\n" or ""),flush=True)
 print(stories["arrival_spaceport"])
+if input("Do you want to check your suitcase first? y/n: ") == "y":
+    if randomChance(50):
+        print("You had your sun suit with all along.")
+        inventory["sun_suit"] = True
+    else:
+        print("You forgot your sun suit.")
+if not inventory["sun_suit"]:
+    if input("Do you want to ask the pilot where to buy a sun suit, or, go to the store to buy one? pilot/store: ") == "pilot":
+        print(stories["approach_pilot"])
+        if randomChance(33):
+            print()
+            inventory["sun_suit"] = True
+        else:
+            print(stories["pilot_has_no_extra_sunsuit"])
+    if not inventory["sun_suit"]: #check if pilot gave you a sun suit, if not, go to the store.
+        # buy a sun suit
+
