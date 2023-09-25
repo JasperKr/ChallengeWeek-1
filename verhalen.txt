@@ -1,4 +1,6 @@
 --Intro--
+You have arrived at the launchpad and you need to check in. There is a security guard. 
+
 
 You have landed on a spaceport and you are going to the sun. \n\
 The last thing you have to get is somewhere at the spaceport.\n\
