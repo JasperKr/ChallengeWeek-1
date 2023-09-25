@@ -40,10 +40,10 @@ if input("Do you want to check your suitcase first? y/n: ") == "y":
 time.sleep(2)
 if not inventory["sun_suit"]:
     if input("Do you want to ask the pilot where to buy a sun suit, or, go to the store to buy one? pilot/store: ") == "pilot":
-        print(stories["approach_pilot"])
+        print(stories["approach_pilot"]) # <---
         time.sleep(1)
         if randomChance(33):
-            print()
+            print() # <---
             time.sleep(2)
             inventory["sun_suit"] = True
         else:
@@ -51,6 +51,6 @@ if not inventory["sun_suit"]:
             time.sleep(2)
     if not inventory["sun_suit"]: #check if pilot gave you a sun suit, if not, go to the store.
         # buy a sun suit
-        print(stories["buy_a_sunsuit"])
+        print(stories["buy_a_sunsuit"]) # <---
         time.sleep(2)
-print(stories["go_to_gate_A"])
+print(stories["go_to_gate_A"]) # <---
