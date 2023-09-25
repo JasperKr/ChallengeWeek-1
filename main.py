@@ -9,7 +9,10 @@ stories = dict(
 The last thing you have to get is somewhere at the spaceport.\n\
 You may have to get a sun suit. You may have forgotten it at home. \n\
 After looking around you can see a shoppingmall and what looks to be a pilot.\n\
-You only have your suitcase."
+You only have your suitcase.",
+    approach_pilot_question = "Do you know where to buy a sun suit? I lost mine.",
+    approach_pilot_with_sunsuit = "\"I have a spare sun suit that you can borrow. \"",
+    pilot_has_no_extra_sunsuit = "\"you can buy a sunsuit at the shoppingmall. Be sure that you have the good shop. \""
 )
 def randomChance(chance):
     return random.random() < (chance / 100)
@@ -41,10 +44,10 @@ if input("Do you want to check your suitcase first? y/n: ") == "y":
 time.sleep(2)
 if not inventory["sun_suit"]:
     if input("Do you want to ask the pilot where to buy a sun suit, or, go to the store to buy one? pilot/store: ") == "pilot":
-        print(stories["approach_pilot"]) # <---
+        print(stories["approach_pilot_question"]) # <---
         time.sleep(1)
         if randomChance(33):
-            print() # <---
+            print(stories["approach_pilot_with_sunsuit"]) # <---
             time.sleep(2)
             inventory["sun_suit"] = True
         else:
@@ -58,7 +61,7 @@ if not inventory["sun_suit"]:
         amount_visited = 0
         stores_visited = dict(X=False,Y=False,Z=False)
         while not inventory["sun_suit"]:
-            store_selection = input("What store will you go to? X/Y/Z: ")
+            store_selection = input("What store will you go to? X/Y/Z: ").title()
             if not stores_visited[store_selection]:
                 amount_visited += 1
                 stores_visited[store_selection] = True
