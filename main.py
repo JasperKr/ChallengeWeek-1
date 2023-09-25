@@ -4,7 +4,11 @@ inventory = []
 speler_data = dict(name = "")
 stories = dict(
     intro = "You have arrived at the launchpad and you need to check in. There is a security guard. ",
-    departure = "you depart"
+    departure_earth = "you depart",
+    arrival_spaceport = "You have landed on a spaceport and you are going to the sun. \n\
+The last thing you have to get is somewhere at the spaceport.\n\
+You have to get a sun suit. \n\
+There is a shoppingmall, a pilot walking around and you have a suitcase with you. "
 )
 def randomChance(chance):
     return random.random() < (chance / 100)
@@ -18,8 +22,9 @@ while not name_correct:
         speler_data["name"] = input("\"Can you say that again?\" ")
     first_time_asking = False
     name_correct = input(f"So, {speler_data['name']}? y/n: ") == "y"
-print(stories["departure"])
+print(stories["departure_earth"])
 print("travelling: ",end="",flush=True)
 for i in range(10):
     time.sleep(0.5)
     print(".",end=(i==9 and "\n" or ""),flush=True)
+print(stories["arrival_spaceport"])
