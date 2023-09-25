@@ -13,6 +13,12 @@ Do you know where to buy a sun suit? I lost mine.
 
 \"You can buy one at the store. \"
 
+--Store--
+you have come to the shoppingmall. To wich store do you want to go: Albert Hein, H&M, Gilgal?
+Albert Hein: Did you also forget your orange juice?
+H&M:
+Gilgal: 
+
 --Locations--
 
 Spaceport
