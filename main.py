@@ -14,8 +14,16 @@ You only have your suitcase.",
     approach_pilot_with_sunsuit = "\"I have a spare sun suit that you can borrow. \"",
     pilot_has_no_extra_sunsuit = "\"you can buy a sunsuit at the shoppingmall. Be sure that you have the good shop. \""
 )
-def randomChance(chance):
+def random_chance(chance):
     return random.random() < (chance / 100)
+def random_from_list(list):
+    chance = 1/len(list)
+    random_number = random.random()
+    j = 0
+    for i in list:
+        j += chance
+        if random_number > j - chance and random_number < j:
+            return i
 print(stories["intro"]) # begin het spel, print het begin verhaal text
 time.sleep(3)
 name_correct = False
@@ -36,7 +44,7 @@ print(stories["arrival_spaceport"],end="\n\n")
 time.sleep(5)
 if input("Do you want to check your suitcase first? y/n: ") == "y":
     time.sleep(2)
-    if randomChance(25):
+    if random_chance(25):
         print("You had your sun suit with you all along.",end="\n\n")
         inventory["sun_suit"] = True
     else:
@@ -46,7 +54,7 @@ if not inventory["sun_suit"]:
     if input("Do you want to ask the pilot where to buy a sun suit, or, go to the store to buy one? pilot/store: ") == "pilot":
         print(stories["approach_pilot_question"]) # <---
         time.sleep(1)
-        if randomChance(33):
+        if random_chance(33):
             print(stories["approach_pilot_with_sunsuit"]) # <---
             time.sleep(2)
             inventory["sun_suit"] = True
@@ -65,7 +73,7 @@ if not inventory["sun_suit"]:
             if not stores_visited[store_selection]:
                 amount_visited += 1
                 stores_visited[store_selection] = True
-                if randomChance(25) or amount_visited >= 3:
+                if random_chance(33) or amount_visited >= 3:
                     print("They had one more sunsuit")
                     inventory["sun_suit"] = True
                 else:
@@ -73,4 +81,5 @@ if not inventory["sun_suit"]:
             else:
                 print("You already went there!")
 
-print(stories["go_to_gate_A"]) # <---
+print(stories["go_to_gate"]) # <---
+gate = random_from_list(["A", "B", "C", "E", "D", "F"])
