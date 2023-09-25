@@ -1,0 +1,3 @@
+iets dat de voortgang bijhoud
+een mannier om het verhaal in de terminal te zetten
+random gebeurtenissen
