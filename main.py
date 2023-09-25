@@ -24,7 +24,7 @@ while not name_correct:
     first_time_asking = False
     name_correct = input(f"So, {speler_data['name']}? y/n: ") == "y"
 print(stories["departure_earth"],end="\n\n")
-print("travelling: ",end="",flush=True)
+print("travelling",end="",flush=True)
 for i in range(10):
     time.sleep(0.5)
     print(".",end=(i==9 and "\n\n" or ""),flush=True)
