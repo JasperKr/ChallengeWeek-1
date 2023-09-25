@@ -9,6 +9,8 @@ There is a shoppingmall, a pilot walking around and you have a suitcase with you
 
 Spaceport
 Shoppingmall
+pilot
+suitcase
 
 --Random Events--
 
