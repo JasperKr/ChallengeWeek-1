@@ -7,6 +7,12 @@ The last thing you have to get is somewhere at the spaceport.\n\
 You have to get a sun suit. \n\
 There is a shoppingmall, a pilot walking around and you have a suitcase with you. 
 
+
+--Pilot--
+Do you know where to buy a sun suit? I lost mine.
+
+\"You can buy one at the store. \"
+
 --Locations--
 
 Spaceport
