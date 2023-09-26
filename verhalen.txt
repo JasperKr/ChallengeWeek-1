@@ -2,14 +2,14 @@
 You have arrived at the launchpad and you need to check in. There is a security guard. 
 
 
-You have landed on a spaceport and you are going to the sun. \n\
+You have landed on a spaceport and you are going to the moon. \n\
 The last thing you have to get is somewhere at the spaceport.\n\
-You have to get a sun suit. \n\
+You have to get a moon suit. \n\
 There is a shoppingmall, a pilot walking around and you have a suitcase with you. 
 
 
 --Pilot--
-Do you know where to buy a sun suit? I lost mine.
+Do you know where to buy a moon suit? I lost mine.
 
 \"You can buy one at the store. \"
 
