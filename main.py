@@ -67,12 +67,18 @@ if not inventory["sun_suit"]:
         print("You go to the store.") # temporary
         time.sleep(2)
         amount_visited = 0
-        stores_visited = dict(X=False,Y=False,Z=False)
+        stores_visited = dict(Albert_Hein=False,H_M=False,Gilgal=False)
         while not inventory["sun_suit"]:
-            store_selection = input("What store will you go to? X/Y/Z: ").title()
+            store_selection = input("you have come to the shoppingmall. To wich store do you want to go: Albert Hein, H&M, Gilgal? ").title()
+            if store_selection == "Albert Hein":
+                stores_visited["Albert_Hein"] = True
+            elif store_selection == "H&M":
+                stores_visited["H_M"] = True
+            elif store_selection == "Gilgal":
+                stores_visited["Gilgal"] = True
+        
             if not stores_visited[store_selection]:
                 amount_visited += 1
-                stores_visited[store_selection] = True
                 if random_chance(33) or amount_visited >= 3:
                     print("They had one more sunsuit")
                     inventory["sun_suit"] = True
