@@ -35,6 +35,7 @@ You lost nothing and return safely.",
     defend_with_bottle = "tries to rob you, he would have succeeded if not for that bottle you bought at Gilgal \n\
 You use it to defend yourself from the attacker but barely get away, you lost the bottle.",
     get_robbed_without_help = "steals your headphones and souvenir",
+    sleep_safely_at_station = "you find a safe place somewhere in the station and wake up right before the flight leaves, time to get ready."
 )
 def random_chance(chance):
     return random.random() < (chance / 100)
@@ -210,6 +211,8 @@ if input(stories["ask_to_explore_the_station"]) == "y":
         print(stories["get_robbed_without_help"])
         inventory["headphones"] = False
         inventory["souvenir"] = False
+    time.sleep(4)
+    print(stories["sleep_safely_at_station"])
     time.sleep(2)
 else:
     print(stories["stay_at_station"])
@@ -222,3 +225,4 @@ else:
         inventory["headphones"] = False
         time.sleep(2)
         print(stories["headphones_stolen"])
+        time.sleep(2)
