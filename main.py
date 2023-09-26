@@ -31,54 +31,70 @@ def random_from_list(list):
         j += chance
         if random_number > j - chance and random_number < j:
             return i
-print(stories["intro"]) # begin het spel, print het begin verhaal text
+print(stories["intro"]) # begin of the game, print the starting text
 time.sleep(3)
-name_correct = False
-first_time_asking = True
-while not name_correct:
+
+name_correct = False  # wether the name you supplied is correct
+first_time_asking = True # is this the first time the security gaurd is asking you
+
+while not name_correct: # while your name is not correctly input, keep asking
     if first_time_asking:
         speler_data["name"] = input("\"Hey! You have to check in first! What's your name?\" ")
     else:
         speler_data["name"] = input("\"Can you say that again?\" ")
     first_time_asking = False
     name_correct = input(f"So, {speler_data['name']}? y/n: ") == "y"
-print(stories["departure_earth"],end="\n\n")
+
+print(stories["departure_earth"],end="\n\n") # print text to leave earth and add two new lines
 print("travelling",end="",flush=True)
+
 for i in range(10):
     time.sleep(0.5)
     print(".",end=(i==9 and "\n\n" or ""),flush=True)
 print(stories["arrival_spaceport"],end="\n\n")
 time.sleep(5)
+
+# ask the player if they want to check their suitcase for a sun suit (15% chance it is there)
 if input("Do you want to check your suitcase first? y/n: ") == "y":
     time.sleep(2)
-    if random_chance(25):
+    if random_chance(15):
         print("You had your sun suit with you all along.",end="\n\n")
-        inventory["sun_suit"] = True
+        inventory["sun_suit"] = True # keep track of if the player has a sun suit
     else:
         print("You forgot your sun suit.",end="\n\n")
+
 time.sleep(2)
-if not inventory["sun_suit"]:
+
+if not inventory["sun_suit"]: # if the player didn't find a sun suit in their suitcase
+
+    # ask the player if they want to ask the pilot where to buy a sun suit
     if input("Do you want to ask the pilot where to buy a sun suit, or, go to the store to buy one? pilot/store: ") == "pilot":
-        print(stories["approach_pilot_question"]) # <---
+
+        print(stories["approach_pilot_question"]) # pilot storyline
         time.sleep(1)
+
         if random_chance(33):
-            print(stories["approach_pilot_with_sunsuit"]) # <---
+            # tell the player the pilot has a sun suit for them and add it to their inventory.
+            print(stories["approach_pilot_with_sunsuit"])
             time.sleep(2)
             inventory["sun_suit"] = True
         else:
+            # tell the player where to buy a sun suit.
             print(stories["pilot_has_no_extra_sunsuit"])
             time.sleep(2)
     if not inventory["sun_suit"]: #check if pilot gave you a sun suit, if not, go to the store.
         # buy a sun suit
-        #print(stories["go_to_store"]) # <---
-        print("You go to the store.") # temporary
+        print(stories["go_to_store"])
         time.sleep(2)
-        amount_visited = 0
+        amount_visited = 0 # keep track of the stores the player has visited
         stores_visited = dict(Albert_Hein=False,H_M=False,Gilgal=False)
+        # if the player hasn't found a sunsuit yet.
         while not inventory["sun_suit"]:
             user_store_input = input("you have come to the shoppingmall. To which store do you want to go: Albert Hein, H&M, Gilgal? ").title()
+            # the user input, Albert Hein, H&M, Gilgal or something invalid
             store_selection = ""
 
+            # replace the text with the names that match the dictionary
             if user_store_input == "Albert Hein":
                 store_selection = "Albert_Hein"
             elif user_store_input == "H&M":
@@ -86,8 +102,11 @@ if not inventory["sun_suit"]:
             elif user_store_input == "Gilgal":
                 store_selection = "Gilgal"
             
+            # if that store exists
             if store_selection in stores_visited:
+                # if the player hasn't gone to that store before
                 if not stores_visited[store_selection]:
+                    # storey
                     time.sleep(1)
                     print("You head over to "+user_store_input+"\n")
                     time.sleep(1)
@@ -95,6 +114,7 @@ if not inventory["sun_suit"]:
                     time.sleep(2)
                     stores_visited[store_selection] = True
                     amount_visited += 1
+                    # 33% chance per store to have a sun suit, or, you checked two stores before this so it doesn't lock up the game.
                     if random_chance(33) or amount_visited >= 3:
                         print("They had one more sunsuit")
                         inventory["sun_suit"] = True
@@ -105,4 +125,5 @@ if not inventory["sun_suit"]:
             else:
                 print("You can't find that store!")
 
+# the player goes to a gate
 print(stories["go_to_gate"]+random_from_list(["A", "B", "C", "E", "D", "F"])+".")
