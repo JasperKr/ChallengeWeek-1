@@ -1,6 +1,6 @@
 import random
 import time
-inventory = dict(moon_suit = False, nice_person = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False)
 speler_data = dict(name = "")
 stories = dict(
     intro = "You have arrived at the launchpad. There is a security guard. ",
@@ -9,7 +9,7 @@ stories = dict(
 The last thing you have to get is somewhere at the spaceport.\n\
 You may have forgotten your moon suit at home, but you're not sure.  \n\
 After looking around you can see a shoppingmall and what looks to be a pilot.\n\
-You only have your suitcase.",
+You only have your suitcase and a pair of headphones.",
     approach_pilot_question = "Do you know where to buy a moon suit? I lost mine.",
     approach_pilot_with_moonsuit = "\"I have a spare moon suit that you can borrow. \"",
     pilot_has_no_extra_moonsuit = "\"you can buy a moon suit at the shoppingmall. Be sure that you have the good shop. \"",
@@ -22,8 +22,9 @@ Which one do you want to go to?",
     go_to_gate = "You have everything you need, so you head over to gate ",
     you_help_someone = "You walk to the person who fell and you help him. He thanks you for your help. ",
     you_do_not_help_someone = "You ignore him and you keep on walking.",
-    arrival_spaceport_2 = "You arrived at the last spaceport before you are going to the moon. \n\
-This place is known for its criminality. Be sure to watch out. "
+    arrival_spaceport_2 = "You arrived at the last spaceport before arriving at the moon. \n\
+This place looks shadey. ",
+    transfer_to_another_spaceship = "You have to wait another 8 hours before continuing your journey"
 
 )
 def random_chance(chance):
@@ -93,9 +94,13 @@ if not inventory["moon_suit"]: # if the player didn't find a moon suit in their 
         time.sleep(2)
         amount_visited = 0 # keep track of the stores the player has visited
         stores_visited = dict(Albert_Hein=False,H_M=False,Gilgal=False)
+        leave = False
         # if the player hasn't found a moon suit yet.
-        while not inventory["moon_suit"]:
-            user_store_input = input("you have come to the shoppingmall. To which store do you want to go: Albert Hein, H&M, Gilgal? ").title()
+        while not inventory["moon_suit"] and leave:
+            if inventory["moon_suit"]:
+                if input("do you want to leave, or continue shopping? y/n: ") == "y":
+                    leave = True
+            user_store_input = input("To which store do you want to go: Albert Hein, H&M, Gilgal? ").title()
             # the user input, Albert Hein, H&M, Gilgal or something invalid
             store_selection = ""
 
@@ -120,15 +125,21 @@ if not inventory["moon_suit"]: # if the player didn't find a moon suit in their 
                     stores_visited[store_selection] = True
                     amount_visited += 1
                     # 33% chance per store to have a moon suit, or, you checked two stores before this so it doesn't lock up the game.
+                    if store_selection == "Gilgal":
+                        if input(stories["buy_bottle"]) == "y":
+                            inventory["bottle"] = True
                     if random_chance(33) or amount_visited >= 3:
                         print("They had one more moon suit")
                         inventory["moon_suit"] = True
                     else:
                         print("The store doesn't have any moon suits")
+                    time.sleep(2)
                 else:
                     print("You already went there!")
+                    time.sleep(2)
             else:
                 print("You can't find that store!")
+                time.sleep(2)
 
 # the player goes to a gate
 gate = random_from_list(["A", "B", "C", "E", "D", "F"])
@@ -154,7 +165,10 @@ print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
 
 print("You enter the spaceship. And you take a seat somewhere in the back.")
 time.sleep(1)
-print("you depart from the spaceship stop.")
+if inventory["nice_person"]:
+    print("you depart from the spaceship stop. While listening to some music, you also notice that the person you helped is here too.",end="\n\n")
+else:
+    print("you depart from the spaceship stop. While listening to some music",end="\n\n")
 print("travelling",end="",flush=True)
 
 for i in range(10):
@@ -162,4 +176,35 @@ for i in range(10):
     print(".",end=(i==9 and "\n\n" or ""),flush=True)
 print(stories["arrival_spaceport_2"], end="\n\n")
 time.sleep(5)
-
+print(stories["transfer_to_another_spaceship"])
+time.sleep(3)
+if input(stories["ask_to_explore_the_station"]) == "y":
+    time.sleep(2)
+    print(stories["explore_the_station"])
+    time.sleep(2)
+    if input("Do you go to the shop? y/n: ") == "y":
+        inventory["souvenir"] = True
+    time.sleep(2)
+    print(stories["get_robbed"])
+    time.sleep(2)
+    if inventory["nice_person"]:
+        print(stories["nice_person_helps"])
+    elif inventory["bottle"]:
+        print(stories["defend_with_bottle"])
+        inventory["bottle"] = False
+    else:
+        print(stories["get_robbed"])
+        inventory["headphones"] = False
+        inventory["souvenir"] = False
+    time.sleep(2)
+else:
+    print(stories["stay_at_station"])
+    if inventory["bottle"]:
+        if input("Do you want to drink your bottle?") == "y":
+            print(stories["drink_bottle"])
+            inventory["bottle"] = False
+        time.sleep(2)
+        print(stories["pass_out_at_station"])
+        inventory["headphones"] = False
+        time.sleep(2)
+        print(stories["headphones_stolen"])
