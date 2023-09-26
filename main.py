@@ -98,7 +98,10 @@ if not inventory["moon_suit"]: # if the player didn't find a moon suit in their 
             # tell the player where to buy a moon suit.
             print(stories["pilot_has_no_extra_moonsuit"])
             time.sleep(2)
-    if not inventory["moon_suit"]: #check if pilot gave you a moon suit, if not, go to the store.
+    go_anyways = False
+    if inventory["moon_suit"]:
+        go_anyways = input("Do you want to go to the store anyways? y/n: ") == "y"
+    if not inventory["moon_suit"] or go_anyways: #check if pilot gave you a moon suit, if not, go to the store.
         # buy a moon suit
         print(stories["go_to_store"])
         time.sleep(2)
