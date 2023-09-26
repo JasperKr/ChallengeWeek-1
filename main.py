@@ -5,8 +5,7 @@ speler_data = dict(name = "")
 stories = dict(
     intro = "You have arrived at the launchpad. There is a security guard. ",
     departure_earth = "you depart",
-    arrival_spaceport = "You have landed on a spaceport and you are going to the moon. \n\
-The last thing you have to get is somewhere at the spaceport.\n\
+    arrival_spaceport = "You have arrived at a spaceport and you are going to the moon. \n\
 You may have forgotten your moon suit at home, but you're not sure.  \n\
 After looking around you can see a shoppingmall and what looks to be a pilot.\n\
 You only have your suitcase and a pair of headphones.",
@@ -19,7 +18,7 @@ Which one do you want to go to?",
     Albert_Hein = "Did you also forget your orange juice?",
     H_M = "Nice suit for a fancy dress party.",
     Gilgal = "BIER!!!",
-    buy_bottle = "Do you want to buy a bottle of Belgium whine in it? y/n: ",
+    buy_bottle = "Do you want to buy a bottle of Belgium wine? y/n: ",
     go_to_gate = "You have everything you need, so you head over to gate ",
     you_help_someone = "You walk to the person who fell and you help him. He thanks you for your help. ",
     you_do_not_help_someone = "You ignore him and you keep on walking.",
@@ -28,10 +27,14 @@ This place looks shadey. ",
     transfer_to_another_spaceship = "You have to wait another 8 hours before continuing your journey",
     ask_to_explore_the_station = "Do you want to explore the station and find out what's there or not? y/n: ",
     explore_the_station = "While exploring the station, you find a souvenirshop.",
-    get_robbed = "After you've bought a souvenir, you want to explore more of the station. \n\
-But while doing that, you see a man that is kind of stalking you. \n\
-After he sees you looking around, he runs towards you and steals your headphone and souvenir. \n"
-
+    get_robbed = "After you've bought a souvenir, you want to return to the station. \n\
+But while walking back, you see a man approaching you. \n\
+After he sees you looking around, he runs towards you and ",
+    nice_person_helps = "tries to rob you, he would have succeeded if not for the person you helped a while back.\n\
+You lost nothing and return safely.",
+    defend_with_bottle = "tries to rob you, he would have succeeded if not for that bottle you bought at Gilgal \n\
+You use it to defend yourself from the attacker but barely get away, you lost the bottle.",
+    get_robbed_without_help = "steals your headphones and souvenir",
 )
 def random_chance(chance):
     return random.random() < (chance / 100)
@@ -102,50 +105,53 @@ if not inventory["moon_suit"]: # if the player didn't find a moon suit in their 
         stores_visited = dict(Albert_Hein=False,H_M=False,Gilgal=False)
         stay = True
         # if the player hasn't found a moon suit yet.
-        while not inventory["moon_suit"] and stay:
+        while not inventory["moon_suit"] or stay:
             if inventory["moon_suit"]:
-                if input("do you want to leave, or continue shopping? y/n: ") == "y":
+                if input("do you want to leave, or continue shopping? leave/stay: ") == "leave":
                     stay = False
-            user_store_input = input("To which store do you want to go: Albert Hein, H&M, Gilgal? ").title()
-            # the user input, Albert Hein, H&M, Gilgal or something invalid
-            store_selection = ""
+            if stay:
+                user_store_input = input("To which store do you want to go: Albert Hein, H&M, Gilgal? ").title()
+                # the user input, Albert Hein, H&M, Gilgal or something invalid
+                store_selection = ""
 
-            # replace the text with the names that match the dictionary
-            if user_store_input == "Albert Hein":
-                store_selection = "Albert_Hein"
-            elif user_store_input == "H&M":
-                store_selection = "H_M"
-            elif user_store_input == "Gilgal":
-                store_selection = "Gilgal"
-            
-            # if that store exists
-            if store_selection in stores_visited:
-                # if the player hasn't gone to that store before
-                if not stores_visited[store_selection]:
-                    # storey
-                    time.sleep(1)
-                    print("You head over to "+user_store_input+"\n")
-                    time.sleep(1)
-                    print(stories[store_selection])
-                    time.sleep(2)
-                    stores_visited[store_selection] = True
-                    amount_visited += 1
-                    # 33% chance per store to have a moon suit, or, you checked two stores before this so it doesn't lock up the game.
-                    if store_selection == "Gilgal":
-                        if input(stories["buy_bottle"]) == "y":
-                            inventory["bottle"] = True
-                    if random_chance(33) or amount_visited >= 3:
-                        print("They had one more moon suit")
-                        inventory["moon_suit"] = True
+                # replace the text with the names that match the dictionary
+                if user_store_input == "Albert Hein":
+                    store_selection = "Albert_Hein"
+                elif user_store_input == "H&M":
+                    store_selection = "H_M"
+                elif user_store_input == "Gilgal":
+                    store_selection = "Gilgal"
+                
+                # if that store exists
+                if store_selection in stores_visited:
+                    # if the player hasn't gone to that store before
+                    if not stores_visited[store_selection]:
+                        # storey
+                        time.sleep(1)
+                        print("You head over to "+user_store_input+"\n")
+                        time.sleep(1)
+                        print(stories[store_selection])
+                        time.sleep(2)
+                        stores_visited[store_selection] = True
+                        amount_visited += 1
+                        # 33% chance per store to have a moon suit, or, you checked two stores before this so it doesn't lock up the game.
+                        if store_selection == "Gilgal":
+                            if input(stories["buy_bottle"]) == "y":
+                                inventory["bottle"] = True
+                                time.sleep(2)
+                        if not inventory["moon_suit"]:
+                            if random_chance(33) or amount_visited >= 3:
+                                print("They had one more moon suit")
+                                inventory["moon_suit"] = True
+                            else:
+                                print("The store doesn't have any moon suits")
+                            time.sleep(2)
                     else:
-                        print("The store doesn't have any moon suits")
-                    time.sleep(2)
+                        print("You already went there!")
+                        time.sleep(2)
                 else:
-                    print("You already went there!")
+                    print("You can't find that store!")
                     time.sleep(2)
-            else:
-                print("You can't find that store!")
-                time.sleep(2)
 
 # the player goes to a gate
 gate = random_from_list(["A", "B", "C", "E", "D", "F"])
@@ -168,13 +174,14 @@ time.sleep(1)
 print("Before entering you have to show your passport to the customs.")
 time.sleep(2)
 print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
-
+time.sleep(2)
 print("You enter the spaceship. And you take a seat somewhere in the back.")
-time.sleep(1)
+time.sleep(2)
 if inventory["nice_person"]:
     print("you depart from the spaceship stop. While listening to some music, you also notice that the person you helped is here too.",end="\n\n")
 else:
     print("you depart from the spaceship stop. While listening to some music",end="\n\n")
+time.sleep(2)
 print("travelling",end="",flush=True)
 
 for i in range(10):
@@ -190,8 +197,9 @@ if input(stories["ask_to_explore_the_station"]) == "y":
     time.sleep(2)
     if input("Do you want to go to the shop? y/n: ") == "y":
         inventory["souvenir"] = True
-    time.sleep(2)
-    print(stories["get_robbed"])
+    time.sleep(3)
+    print()
+    print(stories["get_robbed"],end="")
     time.sleep(2)
     if inventory["nice_person"]:
         print(stories["nice_person_helps"])
