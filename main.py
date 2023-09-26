@@ -19,12 +19,18 @@ Which one do you want to go to?",
     Albert_Hein = "Did you also forget your orange juice?",
     H_M = "Nice suit for a fancy dress party.",
     Gilgal = "BIER!!!",
+    buy_bottle = "Do you want to buy a bottle of Belgium whine in it? y/n: ",
     go_to_gate = "You have everything you need, so you head over to gate ",
     you_help_someone = "You walk to the person who fell and you help him. He thanks you for your help. ",
     you_do_not_help_someone = "You ignore him and you keep on walking.",
     arrival_spaceport_2 = "You arrived at the last spaceport before arriving at the moon. \n\
 This place looks shadey. ",
-    transfer_to_another_spaceship = "You have to wait another 8 hours before continuing your journey"
+    transfer_to_another_spaceship = "You have to wait another 8 hours before continuing your journey",
+    ask_to_explore_the_station = "Do you want to explore the station and find out what's there or not? y/n: ",
+    explore_the_station = "While exploring the station, you find a souvenirshop.",
+    get_robbed = "After you've bought a souvenir, you want to explore more of the station. \n\
+But while doing that, you see a man that is kind of stalking you. \n\
+After he sees you looking around, he runs towards you and steals your headphone and souvenir. \n"
 
 )
 def random_chance(chance):
@@ -182,7 +188,7 @@ if input(stories["ask_to_explore_the_station"]) == "y":
     time.sleep(2)
     print(stories["explore_the_station"])
     time.sleep(2)
-    if input("Do you go to the shop? y/n: ") == "y":
+    if input("Do you want to go to the shop? y/n: ") == "y":
         inventory["souvenir"] = True
     time.sleep(2)
     print(stories["get_robbed"])
