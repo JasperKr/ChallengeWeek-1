@@ -20,6 +20,9 @@ Wich one do you want to choose?",
     H_M = "Nice suit for a fancy dress party.",
     Gilgal = "BIER!!!",
     go_to_gate = "You have everything you need, so you head over to gate ",
+    you_help_someone = "You walk to the person who fell and you help him. He thanks you for your help. ",
+    you_do_not_help_someone = "You ignore him and you move on walking.",
+
 )
 def random_chance(chance):
     return random.random() < (chance / 100)
@@ -127,3 +130,9 @@ if not inventory["sun_suit"]: # if the player didn't find a sun suit in their su
 
 # the player goes to a gate
 print(stories["go_to_gate"]+random_from_list(["A", "B", "C", "E", "D", "F"])+".")
+
+someone_falls = input("You see someone fall on your way to the gate, but you have haste. Will you help them? y/n: ")
+if someone_falls == "y":
+    print(stories["you_help_someone"])
+elif someone_falls == "n":
+    print(stories["you_do_not_help_someone"])

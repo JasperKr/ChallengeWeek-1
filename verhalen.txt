@@ -22,7 +22,7 @@ Gilgal: BIER!!!
 
 
 --Gate--
-You have come to the gates. Now you need to take the right gate. 
+You have come to the gates. Now you need to take gate (random gate). 
 
 
 --Locations--
