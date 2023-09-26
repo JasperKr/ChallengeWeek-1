@@ -22,6 +22,8 @@ Which one do you want to go to?",
     go_to_gate = "You have everything you need, so you head over to gate ",
     you_help_someone = "You walk to the person who fell and you help him. He thanks you for your help. ",
     you_do_not_help_someone = "You ignore him and you keep on walking.",
+    arrival_spaceport_2 = "You arrived at the last spaceport before you are going to the moon. \n\
+This place is known for its criminality. Be sure to watch out. "
 
 )
 def random_chance(chance):
@@ -149,4 +151,15 @@ time.sleep(1)
 print("Before entering you have to show your passport to the customs.")
 time.sleep(2)
 print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
+
+print("You enter the spaceship. And you take a seat somewhere in the back.")
+time.sleep(1)
+print("you depart from the spaceship stop.")
+print("travelling",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+print(stories["arrival_spaceport_2"], end="\n\n")
+time.sleep(5)
 
