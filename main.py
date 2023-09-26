@@ -3,7 +3,7 @@ import time
 inventory = dict(sun_suit = False)
 speler_data = dict(name = "")
 stories = dict(
-    intro = "You have arrived at the launchpad and you need to check in. There is a security guard. ",
+    intro = "You have arrived at the launchpad. There is a security guard. ",
     departure_earth = "you depart",
     arrival_spaceport = "You have landed on a spaceport and you are going to the sun. \n\
 The last thing you have to get is somewhere at the spaceport.\n\
@@ -16,10 +16,10 @@ You only have your suitcase.",
     go_to_store = "You go to the shoppingmall.",
     at_the_stores = "When you are at the shoppingmall, you can choose from 3 stores: Albert Hein, H&M and the Gilgal. \
 Wich one do you want to choose?",
-    AH = "Did you also forget your orange juice?",
+    Albert_Hein = "Did you also forget your orange juice?",
     H_M = "Nice suit for a fancy dress party.",
     Gilgal = "BIER!!!",
-    go_to_gate = "You have come to the gates. Now you need to take the right gate. ",
+    go_to_gate = "You have everything you need, so you head over to gate ",
 )
 def random_chance(chance):
     return random.random() < (chance / 100)
@@ -76,23 +76,33 @@ if not inventory["sun_suit"]:
         amount_visited = 0
         stores_visited = dict(Albert_Hein=False,H_M=False,Gilgal=False)
         while not inventory["sun_suit"]:
-            store_selection = input("you have come to the shoppingmall. To wich store do you want to go: Albert Hein, H&M, Gilgal? ").title()
-            if store_selection == "Albert Hein":
-                stores_visited["Albert_Hein"] = True
-            elif store_selection == "H&M":
-                stores_visited["H_M"] = True
-            elif store_selection == "Gilgal":
-                stores_visited["Gilgal"] = True
-        
-            if not stores_visited[store_selection]:
-                amount_visited += 1
-                if random_chance(33) or amount_visited >= 3:
-                    print("They had one more sunsuit")
-                    inventory["sun_suit"] = True
-                else:
-                    print("The store doesn't have any sunsuits")
-            else:
-                print("You already went there!")
+            user_store_input = input("you have come to the shoppingmall. To which store do you want to go: Albert Hein, H&M, Gilgal? ").title()
+            store_selection = ""
 
-print(stories["go_to_gate"]) # <---
-gate = random_from_list(["A", "B", "C", "E", "D", "F"])
+            if user_store_input == "Albert Hein":
+                store_selection = "Albert_Hein"
+            elif user_store_input == "H&M":
+                store_selection = "H_M"
+            elif user_store_input == "Gilgal":
+                store_selection = "Gilgal"
+            
+            if store_selection in stores_visited:
+                if not stores_visited[store_selection]:
+                    time.sleep(1)
+                    print("You head over to "+user_store_input+"\n")
+                    time.sleep(1)
+                    print(stories[store_selection])
+                    time.sleep(2)
+                    stores_visited[store_selection] = True
+                    amount_visited += 1
+                    if random_chance(33) or amount_visited >= 3:
+                        print("They had one more sunsuit")
+                        inventory["sun_suit"] = True
+                    else:
+                        print("The store doesn't have any sunsuits")
+                else:
+                    print("You already went there!")
+            else:
+                print("You can't find that store!")
+
+print(stories["go_to_gate"]+random_from_list(["A", "B", "C", "E", "D", "F"])+".")
