@@ -100,12 +100,12 @@ if not inventory["moon_suit"]: # if the player didn't find a moon suit in their 
         time.sleep(2)
         amount_visited = 0 # keep track of the stores the player has visited
         stores_visited = dict(Albert_Hein=False,H_M=False,Gilgal=False)
-        leave = False
+        stay = True
         # if the player hasn't found a moon suit yet.
-        while not inventory["moon_suit"] and leave:
+        while not inventory["moon_suit"] and stay:
             if inventory["moon_suit"]:
                 if input("do you want to leave, or continue shopping? y/n: ") == "y":
-                    leave = True
+                    stay = False
             user_store_input = input("To which store do you want to go: Albert Hein, H&M, Gilgal? ").title()
             # the user input, Albert Hein, H&M, Gilgal or something invalid
             store_selection = ""
@@ -199,7 +199,7 @@ if input(stories["ask_to_explore_the_station"]) == "y":
         print(stories["defend_with_bottle"])
         inventory["bottle"] = False
     else:
-        print(stories["get_robbed"])
+        print(stories["get_robbed_without_help"])
         inventory["headphones"] = False
         inventory["souvenir"] = False
     time.sleep(2)
