@@ -1,6 +1,6 @@
 import random
 import time
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False)
 speler_data = dict(name = "")
 stories = dict(
     intro = "You have arrived at the launchpad. There is a security guard. ",
@@ -226,3 +226,23 @@ else:
         time.sleep(2)
         print(stories["headphones_stolen"])
         time.sleep(2)
+
+print(stories["spaceship2_departs"])
+if inventory["bottle"] == True:
+    print(stories["someone_wants_drink"])
+    inventory["bottle"] = False
+elif not inventory["bottle"] == True:
+    print(stories["you_talk_to_someone"])
+
+print(["landing_on_moon"])
+
+input_photo = input("Your friend says:\"shall I take a picture of you?\" y/n: ")
+if input_photo == "y":
+    inventory["photo"] = True
+    print(stories["photo_taken"])
+elif input_photo == "n":
+    print(inventory["photo_not_taken"])
+
+
+
+
