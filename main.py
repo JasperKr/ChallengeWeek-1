@@ -35,7 +35,7 @@ You lost nothing and return safely.",
     defend_with_bottle = "tries to rob you, he would have succeeded if not for that bottle you bought at Gilgal \n\
 You use it to defend yourself from the attacker but barely get away, you lost the bottle.",
     get_robbed_without_help = "steals your headphones and souvenir",
-    sleep_safely_at_station = "you find a safe place somewhere in the station and wake up right before the flight leaves, time to get ready."
+    sleep_safely_at_station = "You find a safe place somewhere in the station and wake up right before the flight leaves, time to get ready."
 )
 def random_chance(chance):
     return random.random() < (chance / 100)
@@ -81,26 +81,29 @@ if input("Do you want to check your suitcase first? y/n: ") == "y":
 
 time.sleep(2)
 
-if not inventory["moon_suit"]: # if the player didn't find a moon suit in their suitcase
+go_anyways = False
+if inventory["moon_suit"]:
+    go_anyways = input("Do you want to go to the store anyways? y/n: ") == "y"
+if not inventory["moon_suit"] or go_anyways: # if the player didn't find a moon suit in their suitcase
 
     # ask the player if they want to ask the pilot where to buy a moon suit
-    if input("Do you want to ask the pilot where to buy a moon suit, or, go to the store to buy one? pilot/store: ") == "pilot":
+    if not go_anyways:
+        if input("Do you want to ask the pilot where to buy a moon suit, or, go to the store to buy one? pilot/store: ") == "pilot":
 
-        print(stories["approach_pilot_question"]) # pilot storyline
-        time.sleep(1)
+            print(stories["approach_pilot_question"]) # pilot storyline
+            time.sleep(1)
 
-        if random_chance(33):
-            # tell the player the pilot has a moon suit for them and add it to their inventory.
-            print(stories["approach_pilot_with_moonsuit"])
-            time.sleep(2)
-            inventory["moon_suit"] = True
-        else:
-            # tell the player where to buy a moon suit.
-            print(stories["pilot_has_no_extra_moonsuit"])
-            time.sleep(2)
-    go_anyways = False
-    if inventory["moon_suit"]:
-        go_anyways = input("Do you want to go to the store anyways? y/n: ") == "y"
+            if random_chance(33):
+                # tell the player the pilot has a moon suit for them and add it to their inventory.
+                print(stories["approach_pilot_with_moonsuit"])
+                time.sleep(2)
+                inventory["moon_suit"] = True
+            else:
+                # tell the player where to buy a moon suit.
+                print(stories["pilot_has_no_extra_moonsuit"])
+                time.sleep(2)
+        if inventory["moon_suit"]:
+            go_anyways = input("Do you want to go to the store anyways? y/n: ") == "y"
     if not inventory["moon_suit"] or go_anyways: #check if pilot gave you a moon suit, if not, go to the store.
         # buy a moon suit
         print(stories["go_to_store"])
@@ -160,6 +163,7 @@ if not inventory["moon_suit"]: # if the player didn't find a moon suit in their 
 # the player goes to a gate
 gate = random_from_list(["A", "B", "C", "E", "D", "F"])
 print(stories["go_to_gate"]+gate+".")
+time.sleep(2)
 
 # does the player help someone
 someone_falls = input("You see someone fall on your way to the gate, but you're in a hurry. Will you still help them? y/n: ")
@@ -174,7 +178,7 @@ elif someone_falls == "n":
 
 # the player leaves the spaceport.
 print(f"You arrive at gate {gate}.",end="\n\n")
-time.sleep(1)
+time.sleep(2)
 print("Before entering you have to show your passport to the customs.")
 time.sleep(2)
 print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
@@ -182,9 +186,9 @@ time.sleep(2)
 print("You enter the spaceship. And you take a seat somewhere in the back.")
 time.sleep(2)
 if inventory["nice_person"]:
-    print("you depart from the spaceship stop. While listening to some music, you also notice that the person you helped is here too.",end="\n\n")
+    print("You depart from the spaceship stop. While listening to some music, you also notice that the person you helped is here too.",end="\n\n")
 else:
-    print("you depart from the spaceship stop. While listening to some music",end="\n\n")
+    print("You depart from the spaceship stop. While listening to some music",end="\n\n")
 time.sleep(2)
 print("travelling",end="",flush=True)
 
