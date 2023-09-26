@@ -14,10 +14,16 @@ Do you know where to buy a sun suit? I lost mine.
 \"You can buy one at the store. \"
 
 --Store--
-you have come to the shoppingmall. To wich store do you want to go: Albert Hein, H&M, Gilgal?
+You go to the shoppingmall.
+When you are at the shoppingmall, you can choose from 3 stores: Albert Hein, H&M and the Gilgal. Wich one do you want to choose?
 Albert Hein: Did you also forget your orange juice?
-H&M: You are lucky. This is our last sunsuit.
+H&M: Nice suit for a fancy dress party.
 Gilgal: BIER!!!
+
+
+--Gate--
+You have come to the gates. Now you need to take the right gate. 
+
 
 --Locations--
 
@@ -25,6 +31,8 @@ Spaceport
 Shoppingmall
 pilot
 suitcase
+gate
+
 
 --Random Events--
 

@@ -12,7 +12,14 @@ After looking around you can see a shoppingmall and what looks to be a pilot.\n\
 You only have your suitcase.",
     approach_pilot_question = "Do you know where to buy a sun suit? I lost mine.",
     approach_pilot_with_sunsuit = "\"I have a spare sun suit that you can borrow. \"",
-    pilot_has_no_extra_sunsuit = "\"you can buy a sunsuit at the shoppingmall. Be sure that you have the good shop. \""
+    pilot_has_no_extra_sunsuit = "\"you can buy a sunsuit at the shoppingmall. Be sure that you have the good shop. \"",
+    go_to_store = "You go to the shoppingmall.",
+    at_the_stores = "When you are at the shoppingmall, you can choose from 3 stores: Albert Hein, H&M and the Gilgal. \
+Wich one do you want to choose?",
+    AH = "Did you also forget your orange juice?",
+    H_M = "Nice suit for a fancy dress party.",
+    Gilgal = "BIER!!!",
+    go_to_gate = "You have come to the gates. Now you need to take the right gate. ",
 )
 def random_chance(chance):
     return random.random() < (chance / 100)
