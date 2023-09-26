@@ -235,21 +235,35 @@ else:
         time.sleep(2)
 
 print(stories["spaceship2_departs"])
-if inventory["bottle"] == True:
+if inventory["bottle"]:
     print(stories["someone_wants_drink"])
     inventory["bottle"] = False
-elif not inventory["bottle"] == True:
+else:
     print(stories["you_talk_to_someone"])
 
-print(["landing_on_moon"])
+print(stories["landing_on_moon"])
 
 input_photo = input("Your friend says:\"shall I take a picture of you?\" y/n: ")
 if input_photo == "y":
     inventory["photo"] = True
+    time.sleep(2)
     print(stories["photo_taken"])
 elif input_photo == "n":
     print(inventory["photo_not_taken"])
+    time.sleep(2)
 
+print(stories["take_train_to_camping"])
+time.sleep(4)
+if inventory["souvenir"] == False:
+    print("You go to the shop and buy a souvenir. ")
+    inventory["souvenir"] = True
+time.sleep(1)
 
-
+souvenir_in_vault_input = input("Do you want to stash your souvenir in the vault? y/n: ")
+if souvenir_in_vault_input == "y":
+    souvenir_in_vault_input_bool = True
+    print("Your souvenir is safe in the vault")
+elif souvenir_in_vault_input == "n":
+    souvenir_in_vault_input_bool = False
+    print("Your souvenir is not safe in the vault. Be carefull with it.")   
 
