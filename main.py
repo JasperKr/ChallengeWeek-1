@@ -204,6 +204,7 @@ else:
 
 print(stories["spaceship2_departs"])
 time.sleep(2)
+friend_names = random_from_list(["Ben", "Jaap", "Klaas", "Jan", "Emily", "Rozanne", "Suzanne", "Annalies"])
 if inventory["bottle"]:
     print(stories["someone_wants_drink"])
     inventory["bottle"] = False
@@ -222,7 +223,7 @@ time.sleep(3)
 
 input_photo = ""
 while input_photo != "y" and input_photo != "n":
-    input_photo = input("Your friend says:\"shall I take a picture of you?\" y/n: ")
+    input_photo = input(f"Your friend says:\"Shall I take a picture of you?\" y/n: ")
     if input_photo == "y":
         inventory["photo"] = True
         time.sleep(2)
