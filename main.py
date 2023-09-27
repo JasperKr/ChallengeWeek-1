@@ -27,6 +27,22 @@ def random_from_range(amount):
         j += chance
         if random_number > j - chance and random_number < j:
             return i
+def find_similarity(string: str, other: str):
+    similarity = 0.0
+    if len(string) > 0:
+        i = 0
+        for character in string:
+            if len(other)-1 >= i:
+                if character == other[i]:
+                    similarity += 1
+                else:
+                    if character == other[(i+1)%len(other)] and string[(i+1)%len(string)] != other[(i+1)%len(other)]:
+                        similarity += 0.25
+                    if character == other[(i-1)] and string[(i-1)] != other[(i-1)]:
+                        similarity += 0.25
+            i += 1
+        similarity /= i
+    return similarity
 print(stories["intro"]) # begin of the game, print the starting text
 time.sleep(3)
 
@@ -366,7 +382,40 @@ for i in range(10):
 
 print(stories["arrival_spaceport_saturn"])
 time.sleep(3)
-print("add some activities here")
+print(stories["go_to_places_saturn"])
+time.sleep(2)
+player_answer = ""
+while player_answer != "hotel":
+    player_answer = input("Where do you want to do? Go to the shop, Take a walk or go back to the hotel and sleep. shop/walk/hotel: ")
+    time.sleep(2)
+    if find_similarity(player_answer,"shop") >= 0.75:
+        print(stories["go_to_shop_saturn"])
+        time.sleep(2)
+        player_shop_answer = ""
+        while player_shop_answer != "leave":
+            player_shop_answer = input("What do you want to buy? They have sandwiches, canned soup and a lot of it and fruit. sandwich/soup/fruit/leave: ")
+            time.sleep(2)
+            if find_similarity(player_shop_answer,"sandwich") >= 0.75:
+                print("You take a nice sandwich for tomorrow.")
+            elif find_similarity(player_shop_answer,"soup") >= 0.75:
+                print("You take some soup for tonight")
+            elif find_similarity(player_shop_answer,"fruit") >= 0.75:
+                print("You take some fruit with you, an apple a day keeps the doctor away!")
+            elif find_similarity(player_shop_answer,"leave") >= 0.75:
+                print("You decide to leave the shop, but not without taking some extra oxygen bottles with you, never know when they will come in handy.")
+            time.sleep(2)
+
+
+    elif find_similarity(player_answer,"walk") >= 0.75:
+        print(stories["walk_around_saturn_refinery"])
+        time.sleep(3)
+    elif find_similarity(player_answer,"hotel") >= 0.75:
+        print(stories["go_back_to_hotel_saturn_refinery"])
+        time.sleep(2)
+    else:
+        print("you looked around, but couldn't find that.")
+        time.sleep(2)
+
 time.sleep(3)
 print(command_line_colors["red"]+stories["saturn_refinery_disaster"])
 time.sleep(8)
@@ -378,7 +427,7 @@ print(command_line_colors["white"])
 
 print(stories["crash_with_asteroïds"])    
 oxygen_repaired = False
-motor_repaired = False
+engine_repaired = False
 people_calmed_down = False
 gameover = False
 poging = 0
@@ -386,36 +435,39 @@ Dead = False
 first_time = True
 while Dead or first_time:
     first_time = False
-    while (oxygen_repaired == False or motor_repaired == False or people_calmed_down == False) and gameover == False:
-        choice_asteroïds = input(stories["story_choice_asteroïds"])
+    while (oxygen_repaired == False or engine_repaired == False or people_calmed_down == False) and gameover == False:
+        choice_asteroids = input(stories["story_choice_asteroids"])
     
         poging += 1
         if poging > 3:
             gameover = True
         else:
-            if poging == 1 and choice_asteroïds != "hull":
-                print("Dead,try it again.")
+            if poging == 1 and choice_asteroids != "hull":
+                print("You ran out of oxygen and died.")
                 poging = 0
-            elif poging == 1 and choice_asteroïds == "hull":
+            elif poging == 1 and choice_asteroids == "hull":
                 oxygen_repaired = True
-                print("First try to repair ship. ")
+                print("You repair the hull. ")
             else:
-                if choice_asteroïds == "hull":
+                if choice_asteroids == "hull":
                     oxygen_repaired = True
-                    print("You have repaired the hull. \n\
-What do you want to do or repair more?")
-                elif choice_asteroïds == "repair engine":
-                    motor_repaired = True
-                    print("You have repaired the motor of the ship. \n\
-What do you want to do or repair more?")
-                elif choice_asteroïds == "calm down":
+                    if poging != 3: # laatste keer kan je niks meer repareren
+                        print("You have repaired the hull. \n\
+What do you want to repair now?")
+                elif choice_asteroids == "repair engine":
+                    engine_repaired = True
+                    if poging != 3: # laatste keer kan je niks meer repareren
+                        print("You have repaired the engine of the ship. \n\
+What do you want to repair now?")
+                elif choice_asteroids == "calm down":
                     people_calmed_down = True
-                    print("You calmed down the people. \n\
-What do you want to repair more?")
+                    if poging != 3: # laatste keer kan je niks meer repareren
+                        print("You calmed down the people. \n\
+What do you want to repair now?")
                 else:
                     print("You can not do that")
 
-    if oxygen_repaired and people_calmed_down and motor_repaired:
+    if oxygen_repaired and people_calmed_down and engine_repaired:
         print("Alles opgelost!")
     else:
         print(command_line_colors["red"]+"Game over. Try again")

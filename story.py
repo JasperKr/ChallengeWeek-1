@@ -65,11 +65,14 @@ after making your way to the exit of the hotel, you find it very difficult to go
 There is stuff flying everywhere now that it isn't being held down by gravity and the station is spinning.",
     evacuate_saturn_refinery = "you manage to make your way to a cargo ship still docked, they're letting everyone who wants to leave on.\n \
 You get on and safely get away from the station, they're going to mars.",
-    crash_with_asteroïds = "On your way to mars the alarm goes off.\n \
+    crash_with_asteroids = "On your way to mars the alarm goes off.\n \
 Some asteroids have crashed in to the spaceship while trying to get away.\n \
 The engine of the spaceship has stopped, and you're now floating through space without control, there are some leaks due to the asteroids.",
     story_choice_asteroïds = "What are you going to do? Close the hull breaches (type: hull), repair the engine (type: repair engine) or calm down the refugees (type: calm down) ",
-    
-
-
+    go_to_places_saturn = "You decide to go look around and find a couple of places you can go around here.",
+    walk_around_saturn_refinery = "After walking around for a while, you get used to the humm of the distant machinery. \n \
+The view is amazing, seemingly endless amounts of asteroids flying by faster than you can blink. ",
+    go_back_to_hotel_saturn_refinery = "You decide to go back to the hotel, that's enough for today.",
+    go_to_shop_saturn = "You decide to go look around for some shops, maybe get something to eat while you wait. \n \
+After walking around for a bit you finally find the store, It's really big.",
 )
