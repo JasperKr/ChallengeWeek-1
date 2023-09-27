@@ -15,6 +15,14 @@ def random_from_list(list):
         j += chance
         if random_number > j - chance and random_number < j:
             return i
+def random_from_range(amount):
+    chance = 1/amount
+    random_number = random.random()
+    j = 0
+    for i in range(amount):
+        j += chance
+        if random_number > j - chance and random_number < j:
+            return i
 print(stories["intro"]) # begin of the game, print the starting text
 time.sleep(3)
 
@@ -253,7 +261,15 @@ camping_place = random_from_list(["45", "98", "23", "67", "91"])
 print(f"Your campingplace is place {camping_place}.")
 time.sleep(2)
 print("before you go to your campingplace, you have to solve a riddle. ")
-teeth_riddle = input(riddles["teeth_riddle"])
-not_guessed = True
-while not_guessed:
-    if 
+
+guessed = False
+
+riddle_index = random_from_range(len(riddles.riddles))
+riddle = riddles.riddles[riddle_index]
+answers = riddles.answers[riddle_index]
+
+while not guessed:
+    player_answer = input(riddle)
+    for answer in answers:
+        if player_answer.lower() == answer:
+            guessed = True
