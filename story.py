@@ -17,12 +17,15 @@ Which one do you want to go to?",
     buy_bottle = "Do you want to buy a bottle of Belgium wine? y/n: ",
     go_to_gate = "You have everything you need, so you head over to gate ",
     you_help_someone = "You walk to the person who fell and you help him. He thanks you for your help. ",
-    you_do_not_help_someone = "You ignore him and you keep on walking.",
+    you_do_not_help_someone = "You ignore him and keep on walking.",
     arrival_spaceport_2 = "You arrived at the last spaceport before arriving at the moon. \n\
 This place looks shadey. ",
     transfer_to_another_spaceship = "You have to wait another 8 hours before continuing your journey",
     ask_to_explore_the_station = "Do you want to explore the station and find out what's there or not? y/n: ",
     explore_the_station = "While exploring the station, you find a souvenirshop.",
+    stay_at_station = "You decide to stay at the station",
+    pass_out_at_station = "you fall asleep on a bench.",
+    headphones_stolen = "After a while you wake up with your headphones missing.",
     get_robbed = "After you've bought a souvenir, you want to return to the station. \n\
 But while walking back, you see a man approaching you. \n\
 After he sees you looking around, he runs towards you and ",
