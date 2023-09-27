@@ -329,9 +329,6 @@ for i in range(10):
     time.sleep(0.5)
     print(".",end=(i==9 and "\n\n" or ""),flush=True)
 
-print(stories["choose_route_back"])
-time.sleep(3)
-
 choice = input("Do you want to go to saturn first or straight back home? saturn/home: ")
 time.sleep(2)
 print(stories["announcement_flight_cancelled"])
@@ -356,3 +353,5 @@ print("travelling",end="",flush=True)
 for i in range(10):
     time.sleep(0.5)
     print(".",end=(i==9 and "\n\n" or ""),flush=True)
+
+print()
