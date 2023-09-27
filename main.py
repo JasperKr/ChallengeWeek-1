@@ -230,12 +230,12 @@ if not inventory["souvenir"]:
 time.sleep(2)
 
 souvenir_in_vault_input = ""
+souvenir_in_vault = False
 while souvenir_in_vault_input != "y" or souvenir_in_vault_input != "n":
     souvenir_in_vault_input = input("Do you want to stash your souvenir in the vault? y/n: ")
     if souvenir_in_vault_input == "y":
-        souvenir_in_vault_input_bool = True
+        souvenir_in_vault = True
         print("Your souvenir is safe in the vault")
     elif souvenir_in_vault_input == "n":
-        souvenir_in_vault_input_bool = False
         print("Your souvenir is not safe in the vault. Be careful with it.")   
 
