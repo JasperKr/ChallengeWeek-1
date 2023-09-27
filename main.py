@@ -258,9 +258,9 @@ while souvenir_in_vault_input != "y" and souvenir_in_vault_input != "n":
         print("Your souvenir is not safe with you. Be careful with it.")   
 
 camping_place = random_from_list(["45", "98", "23", "67", "91"])
-print(f"Your campingplace is place {camping_place}.")
+print(f"You have to go to {camping_place}.")
 time.sleep(2)
-print("before you go to your campingplace, you have to solve a riddle. ")
+print("But, before you go to your campingplace, you have to solve a riddle. ")
 
 guessed = False
 
