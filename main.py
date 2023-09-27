@@ -38,7 +38,7 @@ while not name_correct: # while your name is not correctly input, keep asking
     name_correct = input(f"So, {speler_data['name']}? y/n: ") == "y"
 
 print(stories["departure_earth"],end="\n\n") # print text to leave earth and add two new lines
-print("travelling",end="",flush=True)
+print("Travelling",end="",flush=True)
 
 for i in range(10):
     time.sleep(0.5)
@@ -166,7 +166,7 @@ if inventory["nice_person"]:
 else:
     print("You depart from the spaceship stop. While listening to some music",end="\n\n")
 time.sleep(2)
-print("travelling",end="",flush=True)
+print("Travelling",end="",flush=True)
 
 for i in range(10):
     time.sleep(0.5)
@@ -220,7 +220,7 @@ if inventory["bottle"]:
 else:
     print(stories["you_talk_to_someone"])
     time.sleep(3)
-print("after hours of talking",end="",flush=True)
+print("After hours of talking",end="",flush=True)
 
 for i in range(10):
     time.sleep(0.5)
@@ -253,9 +253,14 @@ while souvenir_in_vault_input != "y" and souvenir_in_vault_input != "n":
     souvenir_in_vault_input = input("Do you want to stash your souvenir in the vault? y/n: ")
     if souvenir_in_vault_input == "y":
         souvenir_in_vault = True
+        inventory["souvenir"] = False
         print("Your souvenir is safe in the vault")
     elif souvenir_in_vault_input == "n":
-        print("Your souvenir is not safe with you. Be careful with it.")   
+        print("Your souvenir is not safe with you. Be careful with it.")
+vault_code = random_from_list(["7589", "3489", "3095", "2563", ""])
+if souvenir_in_vault:
+    print(f"Your vault code is {vault_code}. ") 
+
 
 camping_place = random_from_list(["45", "98", "23", "67", "91"])
 print(f"Your campingplace is place {camping_place}.")
@@ -272,4 +277,31 @@ while not guessed:
     player_answer = input(riddle)
     for answer in answers:
         if player_answer.lower() == answer:
+            print(f"Your are able to go to campingplace {camping_place}. ")
             guessed = True
+        else:
+            print("This answer is not correct. Try it again. ")
+if souvenir_in_vault == False and random_chance(50):
+    print(stories["souvenir2_gets_robbed"])
+    inventory["souvenir"] = False
+elif souvenir_in_vault == False and random_chance(50):
+    print(stories["souvenir_breaks"])
+    inventory["souvenir"] = False
+
+print("One week later",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+
+while inventory["souvenir"] == False:
+    if souvenir_in_vault:
+        player_input_vault_code = input("You are leaving the camping. Before you go, you want your souvenir back. \
+Enter your vault code to get your souvenir back: ")
+        if player_input_vault_code == vault_code:
+            inventory["souvenir"] = True
+            print("You have your souvenir back. ")
+        else:
+            print("The code is wrong. Try it again. ")
+    
+print(stories["go_to_spaceport_moon"])
