@@ -355,7 +355,7 @@ print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
 time.sleep(2)
 print("You enter the spaceship and take a seat by the window.")
 
-print("travelling",end="",flush=True)
+print("Travelling",end="",flush=True)
 
 for i in range(10):
     time.sleep(0.5)
