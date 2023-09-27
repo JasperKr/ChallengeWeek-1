@@ -220,7 +220,7 @@ print(stories["landing_on_moon"])
 time.sleep(3)
 
 input_photo = ""
-while input_photo != "y" or input_photo != "n":
+while input_photo != "y" and input_photo != "n":
     input_photo = input("Your friend says:\"shall I take a picture of you?\" y/n: ")
     if input_photo == "y":
         inventory["photo"] = True
@@ -239,12 +239,11 @@ time.sleep(2)
 
 souvenir_in_vault_input = ""
 souvenir_in_vault = False
-while souvenir_in_vault_input != "y" or souvenir_in_vault_input != "n":
+while souvenir_in_vault_input != "y" and souvenir_in_vault_input != "n":
     souvenir_in_vault_input = input("Do you want to stash your souvenir in the vault? y/n: ")
     if souvenir_in_vault_input == "y":
         souvenir_in_vault = True
         print("Your souvenir is safe in the vault")
     elif souvenir_in_vault_input == "n":
-        souvenir_in_vault_input_bool = False
         print("Your souvenir is not safe in the vault. Be careful with it.")   
 
