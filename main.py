@@ -296,10 +296,10 @@ while not guessed:
     if not guessed:
         print("This answer is not correct. Try it again. \n")
 if souvenir_in_vault == False and random_chance(50):
-    print(stories["souvenir2_gets_robbed" + "\n"])
+    print(stories["souvenir2_gets_robbed"] + "\n")
     inventory["souvenir"] = False
 elif souvenir_in_vault == False and random_chance(50):
-    print(stories["souvenir_breaks" + "\n"])
+    print(stories["souvenir_breaks"] + "\n")
     inventory["souvenir"] = False
 
 print("One week later",end="",flush=True)
@@ -371,6 +371,7 @@ time.sleep(3)
 print(command_line_colors["red"]+stories["saturn_refinery_disaster"])
 time.sleep(8)
 print(stories["saturn_refinery_main_story"])
+time.sleep(5)
 print(stories["evacuate_saturn_refinery"])
 time.sleep(3)
 print(command_line_colors["white"])
@@ -393,17 +394,17 @@ while Dead or first_time:
             gameover = True
         else:
             if poging == 1 and choice_asteroïds != "oxygen gaps":
-                print("Dead, try it again.")
+                print("Dead,try it again.")
                 poging = 0
             elif poging == 1 and choice_asteroïds == "oxygen gaps":
                 oxygen_repaired = True
                 print("First try to repair ship. ")
             else:
-                if choice_asteroïds == "oxygen gaps":
+                if choice_asteroïds == "hull":
                     oxygen_repaired = True
                     print("You have repaired the oxygen gaps. \n\
 What do you want to do or repair more?")
-                elif choice_asteroïds == "repair motor":
+                elif choice_asteroïds == "repair engine":
                     motor_repaired = True
                     print("You have repaired the motor of the ship. \n\
 What do you want to do or repair more?")
@@ -417,6 +418,6 @@ What do you want to repair more?")
     if oxygen_repaired and people_calmed_down and motor_repaired:
         print("Alles opgelost!")
     else:
-        print(command_line_colors["red"]+"Game over. Start over again")
+        print(command_line_colors["red"]+"Game over. Try again")
         print(command_line_colors["white"])
         Dead = True
