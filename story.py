@@ -65,13 +65,10 @@ after making your way to the exit of the hotel, you find it very difficult to go
 There is stuff flying everywhere now that it isn't being held down by gravity and the station is spinning.",
     evacuate_saturn_refinery = "you manage to make your way to a cargo ship still docked, they're letting everyone who wants to leave on.\n \
 You get on and safely get away from the station, they're going to mars.",
-    crash_with_asteroïds = "On your way back to earth the alarm goes on. \
-The spaceship has crasht against asteroïds. \
-The motor of the spaceship is broken and the spaceship stops in the astroïd belt and the spaceship loses oxygen.",
-    story_choice_asteroïds = "What are you going to do? \n\
-Close the oxygen gaps (type: oxygen gaps), \n\
-repair the motor (type: repair motor) or calm down the people (type: calm down). \n\
-You have to do everything, but at the good order. Use your logic sense.",
+    crash_with_asteroïds = "On your way to mars the alarm goes off.\n \
+Some asteroids have crashed in to the spaceship while trying to get away.\n \
+The engine of the spaceship has stopped, and you're now floating through space without control, there are some leaks due to the asteroids.",
+    story_choice_asteroïds = "What are you going to do? Close the hull breaches (type: hull), repair the engine (type: repair engine) or calm down the refugees (type: calm down) ",
     
 
 
