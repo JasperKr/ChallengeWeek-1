@@ -412,5 +412,5 @@ while Dead or first_time:
         print("Alles opgelost!")
     else:
         print(command_line_colors["red"]+"Game over. Start over again")
+        print(command_line_colors["white"])
         Dead = True
-print(command_line_colors["white"])
