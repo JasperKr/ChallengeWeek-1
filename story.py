@@ -64,5 +64,10 @@ it seems harder than you thought. The explosion made the station start to spin a
 after making your way to the exit of the hotel, you find it very difficult to go anywhere. \
 There is stuff flying everywhere now that it isn't being held down by gravity and the station is spinning.",
     evacuate_saturn_refinery = "you manage to make your way to a cargo ship still docked, they're everyone who want to leave on. \
-You get on and safely get away from the station, they're going to mars."
+You get on and safely get away from the station, they're going to mars.",
+    crash_with_asteroïds = "On your way back to earth the alarm goes on. \
+The spaceship has crasht against asteroïds. \
+The motor of the spaceship is broken and the spaceship stops in the astroïd belt and the spaceship loses oxygen.",
+
+
 )
