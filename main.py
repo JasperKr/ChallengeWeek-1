@@ -393,20 +393,26 @@ while Dead or first_time:
             gameover = True
         else:
             if poging == 1 and choice_asteroïds != "oxygen gaps":
-                print("Dead,try it again.")
+                print("Dead, try it again.")
                 poging = 0
             elif poging == 1 and choice_asteroïds == "oxygen gaps":
                 oxygen_repaired = True
-                print("eerste poging oxygen")
+                print("First try to repair ship. ")
             else:
                 if choice_asteroïds == "oxygen gaps":
                     oxygen_repaired = True
+                    print("You have repaired the oxygen gaps. \n\
+What do you want to do or repair more?")
                 elif choice_asteroïds == "repair motor":
                     motor_repaired = True
+                    print("You have repaired the motor of the ship. \n\
+What do you want to do or repair more?")
                 elif choice_asteroïds == "calm down":
                     people_calmed_down = True
+                    print("You calmed down the people. \n\
+What do you want to repair more?")
                 else:
-                    print("Dat is niks")
+                    print("You can not do that")
 
     if oxygen_repaired and people_calmed_down and motor_repaired:
         print("Alles opgelost!")

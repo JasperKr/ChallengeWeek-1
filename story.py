@@ -68,7 +68,10 @@ You get on and safely get away from the station, they're going to mars.",
     crash_with_asteroïds = "On your way back to earth the alarm goes on. \
 The spaceship has crasht against asteroïds. \
 The motor of the spaceship is broken and the spaceship stops in the astroïd belt and the spaceship loses oxygen.",
-    story_choice_asteroïds = "What are you going to do? Close the oxygen gaps (type: oxygen gaps), repair the motor (type: repair motor) or calm down the people (type: calm down)",
+    story_choice_asteroïds = "What are you going to do? \n\
+Close the oxygen gaps (type: oxygen gaps), \n\
+repair the motor (type: repair motor) or calm down the people (type: calm down). \n\
+You have to do everything, but at the good order. Use your logic sense.",
     
 
 
