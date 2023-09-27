@@ -252,5 +252,7 @@ camping_place = random_from_list(["45", "98", "23", "67", "91"])
 print(f"Your campingplace is place {camping_place}.")
 time.sleep(2)
 print("before you go to your campingplace, you have to solve a riddle. ")
+teeth_riddle = input(riddles["teeth_riddle"])
 not_guessed = True
 while not_guessed:
+    if 
