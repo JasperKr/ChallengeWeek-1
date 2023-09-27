@@ -294,8 +294,8 @@ while not guessed:
             if player_answer.lower() == answer:
                 print(f"Your are able to go to campingplace {camping_place}. \n")
                 guessed = True
-            else:
-                print("This answer is not correct. Try it again. \n")
+    if not guessed:
+        print("This answer is not correct. Try it again. \n")
 if souvenir_in_vault == False and random_chance(50):
     print(stories["souvenir2_gets_robbed" + "\n"])
     inventory["souvenir"] = False
