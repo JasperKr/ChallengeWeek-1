@@ -5,6 +5,11 @@ import riddles
 inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False)
 speler_data = dict(name = "")
 stories = story.story
+command_line_colors = dict(
+    red = '\033[91m',
+    white = '\033[0;0m'
+)
+print(command_line_colors["white"]+"test")
 def random_chance(chance):
     return random.random() < (chance / 100)
 def random_from_list(list):
@@ -164,9 +169,9 @@ time.sleep(2)
 print("You enter the spaceship and take a seat somewhere in the back.")
 time.sleep(2)
 if inventory["nice_person"]:
-    print("You depart from the spaceship stop. While listening to some music, you also notice that the person you helped is here too.",end="\n\n")
+    print("You depart from the spaceport. While listening to some music, you also notice that the person you helped is here too.",end="\n\n")
 else:
-    print("You depart from the spaceship stop. While listening to some music",end="\n\n")
+    print("You depart from the spaceport. While listening to some music",end="\n\n")
 time.sleep(2)
 print("Travelling",end="",flush=True)
 
@@ -260,7 +265,9 @@ while souvenir_in_vault_input != "y" and souvenir_in_vault_input != "n":
         print("Your souvenir is safe in the vault")
     elif souvenir_in_vault_input == "n":
         print("Your souvenir is not safe with you. Be careful with it.")
-vault_code = random_from_list(["7589", "3489", "3095", "2563", ""])
+vault_code = ""
+for i in range(4):
+    vault_code += str(random.randint(0,9))
 if souvenir_in_vault:
     print(f"Your vault code is {vault_code}. ") 
 
@@ -354,4 +361,13 @@ for i in range(10):
     time.sleep(0.5)
     print(".",end=(i==9 and "\n\n" or ""),flush=True)
 
-print()
+print(stories["arrival_spaceport_saturn"])
+time.sleep(3)
+print("add some activities here")
+time.sleep(3)
+print(command_line_colors["red"]+stories["saturn_refinery_disaster"])
+time.sleep(8)
+print(stories["saturn_refinery_main_story"])
+print(stories["evacuate_saturn_refinery"])
+time.sleep(3)
+print(command_line_colors["white"])

@@ -53,4 +53,16 @@ and make friends after a couple of hours talking. ",
     go_to_saturn_anyways = "you decide that you'll take the ship going to saturn then earth.",
     get_starbucks = "Since you're going to be here for the rest of the day, you decide \
 to get some starbucks.",
+    arrival_spaceport_saturn = "You arrive at a starport orbiting saturn. Just out of range of it's astroid rings. \
+The view is amazing but somehow also scary, how big it is. \
+It's an orbital refinery for the resources mined from saturn and it's rings. \
+There is a constant humm in the station due to all of the machinery.",
+    saturn_refinery_disaster = "You wake up from a sudden jolt in the station, followed by an explosion. \
+not seconds later alarms start to go off everywhere.",
+    saturn_refinery_main_story = "After putting on your suit for safety, you want to get out of your room but \
+it seems harder than you thought. The explosion made the station start to spin and disabled the gravity generators... \
+after making your way to the exit of the hotel, you find it very difficult to go anywhere. \
+There is stuff flying everywhere now that it isn't being held down by gravity and the station is spinning.",
+    evacuate_saturn_refinery = "you manage to make your way to a cargo ship still docked, they're everyone who want to leave on. \
+You get on and safely get away from the station, they're going to mars."
 )
