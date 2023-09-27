@@ -386,24 +386,24 @@ first_time = True
 while Dead or first_time:
     first_time = False
     while (oxygen_repaired == False or motor_repaired == False or people_calmed_down == False) and gameover == False:
-        choise_asteroïds = input(stories["story_choise_asteroïds"])
+        choice_asteroïds = input(stories["story_choice_asteroïds"])
     
         poging += 1
         if poging > 3:
             gameover = True
         else:
-            if poging == 1 and choise_asteroïds != "oxygen gaps":
+            if poging == 1 and choice_asteroïds != "oxygen gaps":
                 print("Dead,try it again.")
                 poging = 0
-            elif poging == 1 and choise_asteroïds == "oxygen gaps":
+            elif poging == 1 and choice_asteroïds == "oxygen gaps":
                 oxygen_repaired = True
                 print("eerste poging oxygen")
             else:
-                if choise_asteroïds == "oxygen gaps":
+                if choice_asteroïds == "oxygen gaps":
                     oxygen_repaired = True
-                elif choise_asteroïds == "repair motor":
+                elif choice_asteroïds == "repair motor":
                     motor_repaired = True
-                elif choise_asteroïds == "calm down":
+                elif choice_asteroïds == "calm down":
                     people_calmed_down = True
                 else:
                     print("Dat is niks")
