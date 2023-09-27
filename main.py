@@ -374,3 +374,43 @@ print(stories["saturn_refinery_main_story"])
 print(stories["evacuate_saturn_refinery"])
 time.sleep(3)
 print(command_line_colors["white"])
+
+print(stories["crash_with_asteroïds"])    
+oxygen_repaired = False
+motor_repaired = False
+people_calmed_down = False
+gameover = False
+poging = 0
+Dead = False
+first_time = True
+while Dead or first_time:
+    first_time = False
+    while (oxygen_repaired == False or motor_repaired == False or people_calmed_down == False) and gameover == False:
+        choise_asteroïds = input(stories["storie_choise_asteroïds"])
+    
+        poging += 1
+        if poging > 3:
+            gameover = True
+        else:
+            if poging == 1 and choise_asteroïds != "oxygen gaps":
+                print("Dead,try it again.")
+                poging = 0
+            elif poging == 1 and choise_asteroïds == "oxygen gaps":
+                oxygen_repaired = True
+                print("eerste poging oxygen")
+            else:
+                if choise_asteroïds == "oxygen gaps":
+                    oxygen_repaired = True
+                elif choise_asteroïds == "repair motor":
+                    motor_repaired = True
+                elif choise_asteroïds == "calm down":
+                    people_calmed_down = True
+                else:
+                    print("Dat is niks")
+
+    if oxygen_repaired and people_calmed_down and motor_repaired:
+        print("Alles opgelost!")
+    else:
+        print(command_line_colors["red"]+"Game over. Start over again")
+        Dead = True
+print(command_line_colors["white"])
