@@ -9,7 +9,6 @@ command_line_colors = dict(
     red = '\033[91m',
     white = '\033[0;0m'
 )
-print(command_line_colors["white"]+"test")
 def random_chance(chance):
     return random.random() < (chance / 100)
 def random_from_list(list):
