@@ -1,6 +1,7 @@
 import random
 import time
 import story
+import riddles
 inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False)
 speler_data = dict(name = "")
 stories = story.story
@@ -245,5 +246,11 @@ while souvenir_in_vault_input != "y" and souvenir_in_vault_input != "n":
         souvenir_in_vault = True
         print("Your souvenir is safe in the vault")
     elif souvenir_in_vault_input == "n":
-        print("Your souvenir is not safe in the vault. Be careful with it.")   
+        print("Your souvenir is not safe with you. Be careful with it.")   
 
+camping_place = random_from_list(["45", "98", "23", "67", "91"])
+print(f"Your campingplace is place {camping_place}.")
+time.sleep(2)
+print("before you go to your campingplace, you have to solve a riddle. ")
+not_guessed = True
+while not_guessed:
