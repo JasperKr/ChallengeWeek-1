@@ -87,11 +87,13 @@ if not inventory["moon_suit"] or go_anyways: # if the player didn't find a moon 
         amount_visited = 0 # keep track of the stores the player has visited
         stores_visited = dict(Albert_Hein=False,H_M=False,Gilgal=False)
         stay = True
+        first_visit = True
         # if the player hasn't found a moon suit yet.
         while not inventory["moon_suit"] or stay:
-            if inventory["moon_suit"]:
+            if inventory["moon_suit"] and not first_visit:
                 if input("do you want to leave, or continue shopping? leave/stay: ") == "leave":
                     stay = False
+            first_visit = False
             if stay:
                 user_store_input = input("To which store do you want to go: Albert Hein, H&M, Gilgal? ").title()
                 # the user input, Albert Hein, H&M, Gilgal or something invalid
@@ -199,16 +201,17 @@ if input(stories["ask_to_explore_the_station"]) == "y":
     time.sleep(2)
 else:
     print(stories["stay_at_station"])
+    time.sleep(2)
     if inventory["bottle"]:
-        if input("Do you want to drink your bottle?") == "y":
+        if input("Do you want to drink your bottle alone?") == "y":
             print(stories["drink_bottle"])
             inventory["bottle"] = False
         time.sleep(2)
-        print(stories["pass_out_at_station"])
-        inventory["headphones"] = False
-        time.sleep(2)
-        print(stories["headphones_stolen"])
-        time.sleep(2)
+    print(stories["pass_out_at_station"])
+    inventory["headphones"] = False
+    time.sleep(2)
+    print(stories["headphones_stolen"])
+    time.sleep(2)
 
 print(stories["spaceship2_departs"])
 time.sleep(2)
@@ -263,9 +266,9 @@ if souvenir_in_vault:
 
 
 camping_place = random_from_list(["45", "98", "23", "67", "91"])
-print(f"Your campingplace is place {camping_place}.")
+print(f"You have to go to camping place {camping_place}.")
 time.sleep(2)
-print("before you go to your campingplace, you have to solve a riddle. ")
+print("But, before you go to your campingplace, you have to solve a riddle. ")
 
 guessed = False
 
