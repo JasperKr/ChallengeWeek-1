@@ -43,6 +43,14 @@ and make friends after a couple of hours talking. ",
     landing_on_moon = "You landed on the moon, having made a new friend. ",
     photo_taken = "You have a nice photo of your holidays. Now you can always remember this vacation.",
     photo_not_taken = "This will only be remebered by you and your friend",
-    take_train_to_camping = "You take the train to the other side of the moon."
-
+    take_train_to_camping = "You take the train to the other side of the moon.",
+    souvenir_breaks = "You dropped the souvenir, it's broken.",
+    souvenir2_gets_stolen = "The souvenir is gone one night after going to the store, you assume it's been stolen.",
+    go_to_spaceport_moon = "You take the train back to the spaceport.",
+    leave_the_moon = "You leave the moon after a nice vacation.",
+    announcement_flight_cancelled = "You hear an annoucement from the station's speakers: \
+\"Flight 71, going to Earth, Mars, Europa Has been cancelled.\" ",
+    go_to_saturn_anyways = "you decide that you'll take the ship going to saturn then earth.",
+    get_starbucks = "Since you're going to be here for the rest of the day, you decide \
+to get some starbucks.",
 )

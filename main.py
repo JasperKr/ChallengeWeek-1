@@ -161,7 +161,7 @@ print("Before entering you have to show your passport to the customs.")
 time.sleep(2)
 print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
 time.sleep(2)
-print("You enter the spaceship. And you take a seat somewhere in the back.")
+print("You enter the spaceship and take a seat somewhere in the back.")
 time.sleep(2)
 if inventory["nice_person"]:
     print("You depart from the spaceship stop. While listening to some music, you also notice that the person you helped is here too.",end="\n\n")
@@ -234,7 +234,7 @@ time.sleep(3)
 
 input_photo = ""
 while input_photo != "y" and input_photo != "n":
-    input_photo = input(f"Your friend says:\"Do you want to take a picture together?\" y/n: ")
+    input_photo = input(f"Your friend says: \"Do you want to take a picture together?\" y/n: ")
     if input_photo == "y":
         inventory["photo"] = True
         time.sleep(2)
@@ -279,11 +279,12 @@ answers = riddles.answers[riddle_index]
 while not guessed:
     player_answer = input(riddle)
     for answer in answers:
-        if player_answer.lower() == answer:
-            print(f"Your are able to go to campingplace {camping_place}. ")
-            guessed = True
-        else:
-            print("This answer is not correct. Try it again. ")
+        if not guessed:
+            if player_answer.lower() == answer:
+                print(f"Your are able to go to campingplace {camping_place}. ")
+                guessed = True
+            else:
+                print("This answer is not correct. Try it again. ")
 if souvenir_in_vault == False and random_chance(50):
     print(stories["souvenir2_gets_robbed"])
     inventory["souvenir"] = False
@@ -308,3 +309,50 @@ Enter your vault code to get your souvenir back: ")
             print("The code is wrong. Try it again. ")
     
 print(stories["go_to_spaceport_moon"])
+
+gate = random_from_list(["A", "B", "C", "E", "D", "F"])
+print(stories["go_to_gate"]+gate+".")
+time.sleep(2)
+print(f"You arrive at gate {gate}.",end="\n\n")
+time.sleep(2)
+print("Before entering you have to show your passport to the customs.")
+time.sleep(2)
+print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
+time.sleep(2)
+
+print(stories["leave_the_moon"])
+time.sleep(3)
+
+print("travelling",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+
+print(stories["choose_route_back"])
+time.sleep(3)
+
+choice = input("Do you want to go to saturn first or straight back home? saturn/home: ")
+time.sleep(2)
+print(stories["announcement_flight_cancelled"])
+if choice == "home":
+    print(stories["go_to_saturn_anyways"])
+time.sleep(2)
+print(stories["get_starbucks"])
+time.sleep(2)
+gate = random_from_list(["A", "B", "C", "E", "D", "F"])
+print(stories["go_to_gate"]+gate+".")
+time.sleep(2)
+print(f"You arrive at gate {gate}.",end="\n\n")
+time.sleep(2)
+print("Before entering you have to show your passport to the customs.")
+time.sleep(2)
+print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
+time.sleep(2)
+print("You enter the spaceship and take a seat by the window.")
+
+print("travelling",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
