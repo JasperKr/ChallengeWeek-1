@@ -69,20 +69,24 @@ if not inventory["moon_suit"] or go_anyways: # if the player didn't find a moon 
 
     # ask the player if they want to ask the pilot where to buy a moon suit
     if not go_anyways:
-        if input("Do you want to ask the pilot where to buy a moon suit, or, go to the store to buy one? pilot/store: ") == "pilot":
+        user_input = ""
+        while user_input != "pilot" and user_input != "store":
+            user_input = input("Do you want to ask the pilot where to buy a moon suit, or, go to the store to buy one? pilot/store: ")
+            if user_input == "pilot":
 
-            print(stories["approach_pilot_question"]) # pilot storyline
-            time.sleep(1)
+                print(stories["approach_pilot_question"]) # pilot storyline
+                time.sleep(1)
 
-            if random_chance(33):
-                # tell the player the pilot has a moon suit for them and add it to their inventory.
-                print(stories["approach_pilot_with_moonsuit"])
-                time.sleep(2)
-                inventory["moon_suit"] = True
-            else:
-                # tell the player where to buy a moon suit.
-                print(stories["pilot_has_no_extra_moonsuit"])
-                time.sleep(2)
+                if random_chance(33):
+                    # tell the player the pilot has a moon suit for them and add it to their inventory.
+                    print(stories["approach_pilot_with_moonsuit"])
+                    time.sleep(2)
+                    inventory["moon_suit"] = True
+                else:
+                    # tell the player where to buy a moon suit.
+                    print(stories["pilot_has_no_extra_moonsuit"])
+                    time.sleep(2)
+            
         if inventory["moon_suit"]:
             go_anyways = input("Do you want to go to the store anyways? y/n: ") == "y"
     if not inventory["moon_suit"] or go_anyways: #check if pilot gave you a moon suit, if not, go to the store.
