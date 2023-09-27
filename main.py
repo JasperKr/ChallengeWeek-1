@@ -202,11 +202,19 @@ else:
         time.sleep(2)
 
 print(stories["spaceship2_departs"])
+time.sleep(2)
 if inventory["bottle"]:
     print(stories["someone_wants_drink"])
     inventory["bottle"] = False
+    time.sleep(4)
 else:
     print(stories["you_talk_to_someone"])
+    time.sleep(3)
+print("after hours of talking",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
 
 print(stories["landing_on_moon"])
 time.sleep(3)
@@ -237,5 +245,7 @@ while souvenir_in_vault_input != "y" or souvenir_in_vault_input != "n":
         print("Your souvenir is safe in the vault")
     elif souvenir_in_vault_input == "n":
         souvenir_in_vault_input_bool = False
-        print("Your souvenir is not safe in the vault. Be careful with it.")   
+        print("Your souvenir is not safe if you carry it with you. Be careful with it.")
+
+
 

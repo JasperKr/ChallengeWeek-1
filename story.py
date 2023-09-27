@@ -31,5 +31,15 @@ You lost nothing and return safely.",
     defend_with_bottle = "tries to rob you, he would have succeeded if not for that bottle you bought at Gilgal \n\
 You use it to defend yourself from the attacker but barely get away, you lost the bottle.",
     get_robbed_without_help = "steals your headphones and souvenir",
-    sleep_safely_at_station = "You find a safe place somewhere in the station and wake up right before the flight leaves, time to get ready."
+    sleep_safely_at_station = "You find a safe place somewhere in the station and wake up right before the flight leaves, time to get ready.",
+    spaceship2_departs = "You finaly go to the moon with your last spaceship. ",
+    someone_wants_drink = "The person next to you is very thirsty. \
+You give him a drink from your bottle, because you are very nice. \
+After he drinks your bottle empty, you begin to talk with him and you become friends. ",
+    you_talk_to_someone = "You start talking to the person next to you, \
+because you are bored and make friends after a couple of hours talking. ",
+    landing_on_moon = "You landed on the moon and you found out that you talked 4 hours with your new friend. ",
+    photo_taken = "You have a photo and a memory of your holidays. Now you can always remember this vacation.",
+    photo_not_taken = ""
+
 )
