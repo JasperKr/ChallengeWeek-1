@@ -281,15 +281,15 @@ while not guessed:
     for answer in answers:
         if not guessed:
             if player_answer.lower() == answer:
-                print(f"Your are able to go to campingplace {camping_place}. ")
+                print(f"Your are able to go to campingplace {camping_place}. \n")
                 guessed = True
             else:
-                print("This answer is not correct. Try it again. ")
+                print("This answer is not correct. Try it again. \n")
 if souvenir_in_vault == False and random_chance(50):
-    print(stories["souvenir2_gets_robbed"])
+    print(stories["souvenir2_gets_robbed" + "\n"])
     inventory["souvenir"] = False
 elif souvenir_in_vault == False and random_chance(50):
-    print(stories["souvenir_breaks"])
+    print(stories["souvenir_breaks" + "\n"])
     inventory["souvenir"] = False
 
 print("One week later",end="",flush=True)
@@ -300,13 +300,13 @@ for i in range(10):
 
 while inventory["souvenir"] == False:
     if souvenir_in_vault:
-        player_input_vault_code = input("You are leaving the camping. Before you go, you want your souvenir back. \
+        player_input_vault_code = input("You are leaving the camping. Before you go, you want your souvenir back. \n\
 Enter your vault code to get your souvenir back: ")
         if player_input_vault_code == vault_code:
             inventory["souvenir"] = True
-            print("You have your souvenir back. ")
+            print("\nYou have your souvenir back. ")
         else:
-            print("The code is wrong. Try it again. ")
+            print("\nThe code is wrong. Try it again. \n")
     
 print(stories["go_to_spaceport_moon"])
 
