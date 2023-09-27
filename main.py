@@ -223,7 +223,7 @@ time.sleep(3)
 
 input_photo = ""
 while input_photo != "y" and input_photo != "n":
-    input_photo = input(f"Your friend says:\"Shall I take a picture of you?\" y/n: ")
+    input_photo = input(f"Your friend says:\"Do you want to take a picture together?\" y/n: ")
     if input_photo == "y":
         inventory["photo"] = True
         time.sleep(2)
