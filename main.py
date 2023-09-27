@@ -386,7 +386,7 @@ first_time = True
 while Dead or first_time:
     first_time = False
     while (oxygen_repaired == False or motor_repaired == False or people_calmed_down == False) and gameover == False:
-        choise_asteroïds = input(stories["storie_choise_asteroïds"])
+        choise_asteroïds = input(stories["story_choise_asteroïds"])
     
         poging += 1
         if poging > 3:
