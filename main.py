@@ -482,14 +482,19 @@ What do you want to repair now?")
         print(command_line_colors["white"])
         Dead = True
 
-print(stories["out_of_the_asteroïdf_belt"])
-friend_wounded_input = input(stories["friend_wounded"])
-while friend_wounded_input != "stitch" or friend_wounded_input != "bandage":
-    if friend_wounded_input == "stitch":
-        print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
-        inventory["friend"] = False
-    elif friend_wounded_input == "bandage":
-        print(f"Luckily {friend_names} survived after you put the bandage around his wound. \n\
-He ows you something, because you saved his life. ")
-    else:
-        print("How dare you to treat your friend like that. Do you want him to die?")
+print(stories["out_of_the_asteroid_belt"])
+player_answer = ""
+while player_answer != "people" and player_answer != "friend":
+    player_answer = input("Will you help the group of people stuck under some rubble first or your friend? people/friend: ")
+if player_answer == "friend":
+    friend_wounded_input = input(stories["friend_wounded"])
+    while friend_wounded_input != "stitch" or friend_wounded_input != "bandage":
+        if friend_wounded_input == "stitch":
+            print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
+            inventory["friend"] = False
+        elif friend_wounded_input == "bandage":
+            print(f"Luckily {friend_names} survived after you put the bandage around his wound. \n\
+    He ows you something, because you saved his life. ")
+        else:
+            print("How dare you to treat your friend like that. Do you want him to die?")
+else:
