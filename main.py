@@ -86,10 +86,10 @@ if not inventory["moon_suit"] or go_anyways: # if the player didn't find a moon 
 
     # ask the player if they want to ask the pilot where to buy a moon suit
     if not go_anyways:
-        user_input = ""
-        while user_input != "pilot" and user_input != "store":
-            user_input = input("Do you want to ask the pilot where to buy a moon suit, or, go to the store to buy one? pilot/store: ")
-            if user_input == "pilot":
+        player_answer = ""
+        while player_answer != "pilot" and player_answer != "store":
+            player_answer = input("Do you want to ask the pilot where to buy a moon suit, or, go to the store to buy one? pilot/store: ")
+            if player_answer == "pilot":
 
                 print(stories["approach_pilot_question"]) # pilot storyline
                 time.sleep(1)
@@ -203,41 +203,46 @@ print(stories["arrival_spaceport_2"], end="\n\n")
 time.sleep(5)
 print(stories["transfer_to_another_spaceship"])
 time.sleep(3)
-if input(stories["ask_to_explore_the_station"]) == "y":
-    time.sleep(2)
-    print(stories["explore_the_station"])
-    time.sleep(2)
-    if input("Do you want to go to the shop? y/n: ") == "y":
-        inventory["souvenir"] = True
-    time.sleep(3)
-    print()
-    print(stories["get_robbed"],end="")
-    time.sleep(2)
-    if inventory["nice_person"]:
-        print(stories["nice_person_helps"])
-    elif inventory["bottle"]:
-        print(stories["defend_with_bottle"])
-        inventory["bottle"] = False
-    else:
-        print(stories["get_robbed_without_help"])
-        inventory["headphones"] = False
-        inventory["souvenir"] = False
-    time.sleep(4)
-    print(stories["sleep_safely_at_station"])
-    time.sleep(2)
-else:
-    print(stories["stay_at_station"])
-    time.sleep(2)
-    if inventory["bottle"]:
-        if input("Do you want to drink your bottle alone?") == "y":
-            print(stories["drink_bottle"])
-            inventory["bottle"] = False
+player_answer = ""
+while player_answer != "n" and player_answer != "y":
+    player_answer = input(stories["ask_to_explore_the_station"])
+    if player_answer == "y":
         time.sleep(2)
-    print(stories["pass_out_at_station"])
-    inventory["headphones"] = False
-    time.sleep(2)
-    print(stories["headphones_stolen"])
-    time.sleep(2)
+        print(stories["explore_the_station"])
+        time.sleep(2)
+        if input("Do you want to go to the shop? y/n: ") == "y":
+            inventory["souvenir"] = True
+        time.sleep(3)
+        print()
+        print(stories["get_robbed"],end="")
+        time.sleep(2)
+        if inventory["nice_person"]:
+            print(stories["nice_person_helps"])
+        elif inventory["bottle"]:
+            print(stories["defend_with_bottle"])
+            inventory["bottle"] = False
+        else:
+            print(stories["get_robbed_without_help"])
+            inventory["headphones"] = False
+            inventory["souvenir"] = False
+        time.sleep(4)
+        print(stories["sleep_safely_at_station"])
+        time.sleep(2)
+    elif player_answer == "n":
+        print(stories["stay_at_station"])
+        time.sleep(2)
+        if inventory["bottle"]:
+            if input("Do you want to drink your bottle alone?") == "y":
+                print(stories["drink_bottle"])
+                inventory["bottle"] = False
+            time.sleep(2)
+        print(stories["pass_out_at_station"])
+        inventory["headphones"] = False
+        time.sleep(2)
+        print(stories["headphones_stolen"])
+        time.sleep(2)
+    else:
+        print("what did you say?")
 
 print(stories["spaceship2_departs"])
 time.sleep(2)
@@ -260,14 +265,14 @@ for i in range(10):
 print(stories["landing_on_moon"])
 time.sleep(3)
 
-input_photo = ""
-while input_photo != "y" and input_photo != "n":
-    input_photo = input(f"{friend_names} says: \"Do you want to take a picture together?\" y/n: ")
-    if input_photo == "y":
+player_answer = ""
+while player_answer != "y" and player_answer != "n":
+    player_answer = input(f"{friend_names} says: \"Do you want to take a picture together?\" y/n: ")
+    if player_answer == "y":
         inventory["photo"] = True
         time.sleep(2)
         print(stories["photo_taken"])
-    elif input_photo == "n":
+    elif player_answer == "n":
         print(stories["photo_not_taken"])
         time.sleep(2)
 
@@ -278,15 +283,15 @@ if not inventory["souvenir"]:
     inventory["souvenir"] = True
 time.sleep(2)
 
-souvenir_in_vault_input = ""
+player_answer = ""
 souvenir_in_vault = False
-while souvenir_in_vault_input != "y" and souvenir_in_vault_input != "n":
-    souvenir_in_vault_input = input("Do you want to stash your souvenir in the vault? y/n: ")
-    if souvenir_in_vault_input == "y":
+while player_answer != "y" and player_answer != "n":
+    player_answer = input("Do you want to stash your souvenir in the vault? y/n: ")
+    if player_answer == "y":
         souvenir_in_vault = True
         inventory["souvenir"] = False
         print("Your souvenir is safe in the vault")
-    elif souvenir_in_vault_input == "n":
+    elif player_answer == "n":
         print("Your souvenir is not safe with you. Be careful with it.")
 vault_code = ""
 for i in range(4):
