@@ -7,7 +7,9 @@ speler_data = dict(name = "")
 stories = story.story
 command_line_colors = dict(
     red = '\033[91m',
-    white = '\033[0;0m'
+    white = '\033[0;0m',
+    yellow = '\033[93m',
+    green = '\033[92m',
 )
 def random_chance(chance):
     return random.random() < (chance / 100)
@@ -611,3 +613,93 @@ else:
     else:
         print("You were able to help everyone!")
     time.sleep(2)
+
+print("It isn't done yet! You still have to get out of the asteroid field, to navigate, \n\
+give the coordinates of the next place you want to go to, you can move one tile, \n\
+you can move horizontally, vertically and diagonally. You're the W, if you hit an asteroid, X \n\
+then you lose, the asteroids move to the right every other move. You need to reach the bottom.")
+grid = []
+width = 11
+height = 20
+player = [5,0]
+# create a list for the asteroids
+for y in range(height):
+    grid.append([])
+    for x in range(width):
+        grid[y].append(random.random() > 0.8 and "X" or "O")
+# set the player position
+grid[player[1]][player[0]] = "W"
+move = False
+while player[1] != 19:
+    died = False
+    if move:
+        move = False
+        for y in range(height-1,-1,-1): # loop inversely otherwise the asteroids could move the entire row instantly
+            for x in range(width-1,-1,-1): # loop inversely otherwise the asteroids could move the entire row instantly
+                if grid[y][x] == "X":
+                    if grid[y][(x+1)%width] == "W":
+                        print("You got hit by an asteroid!")
+                        died = True
+                    else:
+                        grid[y][x] = "O"
+                        grid[y][(x+1)%width] = "X"
+    else:
+        move = True
+    # draw the numbers for the x axis
+    print(command_line_colors["white"],end="",flush=True)
+    print("   ",end="")
+    for x in range(width):
+        print(x,end=" ")
+    print()
+    for y in range(height):
+        # draw the numbers for the y axis
+        print(command_line_colors["white"],end="",flush=True)
+        print(y,end=len(str(y)) == 1 and "  " or " ")
+
+        for x in range(width):
+            if grid[y][x] == "X":
+                print(command_line_colors["red"],end="",flush=True)
+            elif grid[y][x] == "W":
+                print(command_line_colors["green"],end="",flush=True)
+            elif move and grid[y][(x-1)%width] == "X":
+                print(command_line_colors["yellow"],end="",flush=True)
+            else:
+                print(command_line_colors["white"],end="",flush=True)
+            print(grid[y][x],end=" ",flush=True)
+        print()
+    print(command_line_colors["white"],end="",flush=True)
+    moved = False
+    while not moved and not died:
+        split_text = input("give new coodinates: x,y: ").split(",")
+        if len(split_text) == 2:
+            move_to_x,move_to_y = split_text[0],split_text[1]
+            if move_to_x.isnumeric() and move_to_y.isnumeric():
+                x,y = int(move_to_x),int(move_to_y)
+                if x < width and x >= 0 and y < height and y >= 0:
+                    if abs(x-player[0]) <= 1 and abs(y-player[1]) <= 1:
+                        moved = True
+                        if grid[y][x] == "X":
+                            print("You hit an asteroid!")
+                            died = True
+                        grid[player[1]][player[0]] = "O"
+                        player[0],player[1] = x,y
+                        grid[player[1]][player[0]] = "W"
+                    else:
+                        print("can't move that far!")
+                else:
+                    print("space isn't that big!")
+            else:
+                print("please provide a number coordinate")
+        else:
+            print("please provide an x and y coordinate")
+    if died:
+        # create a list for the asteroids
+        grid = []
+        for y in range(height):
+            grid.append([])
+            for x in range(width):
+                grid[y].append(random.random() > 0.8 and "X" or "O")
+                player = [5,0]
+        grid[player[1]][player[0]] = "W"
+        move = False
+print("You made it out of the asteroid field, nicely done!")
