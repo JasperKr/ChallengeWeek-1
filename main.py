@@ -434,6 +434,8 @@ while player_answer != "hotel":
             elif find_similarity(player_shop_answer,"leave") >= 0.75:
                 inventory["oxygen"] = True
                 print("You decide to leave the shop, but not without taking some extra oxygen bottles with you, never know when they will come in handy.\n")
+            else:
+                print("They don't have that here")
             time.sleep(2)
 
 
@@ -454,9 +456,10 @@ print(stories["saturn_refinery_main_story"])
 time.sleep(6)
 print(stories["evacuate_saturn_refinery"])
 time.sleep(6)
-print(command_line_colors["white"])
 
-print(stories["crash_with_asteroids"])    
+print(command_line_colors["white"])
+print(stories["crash_with_asteroids"])
+
 gameover = False
 Dead = False
 first_time = True
@@ -468,7 +471,7 @@ while Dead or first_time:
     first_time = False
     while (oxygen_repaired == False or engine_repaired == False or people_calmed_down == False) and gameover == False:
         choice_asteroids = input(stories["story_choice_asteroids"]+"\n\n")
-    
+
         poging += 1
         if poging > 3:
             gameover = True
@@ -539,7 +542,7 @@ if player_answer == "friend":
 to desinfect the wound and to make it bleed less? (y/n): ")
                 if need_alcohol == "y":
                     print(f"Luckily {friend_names} survived because of your good treatment. One mistake and he would have been dead. \
-Anyways, he says he ows you something.")
+Anyways, he says he owes you something.")
                     friend_saved = True
                     time.sleep(2)
                 elif need_alcohol == "n":

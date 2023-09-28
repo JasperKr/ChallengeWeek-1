@@ -78,11 +78,9 @@ After walking around for a bit you finally find the store, It's really big.",
     out_of_the_asteroid_belt = "You safely left the asteroïd belt. There are no deads. \n\
 There is one wounded though. Your friend, who had come with you, is bleeding heavily. \n\
 If you don't do anything on time, he will die.",
-    friend_wounded = "Do you want to stitch your friends wound up or do you want to put a bandage around the wound? (stitch/bandage): ",
-    departure_from_saturn = "The ship finaly departes from saturn. \n\
-On the way to mars you have to avoid a lot of asteroids. Be carefull. ",
+    friend_wounded = "Do you want to stitch your friends wound up or do you want to put a bandage around the wound? stitch/bandage: ",
     go_to_mars = "You survived the asteroids. You take a seat in the spaceship and you fall asleep.",
-    arrival_mars = "When you arrive at mars, someone wakes you. You finally slept 5 hours in 3 days. \n\
+    arrival_mars = "When you arrive at mars, someone wakes you. \n\
 When looking around, you notice that your fellow travelers also want to go to earth, like you. ",
-        jeep_or_train = "Do you want to take the jeep for that extra view or do you want to take the train? (jeep/train): "
+        jeep_or_train = "Do you want to take the jeep or the train? jeep/train: "
 )
