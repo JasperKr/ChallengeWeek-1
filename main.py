@@ -2,7 +2,7 @@ import random
 import time
 import story
 import riddles
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = False, oxygen = False, sandwich = False, fruit = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0)
 speler_data = dict(name = "")
 stories = story.story
 command_line_colors = dict(
@@ -335,9 +335,9 @@ Enter your vault code to get your souvenir back: ")
             print("\nYou have your souvenir back. ")
         else:
             print("\nThe code is wrong. Try it again. \n")
-    
+time.sleep(2)
 print(stories["go_to_spaceport_moon"])
-
+time.sleep(2)
 gate = random_from_list(["A", "B", "C", "E", "D", "F"])
 print(stories["go_to_gate"]+gate+".")
 time.sleep(2)
@@ -398,14 +398,32 @@ while player_answer != "hotel":
             player_shop_answer = input("What do you want to buy? They have sandwiches, canned soup and a lot of it and fruit. sandwich/soup/fruit/leave: ")
             time.sleep(2)
             if find_similarity(player_shop_answer,"sandwich") >= 0.75:
-                inventory["sandwich"] = True
+                inventory["sandwich"] += 1
                 print("You take a nice sandwich for tomorrow.\n")
+                if inventory["sandwich"] == 2:
+                    time.sleep(2)
+                    print("do you really need multiple?")
+                if inventory["sandwich"] > 3:
+                    time.sleep(2)
+                    print("This is insanity!")
             elif find_similarity(player_shop_answer,"soup") >= 0.75:
-                inventory["soup"] = True
+                inventory["soup"] += 1
                 print("You take some soup for tonight.\n")
+                if inventory["soup"] == 2:
+                    time.sleep(2)
+                    print("do you really need multiple?")
+                if inventory["soup"] > 3:
+                    time.sleep(2)
+                    print("This is insanity!")
             elif find_similarity(player_shop_answer,"fruit") >= 0.75:
-                inventory["fruit"] = True
+                inventory["fruit"] += 1
                 print("You take some fruit with you, an apple a day keeps the doctor away!\n")
+                if inventory["fruit"] == 2:
+                    time.sleep(2)
+                    print("do you really need multiple?")
+                if inventory["fruit"] > 3:
+                    time.sleep(2)
+                    print("This is insanity!")
             elif find_similarity(player_shop_answer,"leave") >= 0.75:
                 inventory["oxygen"] = True
                 print("You decide to leave the shop, but not without taking some extra oxygen bottles with you, never know when they will come in handy.\n")
@@ -432,14 +450,14 @@ time.sleep(6)
 print(command_line_colors["white"])
 
 print(stories["crash_with_asteroids"])    
-oxygen_repaired = False
-engine_repaired = False
-people_calmed_down = False
 gameover = False
-poging = 0
 Dead = False
 first_time = True
 while Dead or first_time:
+    poging = 0
+    oxygen_repaired = False
+    engine_repaired = False
+    people_calmed_down = False
     first_time = False
     while (oxygen_repaired == False or engine_repaired == False or people_calmed_down == False) and gameover == False:
         choice_asteroids = input(stories["story_choice_asteroids \n\n"])
@@ -483,6 +501,7 @@ What do you want to repair now? \n\n")
                         time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
                         print("You calmed the people down and you have solved everything. Congratulations. The ship can move on. \n")
+                        Dead = False
                         time.sleep(1)
                 else:
                     print("You can not do that\n\n")
@@ -550,16 +569,16 @@ else:
     print("To help the people, you have to get two answers right within 3 attempts.")
     question_index = random.randint(0,3)
     amount_correct = 0
-    for i in range(1): # two questions
+    for i in range(2): # two questions
         question_index = (question_index + 1) % 4
         player_answer = ""
         attempts = 0
-        while attempts <= 2:
+        correct = False
+        while attempts <= 2 and not correct:
             attempts += 1
             player_answer = input(questions[question_index])
             time.sleep(2)
             if type(answers[question_index][0]) == "string":
-                correct = False
                 for answer in answers[question_index]:
                     if not correct:
                         if find_similarity(answer,player_answer) > 0.75:
@@ -572,18 +591,17 @@ else:
                         else:
                             print("Too bad, you didn't get it within 3 attempts.")
             else:
-                correct = False
                 for answer in answers[question_index]:
                     if not correct:
                         if abs(1-answer/int(player_answer)) < 0.1: # als de afwijking minder dan 10% is
-                            print("Correct!")
+                            print("Correct!\n")
                             correct = True
                             amount_correct += 1
                     if not correct:
                         if attempts != 2:
-                            print("Try again.")
+                            print("Try again.\n")
                         else:
-                            print("Too bad, you didn't get it within 3 attempts.")
+                            print("Too bad, you didn't get it within 3 attempts.\n")
             time.sleep(2)
     if amount_correct == 0:
         print("You weren't able to help anyone.")
