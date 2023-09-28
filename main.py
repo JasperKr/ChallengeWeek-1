@@ -498,3 +498,59 @@ if player_answer == "friend":
         else:
             print("How dare you to treat your friend like that. Do you want him to die?")
 else:
+    questions = [
+        "What is the temperature of the sun? ",
+        "How many moons does mars have? ",
+        "What is the closest solar system to us? ",
+        "How is the biggest asteroid called in the asteroid belt? ",
+    ]
+    answers = [
+        [5780,5780+273],
+        [2],
+        ["alpha centauri"],
+        ["ceres"],
+    ]
+    print("To help the people, you have to get two answers right within 3 attempts.")
+    question_index = random.randint(0,3)
+    amount_correct = 0
+    for i in range(1): # two questions
+        question_index = (question_index + 1) % 4
+        player_answer = ""
+        attempts = 0
+        while attempts <= 2:
+            attempts += 1
+            player_answer = input(questions[question_index])
+            if type(answers[question_index][0]) == "string":
+                correct = False
+                for answer in answers[question_index]:
+                    if not correct:
+                        if find_similarity(answer,player_answer) > 0.75:
+                            print("Correct!")
+                            correct = True
+                            amount_correct += 1
+                    if not correct:
+                        if attempts != 2:
+                            print("Try again.")
+                        else:
+                            print("Too bad, you didn't get it within 3 attempts.")
+            else:
+                correct = False
+                for answer in answers[question_index]:
+                    if not correct:
+                        if abs(1-answer/int(player_answer)) < 0.1: # als de afwijking minder dan 10% is
+                            print("Correct!")
+                            correct = True
+                            amount_correct += 1
+                    if not correct:
+                        if attempts != 2:
+                            print("Try again.")
+                        else:
+                            print("Too bad, you didn't get it within 3 attempts.")
+            time.sleep(2)
+    if amount_correct == 0:
+        print("You weren't able to help anyone.")
+    elif amount_correct == 1:
+        print("You could only help one person.")
+    else:
+        print("You were able to help everyone!")
+    time.sleep(2)
