@@ -442,48 +442,59 @@ first_time = True
 while Dead or first_time:
     first_time = False
     while (oxygen_repaired == False or engine_repaired == False or people_calmed_down == False) and gameover == False:
-        choice_asteroids = input(stories["story_choice_asteroids"])
+        choice_asteroids = input(stories["story_choice_asteroids \n\n"])
     
         poging += 1
         if poging > 3:
             gameover = True
         else:
             if poging == 1 and choice_asteroids != "hull":
-                print("You ran out of oxygen and died.")
+                print("You ran out of oxygen and died. \n")
+                time.sleep(1)
                 poging = 0
             elif poging == 1 and choice_asteroids == "hull":
                 oxygen_repaired = True
-                print("You repair the hull. ")
+                print("You repaird the hull. \n")
+                time.sleep(1)
             else:
                 if choice_asteroids == "hull":
                     oxygen_repaired = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You have repaired the hull. \n\
-What do you want to repair now?")
+What do you want to repair now? \n")
+                        time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
-                        print("You repaired the hull and you solved everything. Congratulations. The ship can move on. ")
+                        print("You repaired the hull and you solved everything. Congratulations. The ship can move on. \n")
+                        time.sleep(1)
                 elif choice_asteroids == "repair engine":
                     engine_repaired = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You have repaired the engine of the ship. \n\
-What do you want to repair now?")
+What do you want to repair now? \n")
+                        time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
-                        print("You repaird the engine and you solved everything. Congratulations. The ship can move on. ")
+                        print("You repaird the engine and you solved everything. Congratulations. The ship can move on. \n")
+                        time.sleep(1)
                 elif choice_asteroids == "calm down":
                     people_calmed_down = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You calmed down the people. \n\
-What do you want to repair now?")
+What do you want to repair now? \n\n")
+                        time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
-                        print("You calmed the people down and you have solved everything. Congratulations. The ship can move on. ")
+                        print("You calmed the people down and you have solved everything. Congratulations. The ship can move on. \n")
+                        time.sleep(1)
                 else:
-                    print("You can not do that")
+                    print("You can not do that\n\n")
+                    time.sleep()
 
     if oxygen_repaired and people_calmed_down and engine_repaired:
-        print("Alles opgelost!")
+        print("Alles opgelost! \n\n")
+        time.sleep(1)
     else:
-        print(command_line_colors["red"]+"Game over. Try again")
+        print(command_line_colors["red"]+"Game over. Try again\n\n")
         print(command_line_colors["white"])
+        time.sleep(1)
         Dead = True
 
 print(stories["out_of_the_asteroid_belt"])
@@ -495,35 +506,34 @@ if player_answer == "friend":
     friend_wounded_input = input(stories["friend_wounded"])
     friend_saved = False
     friend_dead = False
-    while not friend_saved or not friend_dead:
-        while friend_wounded_input != "stitch" or friend_wounded_input != "bandage":
-            if friend_wounded_input == "stitch":
-                need_alcohol = input("Do you want to poor some alcohol on your friends wound \
-                to desinfect the wound and to make it bleed less? (y/n): ")
-                if need_alcohol == "y":
-                    print(f"Luckily {friend_names} survived because of your good treatment. One mistake and he would have been dead. \
-                    Anyways, he says he ows you something.")
-                    friend_saved = True
-                    time.sleep(2)
-                elif need_alcohol == "n":
-                    print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
-                    inventory["friend"] = False
-                    friend_dead = True
-                    time.sleep(2)
-            elif friend_wounded_input == "bandage":
-                if random_chance(33):
-                    print(f"After all you tried to help {friend_names}, but he dies of the wound he had. The bandage was too lose. ")
-                    inventory["friend"] = False
-                    friend_dead = True
-                    time.sleep(2)
-                else:
-                    print(f"Luckily {friend_names} survived after you put the bandage tight around his wound. \n\
-                He ows you something, because you saved his life. ")
-                    friend_saved = True
-                    time.sleep(2)
-            else:
-                print("How dare you to treat your friend like that. Do you want him to die?")
+    while friend_wounded_input != "stitch" or friend_wounded_input != "bandage" or friend_dead or friend_saved:
+        if friend_wounded_input == "stitch":
+            need_alcohol = input("Do you want to poor some alcohol on your friends wound \
+to desinfect the wound and to make it bleed less? (y/n): ")
+            if need_alcohol == "y":
+                print(f"Luckily {friend_names} survived because of your good treatment. One mistake and he would have been dead. \
+Anyways, he says he ows you something.")
+                friend_saved = True
                 time.sleep(2)
+            elif need_alcohol == "n":
+                print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
+                inventory["friend"] = False
+                friend_dead = True
+                time.sleep(2)
+        elif friend_wounded_input == "bandage":
+            if random_chance(33):
+                print(f"After all you tried to help {friend_names}, but he dies of the wound he had. The bandage was too lose. ")
+                inventory["friend"] = False
+                friend_dead = True
+                time.sleep(2)
+            else:
+                print(f"Luckily {friend_names} survived after you put the bandage tight around his wound. \n\
+He ows you something, because you saved his life. ")
+                friend_saved = True
+                time.sleep(2)
+        else:
+            print("How dare you to treat your friend like that. Do you want him to die?")
+            time.sleep(2)
 else:
     questions = [
         "What is the temperature of the sun? ",
