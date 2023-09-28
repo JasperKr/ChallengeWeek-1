@@ -454,16 +454,22 @@ while Dead or first_time:
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You have repaired the hull. \n\
 What do you want to repair now?")
+                    elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
+                        print("You repaired the hull and you solved everything. Congratulations. The ship can move on. ")
                 elif choice_asteroids == "repair engine":
                     engine_repaired = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You have repaired the engine of the ship. \n\
 What do you want to repair now?")
+                    elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
+                        print("You repaird the engine and you solved everything. Congratulations. The ship can move on. ")
                 elif choice_asteroids == "calm down":
                     people_calmed_down = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You calmed down the people. \n\
 What do you want to repair now?")
+                    elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
+                        print("You calmed the people down and you have solved everything. Congratulations. The ship can move on. ")
                 else:
                     print("You can not do that")
 
