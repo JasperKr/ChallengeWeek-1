@@ -36,8 +36,8 @@ You use it to defend yourself from the attacker but barely get away, you lost th
     get_robbed_without_help = "steals your headphones and souvenir",
     sleep_safely_at_station = "You find a safe place somewhere in the station and wake up right before the flight leaves, time to get ready.",
     spaceship2_departs = "You finaly go to the moon. ",
-    someone_wants_drink = "The person next to you seems nice, so you start talking, \
-after talking for a while you decide to share your bottle of Belgium wine with them. ",
+    someone_wants_drink = f"The person next to you seems nice, so you start talking. \
+After talking for a while you decide to share your bottle of Belgium wine with them. ",
     you_talk_to_someone = "You start talking to the person next to you, \
 and make friends after a couple of hours talking. ",
     landing_on_moon = "You landed on the moon, having made a new friend. ",
@@ -75,4 +75,9 @@ The view is amazing, seemingly endless amounts of asteroids flying by faster tha
     go_back_to_hotel_saturn_refinery = "You decide to go back to the hotel, that's enough for today.",
     go_to_shop_saturn = "You decide to go look around for some shops, maybe get something to eat while you wait. \n \
 After walking around for a bit you finally find the store, It's really big.",
+    out_of_the_asteroïdf_belt = "You safely left the asteroïd belt. There are no deads. \n\
+There is one wounded though. Your friend, who had come with you, is bleeding heavily. \n\
+If you don't do anything on time, he will die.",
+    friend_wounded = "Do you want to stitch your friends wound up or do you want to put a bandage around the wound? (stitch/bandage): "
+
 )

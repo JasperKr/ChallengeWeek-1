@@ -2,7 +2,7 @@ import random
 import time
 import story
 import riddles
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False)
 speler_data = dict(name = "")
 stories = story.story
 command_line_colors = dict(
@@ -243,9 +243,11 @@ friend_names = random_from_list(["Ben", "Jaap", "Klaas", "Jan", "Emily", "Rozann
 if inventory["bottle"]:
     print(stories["someone_wants_drink"])
     inventory["bottle"] = False
+    inventory["friend"] = True
     time.sleep(4)
 else:
     print(stories["you_talk_to_someone"])
+    inventory["friend"]
     time.sleep(3)
 print("After hours of talking",end="",flush=True)
 
@@ -258,7 +260,7 @@ time.sleep(3)
 
 input_photo = ""
 while input_photo != "y" and input_photo != "n":
-    input_photo = input(f"Your friend says: \"Do you want to take a picture together?\" y/n: ")
+    input_photo = input(f"{friend_names} says: \"Do you want to take a picture together?\" y/n: ")
     if input_photo == "y":
         inventory["photo"] = True
         time.sleep(2)
@@ -479,3 +481,15 @@ What do you want to repair now?")
         print(command_line_colors["red"]+"Game over. Try again")
         print(command_line_colors["white"])
         Dead = True
+
+print(stories["out_of_the_asteroïdf_belt"])
+friend_wounded_input = input(stories["friend_wounded"])
+while friend_wounded_input != "stitch" or friend_wounded_input != "bandage":
+    if friend_wounded_input == "stitch":
+        print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
+        inventory["friend"] = False
+    elif friend_wounded_input == "bandage":
+        print(f"Luckily {friend_names} survived after you put the bandage around his wound. \n\
+He ows you something, because you saved his life. ")
+    else:
+        print("How dare you to treat your friend like that. Do you want him to die?")
