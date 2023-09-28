@@ -488,15 +488,32 @@ while player_answer != "people" and player_answer != "friend":
     player_answer = input("Will you help the group of people stuck under some rubble first or your friend? people/friend: ")
 if player_answer == "friend":
     friend_wounded_input = input(stories["friend_wounded"])
-    while friend_wounded_input != "stitch" or friend_wounded_input != "bandage":
-        if friend_wounded_input == "stitch":
-            print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
-            inventory["friend"] = False
-        elif friend_wounded_input == "bandage":
-            print(f"Luckily {friend_names} survived after you put the bandage around his wound. \n\
-    He ows you something, because you saved his life. ")
-        else:
-            print("How dare you to treat your friend like that. Do you want him to die?")
+    friend_saved = False
+    friend_dead = False
+    while not friend_saved or not friend_dead:
+        while friend_wounded_input != "stitch" or friend_wounded_input != "bandage":
+            if friend_wounded_input == "stitch":
+                need_alcohol = input("Do you want to poor some alcohol on your friends wound \
+                to desinfect the wound and to make it bleed less? (y/n): ")
+                if need_alcohol == "y":
+                    print(f"Luckily {friend_names} survived because of your good treatment. One mistake and he would have been dead. \
+                    Anyways, he says he ows you something.")
+                    friend_saved = True
+                elif need_alcohol == "n":
+                    print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
+                    inventory["friend"] = False
+                friend_dead = True
+            elif friend_wounded_input == "bandage":
+                if random_chance(33):
+                    print(f"After all you tried to help {friend_names}, but he dies of the wound he had. The bandage was too lose. ")
+                    inventory["friend"] = False
+                    friend_dead = True
+                else:
+                    print(f"Luckily {friend_names} survived after you put the bandage tight around his wound. \n\
+                He ows you something, because you saved his life. ")
+                    friend_saved = True
+            else:
+                print("How dare you to treat your friend like that. Do you want him to die?")
 else:
     questions = [
         "What is the temperature of the sun? ",
