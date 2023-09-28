@@ -1,7 +1,7 @@
 story_2 = dict(
     jeep = "After driving in the jeep for hours, they stop the jeep and you can take a break. You step out of the jeep with your suit on. ",
-    sand_or_not = "You see people taking some sand from mars with them. Do you also want to take some as a reminder of this trip?",
+    sand_or_not = "You see people taking some sand from mars with them. Do you also want to take some as a reminder of this trip? (y/n): ",
     continue_jeep = "After the break, you start driving to the spaceport again. ",
     arrival_spaceport = "After a long journey, you arrive at the spaceport on mars. ",
-    lose_tire_jeep = "Suddenly the jeep loses a tire, you probably clipped a rock. What do you do: try to find it and reattach it, or change the tire. "
+    lose_tire_jeep = "Suddenly the jeep loses a tire, you probably clipped a rock. What do you do: try to find it and reattach it, or change the tire. (find/change) "
 )
