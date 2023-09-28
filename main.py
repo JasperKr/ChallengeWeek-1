@@ -2,7 +2,7 @@ import random
 import time
 import story
 import riddles
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = False, oxygen = False, sandwich = False, fruit = False)
 speler_data = dict(name = "")
 stories = story.story
 command_line_colors = dict(
