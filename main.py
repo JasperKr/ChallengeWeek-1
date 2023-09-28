@@ -713,3 +713,52 @@ while player[1] != 19:
         grid[player[1]][player[0]] = "W"
         move = False
 print("You made it out of the asteroid field, nicely done!")
+
+# the player goes to a gate
+gate = random_from_list(["A", "B", "C", "E", "D", "F"])
+print(stories["go_to_gate"]+gate+".")
+time.sleep(2)
+
+print(f"You arrive at gate {gate}.",end="\n\n")
+time.sleep(2)
+print("Before entering you have to show your passport to the customs.")
+time.sleep(2)
+print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
+time.sleep(2)
+print("You enter the spaceship and take a seat somewhere in the back.")
+time.sleep(2)
+print("You depart from the spaceport for the last time.",end="\n\n")
+time.sleep(2)
+print("Travelling",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+time.sleep(1)
+
+print("Time to go back home.")
+time.sleep(2)
+gate = random_from_list(["A", "B", "C", "E", "D", "F"])
+print(stories["go_to_gate"]+gate+".")
+time.sleep(2)
+
+print(f"You arrive at gate {gate}.",end="\n\n")
+time.sleep(2)
+print("Before entering you have to show your passport to the customs for the last time.")
+time.sleep(2)
+print(f"\"Thank you, have a nice return home {speler_data['name']}!\"")
+time.sleep(2)
+print("You enter the spaceship fall asleep.")
+time.sleep(2)
+print("You depart from the spaceport for the last time.",end="\n\n")
+time.sleep(2)
+print("Travelling",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+
+time.sleep(1)
+print("You get woken up by the jolt of the spaceship touching the launchpad.")
+time.sleep(2)
+print("But when you want to get out and return home, you notice that you're still in zero g...")
