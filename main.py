@@ -638,7 +638,7 @@ for y in range(height):
     for x in range(width):
         grid[y].append(random.random() > 0.8 and "X" or "O")
 # set the player position
-grid[player[1]][player[0]] = "W"
+grid[player[1]][player[0]] = "V"
 move = False
 while player[1] != 19:
     died = False
@@ -647,7 +647,7 @@ while player[1] != 19:
         for y in range(height-1,-1,-1): # loop inversely otherwise the asteroids could move the entire row instantly
             for x in range(width-1,-1,-1): # loop inversely otherwise the asteroids could move the entire row instantly
                 if grid[y][x] == "X":
-                    if grid[y][(x+1)%width] == "W":
+                    if grid[y][(x+1)%width] == "V":
                         print("You got hit by an asteroid!")
                         died = True
                     else:
@@ -669,7 +669,7 @@ while player[1] != 19:
         for x in range(width):
             if grid[y][x] == "X":
                 print(command_line_colors["red"],end="",flush=True)
-            elif grid[y][x] == "W":
+            elif grid[y][x] == "V":
                 print(command_line_colors["green"],end="",flush=True)
             elif move and grid[y][(x-1)%width] == "X":
                 print(command_line_colors["yellow"],end="",flush=True)
@@ -693,7 +693,7 @@ while player[1] != 19:
                             died = True
                         grid[player[1]][player[0]] = "O"
                         player[0],player[1] = x,y
-                        grid[player[1]][player[0]] = "W"
+                        grid[player[1]][player[0]] = "V"
                     else:
                         print("can't move that far!")
                 else:
@@ -710,7 +710,7 @@ while player[1] != 19:
             for x in range(width):
                 grid[y].append(random.random() > 0.8 and "X" or "O")
                 player = [5,0]
-        grid[player[1]][player[0]] = "W"
+        grid[player[1]][player[0]] = "V"
         move = False
 print("You made it out of the asteroid field, nicely done!")
 

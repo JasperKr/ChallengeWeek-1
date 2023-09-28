@@ -53,9 +53,9 @@ and make friends after a couple of hours talking. ",
     go_to_saturn_anyways = "you decide that you'll take the ship going to saturn then earth.",
     get_starbucks = "Since you're going to be here for the rest of the day, you decide \
 to get some starbucks.",
-    arrival_spaceport_saturn = "You arrive at a starport orbiting saturn. Just out of range of it's astroid rings. \
-The view is amazing but somehow also scary, how big it is. \
-It's an orbital refinery for the resources mined from saturn and it's rings. \
+    arrival_spaceport_saturn = "You arrive at a starport orbiting saturn. Just out of range of it's astroid rings. \n\
+The view is amazing but somehow also scary, how big it is. \n\
+It's an orbital refinery for the resources mined from saturn and it's rings. \n\
 There is a constant humm in the station due to all of the machinery.",
     saturn_refinery_disaster = "You wake up from a sudden jolt in the station, followed by an explosion.\n \
 not seconds later alarms start to go off everywhere.\n",
@@ -75,8 +75,8 @@ The view is amazing, seemingly endless amounts of asteroids flying by faster tha
     go_back_to_hotel_saturn_refinery = "You decide to go back to the hotel, that's enough for today.",
     go_to_shop_saturn = "You decide to go look around for some shops, maybe get something to eat while you wait. \n \
 After walking around for a bit you finally find the store, It's really big.",
-    out_of_the_asteroid_belt = "You safely left the asteroïd belt. There are no deads. \n\
-There is one wounded though. Your friend, who had come with you, is bleeding heavily. \n\
+    out_of_the_asteroid_belt = "There are no deaths yet. \n\
+There are a couple of wounded though. Your friend, who came with you, is bleeding heavily. \n\
 If you don't do anything on time, he will die.",
     friend_wounded = "Do you want to stitch your friends wound up or do you want to put a bandage around the wound? stitch/bandage: ",
     go_to_mars = "You survived the asteroids. You take a seat in the spaceship and you fall asleep.",
