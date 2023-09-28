@@ -450,14 +450,14 @@ time.sleep(6)
 print(command_line_colors["white"])
 
 print(stories["crash_with_asteroids"])    
-oxygen_repaired = False
-engine_repaired = False
-people_calmed_down = False
 gameover = False
-poging = 0
 Dead = False
 first_time = True
 while Dead or first_time:
+    poging = 0
+    oxygen_repaired = False
+    engine_repaired = False
+    people_calmed_down = False
     first_time = False
     while (oxygen_repaired == False or engine_repaired == False or people_calmed_down == False) and gameover == False:
         choice_asteroids = input(stories["story_choice_asteroids"])
@@ -494,6 +494,7 @@ What do you want to repair now?")
 What do you want to repair now?")
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
                         print("You calmed the people down and you have solved everything. Congratulations. The ship can move on. ")
+                        Dead = False
                 else:
                     print("You can not do that")
 
@@ -530,13 +531,13 @@ if player_answer == "friend":
                     time.sleep(2)
             elif friend_wounded_input == "bandage":
                 if random_chance(33):
-                    print(f"After all you tried to help {friend_names}, but he dies of the wound he had. The bandage was too lose. ")
+                    print(f"After all you tried to help {friend_names}, but he dies bleeding. The bandage was too loose. ")
                     inventory["friend"] = False
                     friend_dead = True
                     time.sleep(2)
                 else:
                     print(f"Luckily {friend_names} survived after you put the bandage tight around his wound. \n\
-                He ows you something, because you saved his life. ")
+                He owes you something, because you saved his life. ")
                     friend_saved = True
                     time.sleep(2)
             else:
