@@ -82,5 +82,5 @@ If you don't do anything on time, he will die.",
     go_to_mars = "You survived the asteroids. You take a seat in the spaceship and you fall asleep.",
     arrival_mars = "When you arrive at mars, someone wakes you. \n\
 When looking around, you notice that your fellow travelers also want to go to earth, like you. ",
-        jeep_or_train = "Do you want to take the jeep or the train? jeep/train: "
+    jeep_or_train = "Do you want to take the jeep or the train? jeep/train: "
 )
