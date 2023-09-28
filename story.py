@@ -78,6 +78,11 @@ After walking around for a bit you finally find the store, It's really big.",
     out_of_the_asteroid_belt = "You safely left the asteroïd belt. There are no deads. \n\
 There is one wounded though. Your friend, who had come with you, is bleeding heavily. \n\
 If you don't do anything on time, he will die.",
-    friend_wounded = "Do you want to stitch your friends wound up or do you want to put a bandage around the wound? (stitch/bandage): "
-
+    friend_wounded = "Do you want to stitch your friends wound up or do you want to put a bandage around the wound? (stitch/bandage): ",
+    go_to_mars = "The ship finaly goes to mars. \n\
+While listening to some people in the spaceship, \n\
+you hear from some fellow travelers that mars has inhabitants. \n\
+But are they friendly? Or should you avoid them? ",
+    arrival_mars = "When you arrive at mars, you notice that your fellow travelers also want to go to earth, like you. "
 )
+
