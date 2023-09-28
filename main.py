@@ -3,7 +3,7 @@ import time
 import story
 import story_2
 import riddles
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False)
 speler_data = dict(name = "")
 stories = story.story
 stories_2 = story_2.story_2
@@ -713,6 +713,70 @@ while player[1] != 19:
         grid[player[1]][player[0]] = "V"
         move = False
 print("You made it out of the asteroid field, nicely done!")
+
+print(stories["going_to_mars"])
+print("ZZZZZZZzzzzzzzz",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+
+print(stories["arrival_mars"])
+mars_jeep__or_train = input(stories["jeep_or_train"])
+made_choice = False
+while not made_choice:
+    if mars_jeep__or_train == "jeep":
+        print("You enter the jeep. It will be a long, but beautiful journey to the last spaceport. ")
+        print("Enjoying the ride",end="",flush=True)
+
+        for i in range(10):
+            time.sleep(0.5)
+            print(".",end=(i==9 and "\n\n" or ""),flush=True)
+        print(stories_2["jeep"])
+        time.sleep(2)
+        sand_or_not_input = input(stories_2["sand_or_not"])
+        sandy_choice = False
+        while not sandy_choice:
+            if sand_or_not_input == "y":
+                print("Now you put a bit of sand in a box. ")
+                mars_sand = True
+                sandy_choice = True
+            elif sand_or_not_input == "n":
+                print("This trip will be reminded by you, your life long. ")
+                sandy_choice = True
+            else:
+                print("You have to enter \"y\" or \"n\"")
+        print(stories_2["continue_jeep"])
+        lose_tire_jeep_input = input(stories_2["lose_tire_jeep"])
+        lose_tire_jeep_boolean = True
+        while lose_tire_jeep_boolean:
+            if lose_tire_jeep_input == "find":
+                print("Searching",end="",flush=True)
+
+                for i in range(10):
+                    time.sleep(0.5)
+                    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+                print("\n\nYou found the tire after hours of looking. Now you can move on. ")
+                lose_tire_jeep_boolean = False
+            elif lose_tire_jeep_input == "change":
+                print("Changing tire",end="",flush=True)
+
+                for i in range(10):
+                    time.sleep(0.1)
+                    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+                print("\n\nYou changed the tire in half an hour. Now you can move on. ")
+                lose_tire_jeep_boolean = False
+            else:
+                print("Sorry, you cannot put this crappy tire on the jeep. ")
+        made_choice = True
+    elif mars_jeep__or_train == "train":
+        print("You go with the train and You have chosen the quicker option \
+if there is no trouble on your way to the spaceport to earth. ")
+        made_choice = True
+    else:
+        print("Sorry, you cannot go to the spaceport with that. ")
+
+print(stories_2["arrival_spaceport"])
 
 # the player goes to a gate
 gate = random_from_list(["A", "B", "C", "E", "D", "F"])
