@@ -26,7 +26,7 @@ This place looks shadey. ",
     stay_at_station = "You decide to stay at the station",
     pass_out_at_station = "you fall asleep on a bench.",
     headphones_stolen = "After a while you wake up with your headphones missing.",
-    get_robbed = "After you've bought a souvenir, you want to return to the station. \n\
+    get_robbed = "You want to return to the station. \n\
 But while walking back, you see a man approaching you. \n\
 After he sees you looking around, he runs towards you and ",
     nice_person_helps = "tries to rob you, he would have succeeded if not for the person you helped a while back.\n\
@@ -36,8 +36,8 @@ You use it to defend yourself from the attacker but barely get away, you lost th
     get_robbed_without_help = "steals your headphones and souvenir",
     sleep_safely_at_station = "You find a safe place somewhere in the station and wake up right before the flight leaves, time to get ready.",
     spaceship2_departs = "You finaly go to the moon. ",
-    someone_wants_drink = "The person next to you seems nice, so you start talking, \
-after talking for a while you decide to share your bottle of Belgium wine with them. ",
+    someone_wants_drink = f"The person next to you seems nice, so you start talking. \
+After talking for a while you decide to share your bottle of Belgium wine with them. ",
     you_talk_to_someone = "You start talking to the person next to you, \
 and make friends after a couple of hours talking. ",
     landing_on_moon = "You landed on the moon, having made a new friend. ",
@@ -68,11 +68,20 @@ You get on and safely get away from the station, they're going to mars.",
     crash_with_asteroids = "On your way to mars the alarm goes off.\n \
 Some asteroids have crashed in to the spaceship while trying to get away.\n \
 The engine of the spaceship has stopped, and you're now floating through space without control, there are some leaks due to the asteroids.",
-    story_choice_asteroïds = "What are you going to do? Close the hull breaches (type: hull), repair the engine (type: repair engine) or calm down the refugees (type: calm down) ",
+    story_choice_asteroids = "What are you going to do? Close the hull breaches (type: hull), repair the engine (type: repair engine) or calm down the refugees (type: calm down) ",
     go_to_places_saturn = "You decide to go look around and find a couple of places you can go around here.",
-    walk_around_saturn_refinery = "After walking around for a while, you get used to the humm of the distant machinery. \n \
+    walk_around_saturn_refinery = "After walking around for a while, you get used to the humm of the distant machinery.\n\
 The view is amazing, seemingly endless amounts of asteroids flying by faster than you can blink. ",
     go_back_to_hotel_saturn_refinery = "You decide to go back to the hotel, that's enough for today.",
     go_to_shop_saturn = "You decide to go look around for some shops, maybe get something to eat while you wait. \n \
 After walking around for a bit you finally find the store, It's really big.",
+    out_of_the_asteroid_belt = "You safely left the asteroïd belt. There are no deads. \n\
+There is one wounded though. Your friend, who had come with you, is bleeding heavily. \n\
+If you don't do anything on time, he will die.",
+    friend_wounded = "Do you want to stitch your friends wound up or do you want to put a bandage around the wound? stitch/bandage: ",
+    go_to_mars = "You survived the asteroids. You take a seat in the spaceship and you fall asleep.",
+    arrival_mars = "When you arrive at mars, someone wakes you. \n\
+When looking around, you notice that your fellow travelers also want to go to earth, like you. \n\
+They ask you if you want to travel with them and you say yes. ",
+    jeep_or_train = "At the station you have two options. Do you want to take the jeep or the train? jeep/train: "
 )

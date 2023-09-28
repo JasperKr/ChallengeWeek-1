@@ -1,13 +1,17 @@
 import random
 import time
 import story
+import story_2
 import riddles
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0)
 speler_data = dict(name = "")
 stories = story.story
+stories_2 = story_2.story_2
 command_line_colors = dict(
     red = '\033[91m',
-    white = '\033[0;0m'
+    white = '\033[0;0m',
+    yellow = '\033[93m',
+    green = '\033[92m',
 )
 def random_chance(chance):
     return random.random() < (chance / 100)
@@ -84,10 +88,10 @@ if not inventory["moon_suit"] or go_anyways: # if the player didn't find a moon 
 
     # ask the player if they want to ask the pilot where to buy a moon suit
     if not go_anyways:
-        user_input = ""
-        while user_input != "pilot" and user_input != "store":
-            user_input = input("Do you want to ask the pilot where to buy a moon suit, or, go to the store to buy one? pilot/store: ")
-            if user_input == "pilot":
+        player_answer = ""
+        while player_answer != "pilot" and player_answer != "store":
+            player_answer = input("Do you want to ask the pilot where to buy a moon suit, or, go to the store to buy one? pilot/store: ")
+            if player_answer == "pilot":
 
                 print(stories["approach_pilot_question"]) # pilot storyline
                 time.sleep(1)
@@ -201,41 +205,46 @@ print(stories["arrival_spaceport_2"], end="\n\n")
 time.sleep(5)
 print(stories["transfer_to_another_spaceship"])
 time.sleep(3)
-if input(stories["ask_to_explore_the_station"]) == "y":
-    time.sleep(2)
-    print(stories["explore_the_station"])
-    time.sleep(2)
-    if input("Do you want to go to the shop? y/n: ") == "y":
-        inventory["souvenir"] = True
-    time.sleep(3)
-    print()
-    print(stories["get_robbed"],end="")
-    time.sleep(2)
-    if inventory["nice_person"]:
-        print(stories["nice_person_helps"])
-    elif inventory["bottle"]:
-        print(stories["defend_with_bottle"])
-        inventory["bottle"] = False
-    else:
-        print(stories["get_robbed_without_help"])
-        inventory["headphones"] = False
-        inventory["souvenir"] = False
-    time.sleep(4)
-    print(stories["sleep_safely_at_station"])
-    time.sleep(2)
-else:
-    print(stories["stay_at_station"])
-    time.sleep(2)
-    if inventory["bottle"]:
-        if input("Do you want to drink your bottle alone?") == "y":
-            print(stories["drink_bottle"])
-            inventory["bottle"] = False
+player_answer = ""
+while player_answer != "n" and player_answer != "y":
+    player_answer = input(stories["ask_to_explore_the_station"])
+    if player_answer == "y":
         time.sleep(2)
-    print(stories["pass_out_at_station"])
-    inventory["headphones"] = False
-    time.sleep(2)
-    print(stories["headphones_stolen"])
-    time.sleep(2)
+        print(stories["explore_the_station"])
+        time.sleep(2)
+        if input("Do you want to go to the shop? y/n: ") == "y":
+            inventory["souvenir"] = True
+        time.sleep(3)
+        print()
+        print(stories["get_robbed"],end="")
+        time.sleep(2)
+        if inventory["nice_person"]:
+            print(stories["nice_person_helps"])
+        elif inventory["bottle"]:
+            print(stories["defend_with_bottle"])
+            inventory["bottle"] = False
+        else:
+            print(stories["get_robbed_without_help"])
+            inventory["headphones"] = False
+            inventory["souvenir"] = False
+        time.sleep(4)
+        print(stories["sleep_safely_at_station"])
+        time.sleep(2)
+    elif player_answer == "n":
+        print(stories["stay_at_station"])
+        time.sleep(2)
+        if inventory["bottle"]:
+            if input("Do you want to drink your bottle alone?") == "y":
+                print(stories["drink_bottle"])
+                inventory["bottle"] = False
+            time.sleep(2)
+        print(stories["pass_out_at_station"])
+        inventory["headphones"] = False
+        time.sleep(2)
+        print(stories["headphones_stolen"])
+        time.sleep(2)
+    else:
+        print("what did you say?")
 
 print(stories["spaceship2_departs"])
 time.sleep(2)
@@ -243,9 +252,11 @@ friend_names = random_from_list(["Ben", "Jaap", "Klaas", "Jan", "Emily", "Rozann
 if inventory["bottle"]:
     print(stories["someone_wants_drink"])
     inventory["bottle"] = False
+    inventory["friend"] = True
     time.sleep(4)
 else:
     print(stories["you_talk_to_someone"])
+    inventory["friend"]
     time.sleep(3)
 print("After hours of talking",end="",flush=True)
 
@@ -256,14 +267,14 @@ for i in range(10):
 print(stories["landing_on_moon"])
 time.sleep(3)
 
-input_photo = ""
-while input_photo != "y" and input_photo != "n":
-    input_photo = input(f"Your friend says: \"Do you want to take a picture together?\" y/n: ")
-    if input_photo == "y":
+player_answer = ""
+while player_answer != "y" and player_answer != "n":
+    player_answer = input(f"{friend_names} says: \"Do you want to take a picture together?\" y/n: ")
+    if player_answer == "y":
         inventory["photo"] = True
         time.sleep(2)
         print(stories["photo_taken"])
-    elif input_photo == "n":
+    elif player_answer == "n":
         print(stories["photo_not_taken"])
         time.sleep(2)
 
@@ -274,15 +285,15 @@ if not inventory["souvenir"]:
     inventory["souvenir"] = True
 time.sleep(2)
 
-souvenir_in_vault_input = ""
+player_answer = ""
 souvenir_in_vault = False
-while souvenir_in_vault_input != "y" and souvenir_in_vault_input != "n":
-    souvenir_in_vault_input = input("Do you want to stash your souvenir in the vault? y/n: ")
-    if souvenir_in_vault_input == "y":
+while player_answer != "y" and player_answer != "n":
+    player_answer = input("Do you want to stash your souvenir in the vault? y/n: ")
+    if player_answer == "y":
         souvenir_in_vault = True
         inventory["souvenir"] = False
         print("Your souvenir is safe in the vault")
-    elif souvenir_in_vault_input == "n":
+    elif player_answer == "n":
         print("Your souvenir is not safe with you. Be careful with it.")
 vault_code = ""
 for i in range(4):
@@ -333,9 +344,9 @@ Enter your vault code to get your souvenir back: ")
             print("\nYou have your souvenir back. ")
         else:
             print("\nThe code is wrong. Try it again. \n")
-    
+time.sleep(2)
 print(stories["go_to_spaceport_moon"])
-
+time.sleep(2)
 gate = random_from_list(["A", "B", "C", "E", "D", "F"])
 print(stories["go_to_gate"]+gate+".")
 time.sleep(2)
@@ -386,7 +397,7 @@ print(stories["go_to_places_saturn"])
 time.sleep(2)
 player_answer = ""
 while player_answer != "hotel":
-    player_answer = input("Where do you want to do? Go to the shop, Take a walk or go back to the hotel and sleep. shop/walk/hotel: ")
+    player_answer = input("What do you want to do? Go to the shop, Take a walk or go back to the hotel and sleep. shop/walk/hotel: ")
     time.sleep(2)
     if find_similarity(player_answer,"shop") >= 0.75:
         print(stories["go_to_shop_saturn"])
@@ -396,13 +407,37 @@ while player_answer != "hotel":
             player_shop_answer = input("What do you want to buy? They have sandwiches, canned soup and a lot of it and fruit. sandwich/soup/fruit/leave: ")
             time.sleep(2)
             if find_similarity(player_shop_answer,"sandwich") >= 0.75:
-                print("You take a nice sandwich for tomorrow.")
+                inventory["sandwich"] += 1
+                print("You take a nice sandwich for tomorrow.\n")
+                if inventory["sandwich"] == 2:
+                    time.sleep(2)
+                    print("do you really need multiple?")
+                if inventory["sandwich"] > 3:
+                    time.sleep(2)
+                    print("This is insanity!")
             elif find_similarity(player_shop_answer,"soup") >= 0.75:
-                print("You take some soup for tonight")
+                inventory["soup"] += 1
+                print("You take some soup for tonight.\n")
+                if inventory["soup"] == 2:
+                    time.sleep(2)
+                    print("do you really need multiple?")
+                if inventory["soup"] > 3:
+                    time.sleep(2)
+                    print("This is insanity!")
             elif find_similarity(player_shop_answer,"fruit") >= 0.75:
-                print("You take some fruit with you, an apple a day keeps the doctor away!")
+                inventory["fruit"] += 1
+                print("You take some fruit with you, an apple a day keeps the doctor away!\n")
+                if inventory["fruit"] == 2:
+                    time.sleep(2)
+                    print("do you really need multiple?")
+                if inventory["fruit"] > 3:
+                    time.sleep(2)
+                    print("This is insanity!")
             elif find_similarity(player_shop_answer,"leave") >= 0.75:
-                print("You decide to leave the shop, but not without taking some extra oxygen bottles with you, never know when they will come in handy.")
+                inventory["oxygen"] = True
+                print("You decide to leave the shop, but not without taking some extra oxygen bottles with you, never know when they will come in handy.\n")
+            else:
+                print("They don't have that here")
             time.sleep(2)
 
 
@@ -420,62 +455,310 @@ time.sleep(3)
 print(command_line_colors["red"]+stories["saturn_refinery_disaster"])
 time.sleep(8)
 print(stories["saturn_refinery_main_story"])
-time.sleep(5)
+time.sleep(6)
 print(stories["evacuate_saturn_refinery"])
-time.sleep(3)
-print(command_line_colors["white"])
+time.sleep(6)
 
-print(stories["crash_with_asteroïds"])    
-oxygen_repaired = False
-engine_repaired = False
-people_calmed_down = False
+print(command_line_colors["white"])
+print(stories["crash_with_asteroids"])
+
 gameover = False
-poging = 0
 Dead = False
 first_time = True
 while Dead or first_time:
+    poging = 0
+    oxygen_repaired = False
+    engine_repaired = False
+    people_calmed_down = False
     first_time = False
     while (oxygen_repaired == False or engine_repaired == False or people_calmed_down == False) and gameover == False:
-        choice_asteroids = input(stories["story_choice_asteroids"])
-    
+        choice_asteroids = input(stories["story_choice_asteroids"]+"\n\n")
+
         poging += 1
         if poging > 3:
             gameover = True
         else:
             if poging == 1 and choice_asteroids != "hull":
-                print("You ran out of oxygen and died.")
+                print("You ran out of oxygen and died. \n")
+                time.sleep(1)
                 poging = 0
             elif poging == 1 and choice_asteroids == "hull":
                 oxygen_repaired = True
-                print("You repair the hull. ")
+                print("You repaird the hull. \n")
+                time.sleep(1)
             else:
                 if choice_asteroids == "hull":
                     oxygen_repaired = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You have repaired the hull. \n\
-What do you want to repair now?")
+What do you want to repair now? \n")
+                        time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
-                        print("You repaired the hull and you solved everything. Congratulations. The ship can move on. ")
+                        print("You repaired the hull and you solved everything. Congratulations. The ship can move on. \n")
+                        time.sleep(1)
                 elif choice_asteroids == "repair engine":
                     engine_repaired = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You have repaired the engine of the ship. \n\
-What do you want to repair now?")
+What do you want to repair now? \n")
+                        time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
-                        print("You repaird the engine and you solved everything. Congratulations. The ship can move on. ")
+                        print("You repaird the engine and you solved everything. Congratulations. The ship can move on. \n")
+                        time.sleep(1)
                 elif choice_asteroids == "calm down":
                     people_calmed_down = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You calmed down the people. \n\
-What do you want to repair now?")
+What do you want to repair now? \n\n")
+                        time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
-                        print("You calmed the people down and you have solved everything. Congratulations. The ship can move on. ")
+                        print("You calmed the people down and you have solved everything. Congratulations. The ship can move on. \n")
+                        Dead = False
+                        time.sleep(1)
                 else:
-                    print("You can not do that")
+                    print("You can not do that\n\n")
+                    time.sleep()
 
     if oxygen_repaired and people_calmed_down and engine_repaired:
-        print("Alles opgelost!")
+        print("Alles opgelost! \n\n")
+        time.sleep(1)
     else:
-        print(command_line_colors["red"]+"Game over. Try again")
+        print(command_line_colors["red"]+"Game over. Try again\n\n")
         print(command_line_colors["white"])
+        time.sleep(1)
         Dead = True
+
+print(stories["out_of_the_asteroid_belt"])
+player_answer = ""
+while player_answer != "people" and player_answer != "friend":
+    player_answer = input("Will you help the group of people stuck under some rubble first or your friend? people/friend: ")
+    time.sleep(2)
+if player_answer == "friend":
+    friend_saved = False
+    while not friend_saved:
+        friend_wounded_input = input(stories["friend_wounded"])
+        friend_dead = False
+        while friend_wounded_input != "stitch" or friend_wounded_input != "bandage" or friend_dead or friend_saved:
+            if friend_wounded_input == "stitch":
+                need_alcohol = input("Do you want to poor some alcohol on your friends wound \
+to desinfect the wound and to make it bleed less? (y/n): ")
+                if need_alcohol == "y":
+                    print(f"Luckily {friend_names} survived because of your good treatment. One mistake and he would have been dead. \
+Anyways, he says he owes you something.")
+                    friend_saved = True
+                    time.sleep(2)
+                elif need_alcohol == "n":
+                    print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
+                    inventory["friend"] = False
+                    friend_dead = True
+                    time.sleep(2)
+            elif friend_wounded_input == "bandage":
+                if random_chance(33):
+                    print(f"After all you tried to help {friend_names}, but he dies of the wound he had. The bandage was too lose. ")
+                    inventory["friend"] = False
+                    friend_dead = True
+                    time.sleep(2)
+                else:
+                    print(f"Luckily {friend_names} survived after you put the bandage tight around his wound. \n\
+He ows you something, because you saved his life. ")
+                    friend_saved = True
+                    time.sleep(2)
+            else:
+                print("How dare you to treat your friend like that. Do you want him to die?")
+                time.sleep(2)
+else:
+    questions = [
+        "What is the temperature of the sun? ",
+        "How many moons does mars have? ",
+        "What is the closest solar system to us? ",
+        "How is the biggest asteroid called in the asteroid belt? ",
+    ]
+    answers = [
+        [5780,5780+273],
+        [2],
+        ["alpha centauri"],
+        ["ceres"],
+    ]
+    print("To help the people, you have to get two answers right within 3 attempts.")
+    question_index = random.randint(0,3)
+    amount_correct = 0
+    for i in range(2): # two questions
+        question_index = (question_index + 1) % 4
+        player_answer = ""
+        attempts = 0
+        correct = False
+        while attempts <= 2 and not correct:
+            attempts += 1
+            player_answer = input(questions[question_index])
+            time.sleep(2)
+            if type(answers[question_index][0]) == "string":
+                for answer in answers[question_index]:
+                    if not correct:
+                        if find_similarity(answer,player_answer) > 0.75:
+                            print("Correct!")
+                            correct = True
+                            amount_correct += 1
+                    if not correct:
+                        if attempts != 2:
+                            print("Try again.")
+                        else:
+                            print("Too bad, you didn't get it within 3 attempts.")
+            else:
+                for answer in answers[question_index]:
+                    if not correct:
+                        if abs(1-answer/int(player_answer)) < 0.1: # als de afwijking minder dan 10% is
+                            print("Correct!\n")
+                            correct = True
+                            amount_correct += 1
+                    if not correct:
+                        if attempts != 2:
+                            print("Try again.\n")
+                        else:
+                            print("Too bad, you didn't get it within 3 attempts.\n")
+            time.sleep(2)
+    if amount_correct == 0:
+        print("You weren't able to help anyone.")
+    elif amount_correct == 1:
+        print("You could only help one person.")
+    else:
+        print("You were able to help everyone!")
+    time.sleep(2)
+
+print("It isn't done yet! You still have to get out of the asteroid field, to navigate, \n\
+give the coordinates of the next place you want to go to, you can move one tile, \n\
+you can move horizontally, vertically and diagonally. You're the W, if you hit an asteroid, X \n\
+then you lose, the asteroids move to the right every other move. You need to reach the bottom.")
+grid = []
+width = 11
+height = 20
+player = [5,0]
+# create a list for the asteroids
+for y in range(height):
+    grid.append([])
+    for x in range(width):
+        grid[y].append(random.random() > 0.8 and "X" or "O")
+# set the player position
+grid[player[1]][player[0]] = "W"
+move = False
+while player[1] != 19:
+    died = False
+    if move:
+        move = False
+        for y in range(height-1,-1,-1): # loop inversely otherwise the asteroids could move the entire row instantly
+            for x in range(width-1,-1,-1): # loop inversely otherwise the asteroids could move the entire row instantly
+                if grid[y][x] == "X":
+                    if grid[y][(x+1)%width] == "W":
+                        print("You got hit by an asteroid!")
+                        died = True
+                    else:
+                        grid[y][x] = "O"
+                        grid[y][(x+1)%width] = "X"
+    else:
+        move = True
+    # draw the numbers for the x axis
+    print(command_line_colors["white"],end="",flush=True)
+    print("   ",end="")
+    for x in range(width):
+        print(x,end=" ")
+    print()
+    for y in range(height):
+        # draw the numbers for the y axis
+        print(command_line_colors["white"],end="",flush=True)
+        print(y,end=len(str(y)) == 1 and "  " or " ")
+
+        for x in range(width):
+            if grid[y][x] == "X":
+                print(command_line_colors["red"],end="",flush=True)
+            elif grid[y][x] == "W":
+                print(command_line_colors["green"],end="",flush=True)
+            elif move and grid[y][(x-1)%width] == "X":
+                print(command_line_colors["yellow"],end="",flush=True)
+            else:
+                print(command_line_colors["white"],end="",flush=True)
+            print(grid[y][x],end=" ",flush=True)
+        print()
+    print(command_line_colors["white"],end="",flush=True)
+    moved = False
+    while not moved and not died:
+        split_text = input("give new coodinates: x,y: ").split(",")
+        if len(split_text) == 2:
+            move_to_x,move_to_y = split_text[0],split_text[1]
+            if move_to_x.isnumeric() and move_to_y.isnumeric():
+                x,y = int(move_to_x),int(move_to_y)
+                if x < width and x >= 0 and y < height and y >= 0:
+                    if abs(x-player[0]) <= 1 and abs(y-player[1]) <= 1:
+                        moved = True
+                        if grid[y][x] == "X":
+                            print("You hit an asteroid!")
+                            died = True
+                        grid[player[1]][player[0]] = "O"
+                        player[0],player[1] = x,y
+                        grid[player[1]][player[0]] = "W"
+                    else:
+                        print("can't move that far!")
+                else:
+                    print("space isn't that big!")
+            else:
+                print("please provide a number coordinate")
+        else:
+            print("please provide an x and y coordinate")
+    if died:
+        # create a list for the asteroids
+        grid = []
+        for y in range(height):
+            grid.append([])
+            for x in range(width):
+                grid[y].append(random.random() > 0.8 and "X" or "O")
+                player = [5,0]
+        grid[player[1]][player[0]] = "W"
+        move = False
+print("You made it out of the asteroid field, nicely done!")
+
+# the player goes to a gate
+gate = random_from_list(["A", "B", "C", "E", "D", "F"])
+print(stories["go_to_gate"]+gate+".")
+time.sleep(2)
+
+print(f"You arrive at gate {gate}.",end="\n\n")
+time.sleep(2)
+print("Before entering you have to show your passport to the customs.")
+time.sleep(2)
+print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
+time.sleep(2)
+print("You enter the spaceship and take a seat somewhere in the back.")
+time.sleep(2)
+print("You depart from the spaceport for the last time.",end="\n\n")
+time.sleep(2)
+print("Travelling",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+time.sleep(1)
+
+print("Time to go back home.")
+time.sleep(2)
+gate = random_from_list(["A", "B", "C", "E", "D", "F"])
+print(stories["go_to_gate"]+gate+".")
+time.sleep(2)
+
+print(f"You arrive at gate {gate}.",end="\n\n")
+time.sleep(2)
+print("Before entering you have to show your passport to the customs for the last time.")
+time.sleep(2)
+print(f"\"Thank you, have a nice return home {speler_data['name']}!\"")
+time.sleep(2)
+print("You enter the spaceship fall asleep.")
+time.sleep(2)
+print("You depart from the spaceport for the last time.",end="\n\n")
+time.sleep(2)
+print("Travelling",end="",flush=True)
+
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+
+time.sleep(1)
+print("You get woken up by the jolt of the spaceship touching the launchpad.")
+time.sleep(2)
+print("But when you want to get out and return home, you notice that you're still in zero g...")
