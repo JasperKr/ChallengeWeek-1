@@ -2,7 +2,7 @@ import random
 import time
 import story
 import riddles
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = False, oxygen = False, sandwich = False, fruit = False)
 speler_data = dict(name = "")
 stories = story.story
 command_line_colors = dict(
@@ -388,7 +388,7 @@ print(stories["go_to_places_saturn"])
 time.sleep(2)
 player_answer = ""
 while player_answer != "hotel":
-    player_answer = input("Where do you want to do? Go to the shop, Take a walk or go back to the hotel and sleep. shop/walk/hotel: ")
+    player_answer = input("What do you want to do? Go to the shop, Take a walk or go back to the hotel and sleep. shop/walk/hotel: ")
     time.sleep(2)
     if find_similarity(player_answer,"shop") >= 0.75:
         print(stories["go_to_shop_saturn"])
@@ -398,13 +398,17 @@ while player_answer != "hotel":
             player_shop_answer = input("What do you want to buy? They have sandwiches, canned soup and a lot of it and fruit. sandwich/soup/fruit/leave: ")
             time.sleep(2)
             if find_similarity(player_shop_answer,"sandwich") >= 0.75:
-                print("You take a nice sandwich for tomorrow.")
+                inventory["sandwich"] = True
+                print("You take a nice sandwich for tomorrow.\n")
             elif find_similarity(player_shop_answer,"soup") >= 0.75:
-                print("You take some soup for tonight")
+                inventory["soup"] = True
+                print("You take some soup for tonight.\n")
             elif find_similarity(player_shop_answer,"fruit") >= 0.75:
-                print("You take some fruit with you, an apple a day keeps the doctor away!")
+                inventory["fruit"] = True
+                print("You take some fruit with you, an apple a day keeps the doctor away!\n")
             elif find_similarity(player_shop_answer,"leave") >= 0.75:
-                print("You decide to leave the shop, but not without taking some extra oxygen bottles with you, never know when they will come in handy.")
+                inventory["oxygen"] = True
+                print("You decide to leave the shop, but not without taking some extra oxygen bottles with you, never know when they will come in handy.\n")
             time.sleep(2)
 
 
@@ -422,12 +426,12 @@ time.sleep(3)
 print(command_line_colors["red"]+stories["saturn_refinery_disaster"])
 time.sleep(8)
 print(stories["saturn_refinery_main_story"])
-time.sleep(5)
+time.sleep(6)
 print(stories["evacuate_saturn_refinery"])
-time.sleep(3)
+time.sleep(6)
 print(command_line_colors["white"])
 
-print(stories["crash_with_asteroïds"])    
+print(stories["crash_with_asteroids"])    
 oxygen_repaired = False
 engine_repaired = False
 people_calmed_down = False
@@ -543,6 +547,7 @@ else:
         while attempts <= 2:
             attempts += 1
             player_answer = input(questions[question_index])
+            time.sleep(2)
             if type(answers[question_index][0]) == "string":
                 correct = False
                 for answer in answers[question_index]:

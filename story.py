@@ -26,7 +26,7 @@ This place looks shadey. ",
     stay_at_station = "You decide to stay at the station",
     pass_out_at_station = "you fall asleep on a bench.",
     headphones_stolen = "After a while you wake up with your headphones missing.",
-    get_robbed = "After you've bought a souvenir, you want to return to the station. \n\
+    get_robbed = "You want to return to the station. \n\
 But while walking back, you see a man approaching you. \n\
 After he sees you looking around, he runs towards you and ",
     nice_person_helps = "tries to rob you, he would have succeeded if not for the person you helped a while back.\n\
@@ -68,14 +68,14 @@ You get on and safely get away from the station, they're going to mars.",
     crash_with_asteroids = "On your way to mars the alarm goes off.\n \
 Some asteroids have crashed in to the spaceship while trying to get away.\n \
 The engine of the spaceship has stopped, and you're now floating through space without control, there are some leaks due to the asteroids.",
-    story_choice_asteroïds = "What are you going to do? Close the hull breaches (type: hull), repair the engine (type: repair engine) or calm down the refugees (type: calm down) ",
+    story_choice_asteroids = "What are you going to do? Close the hull breaches (type: hull), repair the engine (type: repair engine) or calm down the refugees (type: calm down) ",
     go_to_places_saturn = "You decide to go look around and find a couple of places you can go around here.",
     walk_around_saturn_refinery = "After walking around for a while, you get used to the humm of the distant machinery. \n \
 The view is amazing, seemingly endless amounts of asteroids flying by faster than you can blink. ",
     go_back_to_hotel_saturn_refinery = "You decide to go back to the hotel, that's enough for today.",
     go_to_shop_saturn = "You decide to go look around for some shops, maybe get something to eat while you wait. \n \
 After walking around for a bit you finally find the store, It's really big.",
-    out_of_the_asteroïdf_belt = "You safely left the asteroïd belt. There are no deads. \n\
+    out_of_the_asteroid_belt = "You safely left the asteroïd belt. There are no deads. \n\
 There is one wounded though. Your friend, who had come with you, is bleeding heavily. \n\
 If you don't do anything on time, he will die.",
     friend_wounded = "Do you want to stitch your friends wound up or do you want to put a bandage around the wound? (stitch/bandage): "
