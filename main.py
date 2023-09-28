@@ -1,10 +1,12 @@
 import random
 import time
 import story
+import story_2
 import riddles
 inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0)
 speler_data = dict(name = "")
 stories = story.story
+stories_2 = story_2.story_2
 command_line_colors = dict(
     red = '\033[91m',
     white = '\033[0;0m',
