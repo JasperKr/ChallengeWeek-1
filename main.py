@@ -467,7 +467,7 @@ while Dead or first_time:
     people_calmed_down = False
     first_time = False
     while (oxygen_repaired == False or engine_repaired == False or people_calmed_down == False) and gameover == False:
-        choice_asteroids = input(stories["story_choice_asteroids \n\n"])
+        choice_asteroids = input(stories["story_choice_asteroids"]+"\n\n")
     
         poging += 1
         if poging > 3:
