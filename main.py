@@ -559,7 +559,7 @@ else:
     print("To help the people, you have to get two answers right within 3 attempts.")
     question_index = random.randint(0,3)
     amount_correct = 0
-    for i in range(1): # two questions
+    for i in range(2): # two questions
         question_index = (question_index + 1) % 4
         player_answer = ""
         attempts = 0
