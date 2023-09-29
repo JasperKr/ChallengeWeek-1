@@ -598,7 +598,7 @@ What do you want to repair now? \n\n")
                     time.sleep()
 
     if oxygen_repaired and people_calmed_down and engine_repaired:
-        print("Everything solved! The ship goes on to a supply station. \n\n")
+        print("You start navigating to a supply station. \n\n")
         time.sleep(1)
     else:
         print(command_line_colors["red"]+"Game over. Try again\n\n")
@@ -758,7 +758,7 @@ while player[1] != 19:
     print(command_line_colors["white"],end="",flush=True)
     moved = False
     while not moved and not died:
-        split_text = input("give new coodinates: x,y: ").split(",")
+        split_text = input("give new coordinates: x,y: ").split(",")
         if len(split_text) == 2:
             move_to_x,move_to_y = split_text[0],split_text[1]
             if move_to_x.isnumeric() and move_to_y.isnumeric():
