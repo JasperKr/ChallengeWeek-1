@@ -7,7 +7,7 @@ story_2 = dict(
 What do you do: try to find it and reattach it, or change the tire. (find/change) ",
     go_to_mars = "When the ship is supplied, and you have supplied yourself as well, the ship goes on to mars. ",
     arrival_supply_station = "When you have arrived, you can buy some food to restore you food supplies. ",
-    input_shop_supply_station = "Wich shop do you want to choose: the Jumbo, the Aldi or the Lidl? (Jumbo/Aldi/Lidl): ",
+    choice_shop_supply_station = "Wich shop do you want to choose: the Jumbo, the Hema or the Lidl? (Jumbo/Hema/Lidl): ",
     departure_supply_station = "The ship is leaving the station and goes to mars. You have to take the right gate. \n\
 The destination of your ship has the letter of the right gate in it. Available gates: k, l, m, n, o, p. (k/l/m/n/o/p): "
 )
