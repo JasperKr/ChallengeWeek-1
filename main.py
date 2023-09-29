@@ -822,13 +822,14 @@ while not right_gate_boolean:
 
 print(stories_2["going_to_mars"])
 inventory["fish_fingers_or_tompouce_or_broccoli"] -= 1
-print("ZZZZZZZzzzzzzzz",end="",flush=True)
+print("ZzZZzZZzZzZzzZz",end="",flush=True)
 
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+travel_to_place_on_image(images.images["saturn_to_mars"],[16,5],[17,14],0.5,9)
 
 print(stories["arrival_mars"])
+time.sleep(4)
+draw_image(images.images["mars"])
+time.sleep(4)
 mars_jeep__or_train = input(stories["jeep_or_train"])
 made_choice = False
 while not made_choice:
