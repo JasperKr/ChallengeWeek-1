@@ -3,16 +3,42 @@ import time
 import story
 import story_2
 import riddles
+import images
 inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False)
 speler_data = dict(name = "")
 stories = story.story
 stories_2 = story_2.story_2
 command_line_colors = dict(
-    red = '\033[91m',
-    white = '\033[0;0m',
-    yellow = '\033[93m',
-    green = '\033[92m',
+    r = '\33[91m',
+    w = '\33[37m',
+    y = '\33[93m',
+    g = '\33[32m',
+    b = '\33[34m',
+    bl = '\33[30m',
+    gr = '\33[90m'
 )
+def draw_image(image):
+    for y in range(image[0]):
+        # draw the numbers for the y axis
+        for x in range(image[1]):
+            print(command_line_colors[image[y+2][x]],end="",flush=True)
+            print("██",end="",flush=True)
+        print()
+    print(command_line_colors["w"])
+def draw_image_with_ship(image,sx,sy):
+    for y in range(image[0]):
+        # draw the numbers for the y axis
+        for x in range(image[1]):
+            if x == sx and y == sy:
+                print(command_line_colors["r"],end="",flush=True)
+            else:
+                print(command_line_colors[image[y+2][x]],end="",flush=True)
+            print("██",end="",flush=True)
+        print()
+    print(command_line_colors["w"])
+# create a list for the asteroids
+# set the player position
+
 def random_chance(chance):
     return random.random() < (chance / 100)
 def random_from_list(list):
@@ -47,6 +73,14 @@ def find_similarity(string: str, other: str):
             i += 1
         similarity /= i
     return similarity
+def mix(v,w,i):
+    return (1-i)*v+w*i
+def travel_to_place_on_image(image,start,to,printDelay,amount):
+    for i in range(amount):
+        current_time = i / (amount-1)
+        position = [round(mix(start[0],to[0],current_time)),round(mix(start[1],to[1],current_time))]
+        draw_image_with_ship(image,position[0],position[1])
+        time.sleep(printDelay)
 print(stories["intro"]) # begin of the game, print the starting text
 time.sleep(3)
 
@@ -62,11 +96,8 @@ while not name_correct: # while your name is not correctly input, keep asking
     name_correct = input(f"So, {speler_data['name']}? y/n: ") == "y"
 
 print(stories["departure_earth"],end="\n\n") # print text to leave earth and add two new lines
-print("Travelling",end="",flush=True)
-
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+print("Travelling",flush=True)
+travel_to_place_on_image(images.images["earth_to_moon"],[11,12],[11,8],1.5,5)
 print(stories["arrival_spaceport"],end="\n\n")
 time.sleep(5)
 
@@ -196,11 +227,9 @@ if inventory["nice_person"]:
 else:
     print("You depart from the spaceport. While listening to some music",end="\n\n")
 time.sleep(2)
-print("Travelling",end="",flush=True)
+print("Travelling",flush=True)
 
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+travel_to_place_on_image(images.images["earth_to_moon"],[11,8],[8,1],0.75,10)
 print(stories["arrival_spaceport_2"], end="\n\n")
 time.sleep(5)
 print(stories["transfer_to_another_spaceship"])
@@ -258,11 +287,9 @@ else:
     print(stories["you_talk_to_someone"])
     inventory["friend"]
     time.sleep(3)
-print("After hours of talking",end="",flush=True)
+print("After hours of talking",flush=True)
 
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+travel_to_place_on_image(images.images["moon_station_to_moon"],[11,3],[15,17],0.5,16)
 
 print(stories["landing_on_moon"])
 time.sleep(3)
@@ -827,4 +854,3 @@ time.sleep(1)
 print("You get woken up by the jolt of the spaceship touching the launchpad.")
 time.sleep(2)
 print("But when you want to get out and return home, you notice that you're still in zero g...")
-test = "◢◣◥◤▉▉▉▉▉▉         "
