@@ -669,7 +669,7 @@ He owes you something, because you saved his life. ")
                 attempts += 1
                 player_answer = input(questions[question_index])
                 time.sleep(2)
-                if type(answers[question_index][0]) == "string":
+                if type(answers[question_index][0]) == str:
                     for answer in answers[question_index]:
                         if not correct:
                             if find_similarity(answer,player_answer) > 0.75:
