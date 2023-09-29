@@ -79,8 +79,8 @@ After walking around for a bit you finally find the store, It's really big.",
 There are a couple of wounded though. Your friend, who came with you, is bleeding heavily. \n\
 If you don't do anything on time, he will die.",
     friend_wounded = "Do you want to stitch your friends wound up or do you want to put a bandage around the wound? stitch/bandage: ",
-    go_to_mars = "You survived the asteroids. You take a seat in the spaceship and you fall asleep.",
-    arrival_mars = "When you arrive at mars, someone wakes you. \n\
+    go_to_supply_station = "You survived the asteroids. You take a seat in the spaceship. The next stop is a supply station. ",
+    arrival_mars = "When you arrive at the mars, someone wakes you. \n\
 When looking around, you notice that your fellow travelers also want to go to earth, like you. \n\
 They ask you if you want to travel with them and you say yes. ",
     jeep_or_train = "At the station you have two options. Do you want to take the jeep or the train? jeep/train: "
