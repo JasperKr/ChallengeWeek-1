@@ -598,7 +598,7 @@ What do you want to repair now? \n\n")
                     time.sleep()
 
     if oxygen_repaired and people_calmed_down and engine_repaired:
-        print("Everything solved! The ship goes on to a supply station. \n\n")
+        print("You start navigating to a supply station. \n\n")
         time.sleep(1)
     else:
         print(command_line_colors["red"]+"Game over. Try again\n\n")
