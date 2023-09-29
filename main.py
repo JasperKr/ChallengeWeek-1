@@ -400,11 +400,9 @@ print(stories["leave_the_moon"])
 inventory["cookies"] = False
 time.sleep(3)
 
-print("travelling",end="",flush=True)
+print("travelling",flush=True)
 
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+travel_to_place_on_image(images.images["moon_station_to_moon"],[15,17],[11,3],0.5,16)
 
 choice = input("Do you want to go to saturn first or straight back home? saturn/home: ")
 time.sleep(2)
