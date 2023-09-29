@@ -18,10 +18,6 @@ def color(text, rgb):
     return "\033[38;2;{};{};{}m{}\033[0m".format(
         str(rgb[0]), str(rgb[1]), str(rgb[2]), text
     )
-
-def color_ansi(text, color):
-    return "{}{}\033[0m".format(color, text)
-
 def draw_image(image):
     for y in range(image[0]):
         # draw the numbers for the y axis
@@ -37,7 +33,6 @@ def draw_image_with_ship(image,sx,sy):
                 print(color("██",[255,0,0]),end="",flush=True)
             else:
                 print(color("██",image[y+2][x]),end="",flush=True)
-            print("██",end="",flush=True)
         print()
     print(command_line_colors["white"])
 # create a list for the asteroids
@@ -77,6 +72,14 @@ def find_similarity(string: str, other: str):
             i += 1
         similarity /= i
     return similarity
+def mix(v,w,i):
+    return (1-i)*v+w*i
+def travel_to_place_on_image(image,start,to,printDelay,amount):
+    for i in range(amount):
+        current_time = i / (amount-1)
+        position = [round(mix(start[0],to[0],current_time)),round(mix(start[1],to[1],current_time))]
+        draw_image_with_ship(image,position[0],position[1])
+        time.sleep(printDelay)
 print(stories["intro"]) # begin of the game, print the starting text
 time.sleep(3)
 
@@ -92,11 +95,8 @@ while not name_correct: # while your name is not correctly input, keep asking
     name_correct = input(f"So, {speler_data['name']}? y/n: ") == "y"
 
 print(stories["departure_earth"],end="\n\n") # print text to leave earth and add two new lines
-print("Travelling",end="",flush=True)
-
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+print("Travelling",flush=True)
+travel_to_place_on_image(images.images["earth_to_moon"],[11,12],[11,8],1.5,5)
 print(stories["arrival_spaceport"],end="\n\n")
 time.sleep(5)
 
@@ -232,11 +232,9 @@ else:
     print("You depart from the spaceport. While listening to some music",end="\n\n")
     inventory["orange_juice"] = False
 time.sleep(2)
-print("Travelling",end="",flush=True)
+print("Travelling",flush=True)
 
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+travel_to_place_on_image(images.images["earth_to_moon"],[11,8],[8,1],0.75,10)
 print(stories["arrival_spaceport_2"], end="\n\n")
 time.sleep(5)
 print(stories["transfer_to_another_spaceship"])
@@ -296,11 +294,8 @@ else:
     print(stories["you_talk_to_someone"])
     inventory["friend"]
     time.sleep(3)
-print("After hours of talking",end="",flush=True)
-
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+print("After hours of talking",flush=True)
+travel_to_place_on_image(images.images["moon_station_to_moon"],[11,3],[15,17],0.5,16)
 
 print(stories["landing_on_moon"])
 time.sleep(3)
@@ -312,6 +307,7 @@ while player_answer != "y" and player_answer != "n":
         inventory["photo"] = True
         time.sleep(2)
         print(stories["photo_taken"])
+        draw_image(images.images["picture_from_friend"])
     elif player_answer == "n":
         print(stories["photo_not_taken"])
         time.sleep(2)
@@ -423,11 +419,9 @@ print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
 time.sleep(2)
 print("You enter the spaceship and take a seat by the window.")
 
-print("Travelling",end="",flush=True)
+print("Travelling",flush=True)
 
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+travel_to_place_on_image(images.images["moon_to_saturn"],[0,6],[12,2],0.5,12)
 
 print(stories["arrival_spaceport_saturn"])
 time.sleep(3)
