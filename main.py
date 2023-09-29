@@ -9,11 +9,46 @@ speler_data = dict(name = "")
 stories = story.story
 stories_2 = story_2.story_2
 command_line_colors = dict(
-    red = '\033[91m',
-    white = '\033[0;0m',
-    yellow = '\033[93m',
-    green = '\033[92m',
+    r = '\33[91m',
+    w = '\33[37m',
+    y = '\33[93m',
+    g = '\33[32m',
+    b = '\33[34m',
+    bl = '\33[30m',
+    gr = '\33[90m',
+    o = '\33[33m'
 )
+def color(rgb,text):
+    return "\033[38;2;{};{};{}m\033[0m".format(
+        str(rgb[0]), str(rgb[1]), str(rgb[2]), text
+    )
+def color_ansi(text, color):
+    return "{}{}\033[0m".format(color, text)
+
+print(color_ansi([255,0,0],"test"))
+def draw_image(image):
+    for y in range(image[0]):
+        # draw the numbers for the y axis
+        for x in range(image[1]):
+            print(command_line_colors[image[y+2][x]],end="",flush=True)
+            print("██",end="",flush=True)
+        print()
+    print(command_line_colors["w"])
+draw_image(images.images["moon_to_saturn"])
+def draw_image_with_ship(image,sx,sy):
+    for y in range(image[0]):
+        # draw the numbers for the y axis
+        for x in range(image[1]):
+            if x == sx and y == sy:
+                print(command_line_colors["r"],end="",flush=True)
+            else:
+                print(command_line_colors[image[y+2][x]],end="",flush=True)
+            print("██",end="",flush=True)
+        print()
+    print(command_line_colors["w"])
+# create a list for the asteroids
+# set the player position
+
 def random_chance(chance):
     return random.random() < (chance / 100)
 def random_from_list(list):
