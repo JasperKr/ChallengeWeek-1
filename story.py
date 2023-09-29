@@ -20,7 +20,7 @@ Which one do you want to go to?",
     you_do_not_help_someone = "You ignore him and keep on walking.",
     arrival_spaceport_2 = "You arrived at the last spaceport before arriving at the moon. \n\
 This place looks shadey. ",
-    transfer_to_another_spaceship = "You have to wait another 8 hours before continuing your journey",
+    transfer_to_another_spaceship = "You have to wait another 8 hours before you continue with your journey",
     ask_to_explore_the_station = "Do you want to explore the station and find out what's there or not? y/n: ",
     explore_the_station = "While exploring the station, you find a souvenirshop.",
     stay_at_station = "You decide to stay at the station",
