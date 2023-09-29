@@ -537,9 +537,9 @@ while player_answer != "people" and player_answer != "friend":
     if player_answer == "friend":
         friend_saved = False
         friend_dead = False
-        while not friend_saved or not friend_dead:
+        while not friend_saved and not friend_dead:
             friend_wounded_input = input(stories["friend_wounded"])
-            while friend_wounded_input != "stitch" and friend_wounded_input != "bandage" or not friend_dead or not friend_saved:
+            while (friend_wounded_input == "stitch" or friend_wounded_input == "bandage") and not friend_dead and not friend_saved:
                 if friend_wounded_input == "stitch":
                     need_alcohol = input("Do you want to poor some alcohol on your friends wound \
 to desinfect the wound and to make it bleed less? (y/n): ")
@@ -555,13 +555,13 @@ Anyways, he says he owes you something.")
                         time.sleep(2)
                 elif friend_wounded_input == "bandage":
                     if random_chance(33):
-                        print(f"After all you tried to help {friend_names}, but he dies of the wound he had. The bandage was too lose. ")
+                        print(f"After all you tried to help {friend_names}, but he dies of the wound he had. The bandage was too loose. ")
                         inventory["friend"] = False
                         friend_dead = True
                         time.sleep(2)
                     else:
                         print(f"Luckily {friend_names} survived after you put the bandage tight around his wound. \n\
-He ows you something, because you saved his life. ")
+He owes you something, because you saved his life. ")
                         friend_saved = True
                         time.sleep(2)
                 else:
@@ -827,3 +827,4 @@ time.sleep(1)
 print("You get woken up by the jolt of the spaceship touching the launchpad.")
 time.sleep(2)
 print("But when you want to get out and return home, you notice that you're still in zero g...")
+test = "◢◣◥◤▉▉▉▉▉▉         "
