@@ -3,7 +3,8 @@ import time
 import story
 import story_2
 import riddles
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False, fish_fingers_or_tompouce_or_broccoli = False, orange_juice = False, bread = False)
+import images
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False)
 speler_data = dict(name = "")
 stories = story.story
 stories_2 = story_2.story_2
@@ -516,12 +517,7 @@ What do you want to repair now? \n")
                         time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
                         print("You repaired the hull and you solved everything. Congratulations. The ship can move on. \n")
-                        if inventory["sandwich"] >= 1:
-                            inventory["sandwich"] -= 1
-                        elif inventory["soup"] >= 1:
-                            inventory["soup"] -= 1
-                        elif inventory["fruit"] >= 1:
-                            inventory["fruit"] -= 1
+                        
                         time.sleep(1)
                 elif choice_asteroids == "repair engine":
                     engine_repaired = True
