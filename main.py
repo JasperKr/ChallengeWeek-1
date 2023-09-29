@@ -484,7 +484,8 @@ while Dead or first_time:
                 poging = 0
             elif poging == 1 and choice_asteroids == "hull":
                 oxygen_repaired = True
-                print("You repaird the hull. \n")
+                print("You have repaired the hull. \n\
+What do you want to repair now? \n")
                 time.sleep(1)
             else:
                 if choice_asteroids == "hull":
@@ -520,7 +521,7 @@ What do you want to repair now? \n\n")
                     time.sleep()
 
     if oxygen_repaired and people_calmed_down and engine_repaired:
-        print("Alles opgelost! \n\n")
+        print("Everything solved! The ship goes on to mars \n\n")
         time.sleep(1)
     else:
         print(command_line_colors["red"]+"Game over. Try again\n\n")
@@ -533,96 +534,96 @@ player_answer = ""
 while player_answer != "people" and player_answer != "friend":
     player_answer = input("Will you help the group of people stuck under some rubble first or your friend? people/friend: ")
     time.sleep(2)
-if player_answer == "friend":
-    friend_saved = False
-    while not friend_saved:
-        friend_wounded_input = input(stories["friend_wounded"])
+    if player_answer == "friend":
+        friend_saved = False
         friend_dead = False
-        while friend_wounded_input != "stitch" or friend_wounded_input != "bandage" or friend_dead or friend_saved:
-            if friend_wounded_input == "stitch":
-                need_alcohol = input("Do you want to poor some alcohol on your friends wound \
+        while not friend_saved or not friend_dead:
+            friend_wounded_input = input(stories["friend_wounded"])
+            while friend_wounded_input != "stitch" and friend_wounded_input != "bandage" or not friend_dead or not friend_saved:
+                if friend_wounded_input == "stitch":
+                    need_alcohol = input("Do you want to poor some alcohol on your friends wound \
 to desinfect the wound and to make it bleed less? (y/n): ")
-                if need_alcohol == "y":
-                    print(f"Luckily {friend_names} survived because of your good treatment. One mistake and he would have been dead. \
+                    if need_alcohol == "y":
+                        print(f"Luckily {friend_names} survived because of your good treatment. One mistake and he would have been dead. \
 Anyways, he says he owes you something.")
-                    friend_saved = True
-                    time.sleep(2)
-                elif need_alcohol == "n":
-                    print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
-                    inventory["friend"] = False
-                    friend_dead = True
-                    time.sleep(2)
-            elif friend_wounded_input == "bandage":
-                if random_chance(33):
-                    print(f"After all you tried to help {friend_names}, but he dies of the wound he had. The bandage was too lose. ")
-                    inventory["friend"] = False
-                    friend_dead = True
-                    time.sleep(2)
-                else:
-                    print(f"Luckily {friend_names} survived after you put the bandage tight around his wound. \n\
+                        friend_saved = True
+                        time.sleep(2)
+                    elif need_alcohol == "n":
+                        print(f"Sorry, but {friend_names} died while trying to stitch his wound. ")
+                        inventory["friend"] = False
+                        friend_dead = True
+                        time.sleep(2)
+                elif friend_wounded_input == "bandage":
+                    if random_chance(33):
+                        print(f"After all you tried to help {friend_names}, but he dies of the wound he had. The bandage was too lose. ")
+                        inventory["friend"] = False
+                        friend_dead = True
+                        time.sleep(2)
+                    else:
+                        print(f"Luckily {friend_names} survived after you put the bandage tight around his wound. \n\
 He ows you something, because you saved his life. ")
-                    friend_saved = True
+                        friend_saved = True
+                        time.sleep(2)
+                else:
+                    print("How dare you to treat your friend like that. Do you want him to die?")
                     time.sleep(2)
-            else:
-                print("How dare you to treat your friend like that. Do you want him to die?")
-                time.sleep(2)
-else:
-    questions = [
-        "What is the temperature of the sun? ",
-        "How many moons does mars have? ",
-        "What is the closest solar system to us? ",
-        "How is the biggest asteroid called in the asteroid belt? ",
-    ]
-    answers = [
-        [5780,5780+273],
-        [2],
-        ["alpha centauri"],
-        ["ceres"],
-    ]
-    print("To help the people, you have to get two answers right within 3 attempts.")
-    question_index = random.randint(0,3)
-    amount_correct = 0
-    for i in range(2): # two questions
-        question_index = (question_index + 1) % 4
-        player_answer = ""
-        attempts = 0
-        correct = False
-        while attempts <= 2 and not correct:
-            attempts += 1
-            player_answer = input(questions[question_index])
-            time.sleep(2)
-            if type(answers[question_index][0]) == "string":
-                for answer in answers[question_index]:
-                    if not correct:
-                        if find_similarity(answer,player_answer) > 0.75:
-                            print("Correct!")
-                            correct = True
-                            amount_correct += 1
-                    if not correct:
-                        if attempts != 2:
-                            print("Try again.")
-                        else:
-                            print("Too bad, you didn't get it within 3 attempts.")
-            else:
-                for answer in answers[question_index]:
-                    if not correct:
-                        if abs(1-answer/int(player_answer)) < 0.1: # als de afwijking minder dan 10% is
-                            print("Correct!\n")
-                            correct = True
-                            amount_correct += 1
-                    if not correct:
-                        if attempts != 2:
-                            print("Try again.\n")
-                        else:
-                            print("Too bad, you didn't get it within 3 attempts.\n")
-            time.sleep(2)
-    if amount_correct == 0:
-        print("You weren't able to help anyone.")
-    elif amount_correct == 1:
-        print("You could only help one person.")
     else:
-        print("You were able to help everyone!")
-    time.sleep(2)
+        questions = [
+            "What is the temperature of the sun? ",
+            "How many moons does mars have? ",
+            "What is the closest solar system to us? ",
+            "How is the biggest asteroid called in the asteroid belt? ",
+        ]
+        answers = [
+            [5780,5780+273],
+            [2],
+            ["alpha centauri"],
+            ["ceres"],
+        ]
+        print("To help the people, you have to get two answers right within 3 attempts.")
+        question_index = random.randint(0,3)
+        amount_correct = 0
+        for i in range(2): # two questions
+            question_index = (question_index + 1) % 4
+            player_answer = ""
+            attempts = 0
+            correct = False
+            while attempts <= 2 and not correct:
+                attempts += 1
+                player_answer = input(questions[question_index])
+                time.sleep(2)
+                if type(answers[question_index][0]) == "string":
+                    for answer in answers[question_index]:
+                        if not correct:
+                            if find_similarity(answer,player_answer) > 0.75:
+                                print("Correct!")
+                                correct = True
+                                amount_correct += 1
+                        if not correct:
+                            if attempts != 2:
+                                print("Try again.")
+                            else:
+                                print("Too bad, you didn't get it within 3 attempts.")
+                else:
+                    for answer in answers[question_index]:
+                        if not correct:
+                            if abs(1-answer/int(player_answer)) < 0.1: # als de afwijking minder dan 10% is
+                                print("Correct!\n")
+                                correct = True
+                                amount_correct += 1
+                        if not correct:
+                            if attempts != 2:
+                                print("Try again.\n")
+                            else:
+                                print("Too bad, you didn't get it within 3 attempts.\n")
+                time.sleep(2)
+        if amount_correct == 0:
+            print("You weren't able to help anyone.")
+        elif amount_correct == 1:
+            print("You could only help one person.")
+        else:
+            print("You were able to help everyone!")
+        time.sleep(2)
 
 print("It isn't done yet! You still have to get out of the asteroid field, to navigate, \n\
 give the coordinates of the next place you want to go to, you can move one tile, \n\
