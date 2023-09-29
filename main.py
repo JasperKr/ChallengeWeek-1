@@ -548,7 +548,7 @@ What do you want to repair now? \n\n")
                     time.sleep()
 
     if oxygen_repaired and people_calmed_down and engine_repaired:
-        print("Everything solved! The ship goes on to mars \n\n")
+        print("Everything solved! The ship goes on to a supply station. \n\n")
         time.sleep(1)
     else:
         print(command_line_colors["red"]+"Game over. Try again\n\n")
@@ -741,6 +741,34 @@ while player[1] != 19:
         grid[player[1]][player[0]] = "V"
         move = False
 print("You made it out of the asteroid field, nicely done!")
+
+print(stories["go_to_supply_station"])
+print(stories_2["arrival_supply_station"])
+shop_supply_station_boolean = False
+while not shop_supply_station_boolean:
+    input_shop_supply_station = input(stories_2["choice_shop_supply_station"])
+    if input_shop_supply_station == "Jumbo":
+        print("You are able to buy enough food for the way to mars. Your food consists largely of fish fingers. ")
+        inventory["fish_fingers"] = True
+        shop_supply_station_boolean = True
+    elif input_shop_supply_station == "Hema":
+        print("You are able to buy enough food for the way to mars. Your food consists largely of tompouce. ")
+        inventory["tompouce"] = True
+        shop_supply_station_boolean = True
+    elif input_shop_supply_station == "Lidl":
+        print("You are able to buy enough food for the way to mars. Your food consists largely of broccoli. ")
+        inventory["broccoli"] = True
+        shop_supply_station_boolean = True
+    else:
+        print("You cannot choose this shop. ")
+departure_supply_station_input = input(stories_2["departure_supply_station"])
+right_gate_boolean = False
+while not right_gate_boolean:
+    if departure_supply_station_input == "m":
+        print("Your choice was good. This is the right gate. Your journey goes on. ")
+        right_gate_boolean = True
+    else:
+        print("This is the wrong gate. Try it again. ")
 
 print(stories["going_to_mars"])
 print("ZZZZZZZzzzzzzzz",end="",flush=True)
