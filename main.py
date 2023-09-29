@@ -400,11 +400,9 @@ print(stories["leave_the_moon"])
 inventory["cookies"] = False
 time.sleep(3)
 
-print("travelling",end="",flush=True)
+print("travelling",flush=True)
 
-for i in range(10):
-    time.sleep(0.5)
-    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+travel_to_place_on_image(images.images["moon_station_to_moon"],[15,17],[11,3],0.5,16)
 
 choice = input("Do you want to go to saturn first or straight back home? saturn/home: ")
 time.sleep(2)
@@ -432,7 +430,9 @@ print("Travelling",flush=True)
 travel_to_place_on_image(images.images["moon_to_saturn"],[0,6],[12,2],0.5,12)
 
 print(stories["arrival_spaceport_saturn"])
-time.sleep(3)
+time.sleep(4)
+draw_image(images.images["saturn_station"])
+time.sleep(4)
 print(stories["go_to_places_saturn"])
 time.sleep(2)
 player_answer = ""
@@ -933,4 +933,3 @@ time.sleep(1)
 print("You get woken up by the jolt of the spaceship touching the launchpad.")
 time.sleep(2)
 print("But when you want to get out and return home, you notice that you're still in zero g...")
-test = "◢◣◥◤▉▉▉▉▉▉         "
