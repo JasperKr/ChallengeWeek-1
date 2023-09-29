@@ -424,7 +424,9 @@ print("Travelling",flush=True)
 travel_to_place_on_image(images.images["moon_to_saturn"],[0,6],[12,2],0.5,12)
 
 print(stories["arrival_spaceport_saturn"])
-time.sleep(3)
+time.sleep(4)
+draw_image(images.images["saturn_station"])
+time.sleep(4)
 print(stories["go_to_places_saturn"])
 time.sleep(2)
 player_answer = ""
@@ -925,4 +927,3 @@ time.sleep(1)
 print("You get woken up by the jolt of the spaceship touching the launchpad.")
 time.sleep(2)
 print("But when you want to get out and return home, you notice that you're still in zero g...")
-test = "◢◣◥◤▉▉▉▉▉▉         "
