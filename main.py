@@ -758,7 +758,7 @@ while player[1] != 19:
     print(command_line_colors["white"],end="",flush=True)
     moved = False
     while not moved and not died:
-        split_text = input("give new coodinates: x,y: ").split(",")
+        split_text = input("give new coordinates: x,y: ").split(",")
         if len(split_text) == 2:
             move_to_x,move_to_y = split_text[0],split_text[1]
             if move_to_x.isnumeric() and move_to_y.isnumeric():
