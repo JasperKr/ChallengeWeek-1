@@ -4,7 +4,7 @@ import story
 import story_2
 import riddles
 import images
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False, orange_juice = False, fish_fingers_or_tompouce_or_broccoli = 0, bread = False, cookies = False, starbucks = False)
 speler_data = dict(name = "")
 stories = story.story
 stories_2 = story_2.story_2
@@ -278,11 +278,13 @@ while player_answer != "n" and player_answer != "y":
         inventory["headphones"] = False
         time.sleep(2)
         print(stories["headphones_stolen"])
+        inventory["bread"] = True
         time.sleep(2)
     else:
         print("what did you say?")
 
 print(stories["spaceship2_departs"])
+inventory["bread"] = False
 time.sleep(2)
 friend_names = random_from_list(["Ben", "Jaap", "Klaas", "Jan", "Emily", "Rozanne", "Suzanne", "Annalies"])
 if inventory["bottle"]:
@@ -379,6 +381,9 @@ Enter your vault code to get your souvenir back: ")
         else:
             print("\nThe code is wrong. Try it again. \n")
 time.sleep(2)
+print("Before leaving the camping, you bought some cookies to eat on your way to saturn. ")
+inventory["cookies"] = True
+time.sleep(2)
 print(stories["go_to_spaceport_moon"])
 time.sleep(2)
 gate = random_from_list(["A", "B", "C", "E", "D", "F"])
@@ -392,6 +397,7 @@ print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
 time.sleep(2)
 
 print(stories["leave_the_moon"])
+inventory["cookies"] = False
 time.sleep(3)
 
 print("travelling",end="",flush=True)
@@ -407,6 +413,7 @@ if choice == "home":
     print(stories["go_to_saturn_anyways"])
 time.sleep(2)
 print(stories["get_starbucks"])
+inventory["starbucks"] = True
 time.sleep(2)
 gate = random_from_list(["A", "B", "C", "E", "D", "F"])
 print(stories["go_to_gate"]+gate+".")
@@ -417,7 +424,8 @@ print("Before entering you have to show your passport to the customs.")
 time.sleep(2)
 print(f"\"Thank you, have a nice flight {speler_data['name']}!\"")
 time.sleep(2)
-print("You enter the spaceship and take a seat by the window.")
+print("You enter the spaceship and take a seat by the window and there you drink your starbucks. ")
+inventory["starbucks"] = False
 
 print("Travelling",flush=True)
 
@@ -793,15 +801,15 @@ while not shop_supply_station_boolean:
     input_shop_supply_station = input(stories_2["choice_shop_supply_station"])
     if input_shop_supply_station == "Jumbo":
         print("You are able to buy enough food for the way to mars. Your food consists largely of fish fingers. ")
-        inventory["fish_fingers_or_tompouce_or_broccoli"] = True
+        inventory["fish_fingers_or_tompouce_or_broccoli"] += 1
         shop_supply_station_boolean = True
     elif input_shop_supply_station == "Hema":
         print("You are able to buy enough food for the way to mars. Your food consists largely of tompouce. ")
-        inventory["fish_fingers_or_tompouce_or_broccoli"] = True
+        inventory["fish_fingers_or_tompouce_or_broccoli"] += 1
         shop_supply_station_boolean = True
     elif input_shop_supply_station == "Lidl":
         print("You are able to buy enough food for the way to mars. Your food consists largely of broccoli. ")
-        inventory["fish_fingers_or_tompouce_or_broccoli"] = True
+        inventory["fish_fingers_or_tompouce_or_broccoli"] += 1
         shop_supply_station_boolean = True
     else:
         print("You cannot choose this shop. ")
@@ -815,7 +823,7 @@ while not right_gate_boolean:
         print("This is the wrong gate. Try it again. ")
 
 print(stories_2["going_to_mars"])
-inventory["fish_fingers_or_tompouce_or_broccoli"] = False
+inventory["fish_fingers_or_tompouce_or_broccoli"] -= 1
 print("ZZZZZZZzzzzzzzz",end="",flush=True)
 
 for i in range(10):

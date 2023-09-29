@@ -5,8 +5,9 @@ story_2 = dict(
     arrival_spaceport = "After a long journey, you arrive at the spaceport on mars. ",
     lose_tire_jeep = "Suddenly the jeep loses a tire, you probably clipped a rock. \n\
 What do you do: try to find it and reattach it, or change the tire. (find/change) ",
-    go_to_mars = "When the ship is ready and supplied, and you have supplied yourself as well, the ship goes to mars. ",
-    arrival_supply_station = "When you have arrived, you can buy some food to restore you food supplies. ",
+    go_to_mars = "When the ship is ready and supplied, and you have supplied yourself as well, the ship goes to mars. \n\
+You are hungry of shopping all day long, so you eat some of your food. ",
+    arrival_supply_station = "When you have arrived, you can buy some food to restore you food supplies all day long. ",
     choice_shop_supply_station = "Wich shop do you want to choose: the Jumbo, the Hema or the Lidl? (Jumbo/Hema/Lidl): ",
     departure_supply_station = "The ship is leaving the station and goes to mars. You have to take the right gate. \n\
 The destination of your ship has the letter of the right gate in it. Available gates: k, l, m, n, o, p. (k/l/m/n/o/p): "
