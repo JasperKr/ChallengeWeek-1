@@ -25,7 +25,9 @@ This place looks shadey. ",
     explore_the_station = "While exploring the station, you find a souvenirshop.",
     stay_at_station = "You decide to stay at the station",
     pass_out_at_station = "you fall asleep on a bench.",
-    headphones_stolen = "After a while you wake up with your headphones missing.",
+    headphones_stolen = "After a while you wake up with your headphones missing. \n\
+A passing person person saw it happening, but he did not get the headphone back. \n\
+Instead he gives you food, because he wanted to be nice and he's sorry for your headphones. ",
     get_robbed = "You want to return to the station. \n\
 But while walking back, you see a man approaching you. \n\
 After he sees you looking around, he runs towards you and ",
@@ -47,7 +49,7 @@ and make friends after a couple of hours talking. ",
     souvenir_breaks = "You dropped the souvenir, it's broken.",
     souvenir2_gets_stolen = "The souvenir is gone one night after going to the store, you assume it's been stolen.",
     go_to_spaceport_moon = "You take the train back to the spaceport.",
-    leave_the_moon = "You leave the moon after a nice vacation.",
+    leave_the_moon = "You leave the moon after a nice vacation. Also, you eat your cookies. ",
     announcement_flight_cancelled = "You hear an annoucement from the station's speakers: \
 \"Flight 71, going to Earth, Mars, Europa Has been cancelled.\" ",
     go_to_saturn_anyways = "you decide that you'll take the ship going to saturn then earth.",
