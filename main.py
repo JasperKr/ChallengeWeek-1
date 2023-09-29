@@ -3,7 +3,7 @@ import time
 import story
 import story_2
 import riddles
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False, fish_fingers = False, tompouce = False, broccoli = False)
 speler_data = dict(name = "")
 stories = story.story
 stories_2 = story_2.story_2
