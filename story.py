@@ -1,6 +1,6 @@
 story = dict(
     intro = "You have arrived at the launchpad. There is a security guard. ",
-    departure_earth = "you depart",
+    departure_earth = "you depart. ",
     arrival_spaceport = "You have arrived at a spaceport and you are going to the moon. \n\
 You may have forgotten your moon suit at home, but you're not sure.  \n\
 After looking around you can see a shoppingmall and what looks to be a pilot.\n\
@@ -20,7 +20,7 @@ Which one do you want to go to?",
     you_do_not_help_someone = "You ignore him and keep on walking.",
     arrival_spaceport_2 = "You arrived at the last spaceport before arriving at the moon. \n\
 This place looks shadey. ",
-    transfer_to_another_spaceship = "You have to wait another 8 hours before continuing your journey",
+    transfer_to_another_spaceship = "You have to wait another 8 hours before continueing your journey",
     ask_to_explore_the_station = "Do you want to explore the station and find out what's there or not? y/n: ",
     explore_the_station = "While exploring the station, you find a souvenirshop.",
     stay_at_station = "You decide to stay at the station",
@@ -36,7 +36,7 @@ You use it to defend yourself from the attacker but barely get away, you lost th
     get_robbed_without_help = "steals your headphones and souvenir",
     sleep_safely_at_station = "You find a safe place somewhere in the station and wake up right before the flight leaves, time to get ready.",
     spaceship2_departs = "You finaly go to the moon. ",
-    someone_wants_drink = f"The person next to you seems nice, so you start talking. \
+    someone_wants_drink = "The person next to you seems nice, so you start talking. \
 After talking for a while you decide to share your bottle of Belgium wine with them. ",
     you_talk_to_someone = "You start talking to the person next to you, \
 and make friends after a couple of hours talking. ",

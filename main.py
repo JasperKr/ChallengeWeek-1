@@ -3,7 +3,7 @@ import time
 import story
 import story_2
 import riddles
-inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False, fish_fingers = False, tompouce = False, broccoli = False)
+inventory = dict(moon_suit = False, nice_person = False, bottle = False, headphones = True, souvenir = False, photo = False, friend = False, soup = 0, oxygen = False, sandwich = 0, fruit = 0, mars_sand = False, fish_fingers_or_tompouce_or_broccoli = False, orange_juice = False, bread = False)
 speler_data = dict(name = "")
 stories = story.story
 stories_2 = story_2.story_2
@@ -130,10 +130,13 @@ if not inventory["moon_suit"] or go_anyways: # if the player didn't find a moon 
                 # replace the text with the names that match the dictionary
                 if user_store_input == "Albert Hein":
                     store_selection = "Albert_Hein"
+                    inventory["orange_juice"] = True
                 elif user_store_input == "H&M":
                     store_selection = "H_M"
+                    inventory["orange_juice"] = True
                 elif user_store_input == "Gilgal":
                     store_selection = "Gilgal"
+                    inventory["orange_juice"] = True
                 
                 # if that store exists
                 if store_selection in stores_visited:
@@ -152,6 +155,7 @@ if not inventory["moon_suit"] or go_anyways: # if the player didn't find a moon 
                             if input(stories["buy_bottle"]) == "y":
                                 inventory["bottle"] = True
                                 time.sleep(2)
+                        
                         if not inventory["moon_suit"]:
                             if random_chance(33) or amount_visited >= 3:
                                 print("They had one more moon suit")
@@ -192,9 +196,11 @@ time.sleep(2)
 print("You enter the spaceship and take a seat somewhere in the back.")
 time.sleep(2)
 if inventory["nice_person"]:
-    print("You depart from the spaceport. While listening to some music, you also notice that the person you helped is here too.",end="\n\n")
+    print("You depart from the spaceport. While listening to some music and drinking your juice, you also notice that the person you helped is here too.",end="\n\n")
+    inventory["orange_juice"] = False
 else:
     print("You depart from the spaceport. While listening to some music",end="\n\n")
+    inventory["orange_juice"] = False
 time.sleep(2)
 print("Travelling",end="",flush=True)
 
@@ -215,7 +221,9 @@ while player_answer != "n" and player_answer != "y":
         if input("Do you want to go to the shop? y/n: ") == "y":
             inventory["souvenir"] = True
         time.sleep(3)
-        print()
+        print("You also bought yourself a bread, when looking around. You noticed that you are hungry.")
+        inventory["bread"] = True
+        time.sleep(2)
         print(stories["get_robbed"],end="")
         time.sleep(2)
         if inventory["nice_person"]:
@@ -486,6 +494,12 @@ while Dead or first_time:
                 oxygen_repaired = True
                 print("You have repaired the hull. \n\
 What do you want to repair now? \n")
+                if inventory["sandwich"] >= 1:
+                    inventory["sandwich"] -= 1
+                elif inventory["soup"] >= 1:
+                    inventory["soup"] -= 1
+                elif inventory["fruit"] >= 1:
+                    inventory["fruit"] -= 1
                 time.sleep(1)
             else:
                 if choice_asteroids == "hull":
@@ -493,28 +507,64 @@ What do you want to repair now? \n")
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You have repaired the hull. \n\
 What do you want to repair now? \n")
+                        if inventory["sandwich"] >= 1:
+                            inventory["sandwich"] -= 1
+                        elif inventory["soup"] >= 1:
+                            inventory["soup"] -= 1
+                        elif inventory["fruit"] >= 1:
+                            inventory["fruit"] -= 1
                         time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
                         print("You repaired the hull and you solved everything. Congratulations. The ship can move on. \n")
+                        if inventory["sandwich"] >= 1:
+                            inventory["sandwich"] -= 1
+                        elif inventory["soup"] >= 1:
+                            inventory["soup"] -= 1
+                        elif inventory["fruit"] >= 1:
+                            inventory["fruit"] -= 1
                         time.sleep(1)
                 elif choice_asteroids == "repair engine":
                     engine_repaired = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You have repaired the engine of the ship. \n\
 What do you want to repair now? \n")
+                        if inventory["soup"] >= 1:
+                            inventory["soup"] -= 1
+                        elif inventory["sandwich"] >= 1:
+                            inventory["sandwich"] -= 1
+                        elif inventory["fruit"] >= 1:
+                            inventory["fruit"] -= 1
                         time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
                         print("You repaird the engine and you solved everything. Congratulations. The ship can move on. \n")
+                        if inventory["soup"] >= 1:
+                            inventory["soup"] -= 1
+                        elif inventory["sandwich"] >= 1:
+                            inventory["sandwich"] -= 1
+                        elif inventory["fruit"] >= 1:
+                            inventory["fruit"] -= 1
                         time.sleep(1)
                 elif choice_asteroids == "calm down":
                     people_calmed_down = True
                     if poging != 3: # laatste keer kan je niks meer repareren
                         print("You calmed down the people. \n\
 What do you want to repair now? \n\n")
+                        if inventory["fruit"] >= 1:
+                            inventory["fruit"] -= 1
+                        elif inventory["soup"] >= 1:
+                            inventory["soup"] -= 1
+                        elif inventory["sandwich"] >= 1:
+                            inventory["sandwich"] -= 1
                         time.sleep(1)
                     elif poging != 3 and oxygen_repaired and people_calmed_down and engine_repaired:
                         print("You calmed the people down and you have solved everything. Congratulations. The ship can move on. \n")
                         Dead = False
+                        if inventory["fruit"] >= 1:
+                            inventory["fruit"] -= 1
+                        elif inventory["soup"] >= 1:
+                            inventory["soup"] -= 1
+                        elif inventory["sandwich"] >= 1:
+                            inventory["sandwich"] -= 1
                         time.sleep(1)
                 else:
                     print("You can not do that\n\n")
@@ -722,15 +772,15 @@ while not shop_supply_station_boolean:
     input_shop_supply_station = input(stories_2["choice_shop_supply_station"])
     if input_shop_supply_station == "Jumbo":
         print("You are able to buy enough food for the way to mars. Your food consists largely of fish fingers. ")
-        inventory["fish_fingers"] = True
+        inventory["fish_fingers_or_tompouce_or_broccoli"] = True
         shop_supply_station_boolean = True
     elif input_shop_supply_station == "Hema":
         print("You are able to buy enough food for the way to mars. Your food consists largely of tompouce. ")
-        inventory["tompouce"] = True
+        inventory["fish_fingers_or_tompouce_or_broccoli"] = True
         shop_supply_station_boolean = True
     elif input_shop_supply_station == "Lidl":
         print("You are able to buy enough food for the way to mars. Your food consists largely of broccoli. ")
-        inventory["broccoli"] = True
+        inventory["fish_fingers_or_tompouce_or_broccoli"] = True
         shop_supply_station_boolean = True
     else:
         print("You cannot choose this shop. ")
@@ -743,7 +793,8 @@ while not right_gate_boolean:
     else:
         print("This is the wrong gate. Try it again. ")
 
-print(stories["going_to_mars"])
+print(stories_2["going_to_mars"])
+inventory["fish_fingers_or_tompouce_or_broccoli"] = False
 print("ZZZZZZZzzzzzzzz",end="",flush=True)
 
 for i in range(10):
