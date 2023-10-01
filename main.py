@@ -619,7 +619,7 @@ while player_answer != "people" and player_answer != "friend":
             while (friend_wounded_input == "stitch" or friend_wounded_input == "bandage") and not friend_dead and not friend_saved:
                 if friend_wounded_input == "stitch":
                     need_alcohol = input("Do you want to poor some alcohol on your friends wound \
-to desinfect the wound and to make it bleed less? (y/n): ")
+to disinfect the wound and to make it bleed less? (y/n): ")
                     if need_alcohol == "y":
                         print(f"Luckily {friend_names} survived because of your good treatment. One mistake and he would have been dead. \
 Anyways, he says he owes you something.")
@@ -644,7 +644,7 @@ He owes you something, because you saved his life. ")
                 else:
                     print("How dare you to treat your friend like that. Do you want him to die?")
                     time.sleep(2)
-    else:
+    elif player_answer == "people":
         questions = [
             "What is the temperature of the sun? ",
             "How many moons does mars have? ",
@@ -701,11 +701,12 @@ He owes you something, because you saved his life. ")
         else:
             print("You were able to help everyone!")
         time.sleep(2)
-
+time.sleep(3)
 print("It isn't done yet! You still have to get out of the asteroid field, to navigate, \n\
 give the coordinates of the next place you want to go to, you can move one tile, \n\
 you can move horizontally, vertically and diagonally. You're the W, if you hit an asteroid, X \n\
 then you lose, the asteroids move to the right every other move. You need to reach the bottom.")
+time.sleep(5)
 grid = []
 width = 11
 height = 20
@@ -790,10 +791,19 @@ while player[1] != 19:
                 player = [5,0]
         grid[player[1]][player[0]] = "V"
         move = False
+time.sleep(2)
 print("You made it out of the asteroid field, nicely done!")
-
+time.sleep(2)
 print(stories["go_to_supply_station"])
+# print the travelling text
+print("Travelling",flush=True)
+for i in range(10):
+    time.sleep(0.5)
+    print(".",end=(i==9 and "\n\n" or ""),flush=True)
+
+time.sleep(1)
 print(stories_2["arrival_supply_station"])
+time.sleep(2)
 shop_supply_station_boolean = False
 while not shop_supply_station_boolean:
     input_shop_supply_station = input(stories_2["choice_shop_supply_station"])
@@ -820,7 +830,7 @@ while not right_gate_boolean:
     else:
         print("This is the wrong gate. Try it again. ")
 
-print(stories_2["going_to_mars"])
+print(stories_2["go_to_mars"])
 inventory["fish_fingers_or_tompouce_or_broccoli"] -= 1
 print("ZzZZzZZzZzZzzZz",end="",flush=True)
 
