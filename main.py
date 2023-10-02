@@ -821,9 +821,9 @@ while not shop_supply_station_boolean:
         shop_supply_station_boolean = True
     else:
         print("You cannot choose this shop. ")
-departure_supply_station_input = input(stories_2["departure_supply_station"])
 right_gate_boolean = False
 while not right_gate_boolean:
+    departure_supply_station_input = input(stories_2["departure_supply_station"])
     if departure_supply_station_input == "m":
         print("Your choice was good. This is the right gate. Your journey goes on. ")
         right_gate_boolean = True
