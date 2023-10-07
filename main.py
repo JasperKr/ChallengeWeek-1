@@ -595,7 +595,7 @@ What do you want to repair now? \n\n")
                         time.sleep(1)
                 else:
                     print("You can not do that\n\n")
-                    time.sleep()
+                    time.sleep(1)
 
     if oxygen_repaired and people_calmed_down and engine_repaired:
         print("You start navigating to a supply station. \n\n")
